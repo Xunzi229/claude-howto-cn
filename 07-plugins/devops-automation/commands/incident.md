@@ -1,16 +1,16 @@
 ---
-name: Incident Response
-description: Handle production incidents with structured response
+名称： 事件响应
+描述：通过结构化响应处理生产事件
 ---
 
-# Incident Response
+# 事件响应
 
-Structured incident response workflow:
+结构化事件响应工作流程：
 
-1. Create incident record
-2. Assess severity and impact
-3. Notify on-call team
-4. Gather diagnostic information
-5. Coordinate response efforts
-6. Document resolution
-7. Schedule post-mortem
+1. 创建事件记录
+2. 评估严重性和影响
+3. 通知待命团队
+4. 收集诊断信息
+5. 协调应对工作
+6. 文件解析
+7. 安排事后剖析

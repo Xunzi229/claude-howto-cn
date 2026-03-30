@@ -3,104 +3,103 @@
   <img alt="Claude How To" src="../resources/logos/claude-howto-logo.svg">
 </picture>
 
-# Advanced Features
+# 高级功能
 
-Comprehensive guide to Claude Code's advanced capabilities including planning mode, extended thinking, auto mode, background tasks, permission modes, print mode (non-interactive), session management, interactive features, channels, voice dictation, remote control, web sessions, desktop app, task list, prompt suggestions, git worktrees, sandboxing, managed settings, and configuration.
+全面介绍 Claude Code 的高级功能，包括规划模式、扩展思维、自动模式、后台任务、权限模式、打印模式（非交互）、会话管理、交互功能、频道、语音听写、远程控制、Web 会话、桌面应用程序、任务列表、提示建议、git 工作树、沙箱、托管设置和配置。
 
-## Table of Contents
+## 目录
 
-1. [Overview](#overview)
-2. [Planning Mode](#planning-mode)
-3. [Extended Thinking](#extended-thinking)
-4. [Auto Mode](#auto-mode)
-5. [Background Tasks](#background-tasks)
-6. [Scheduled Tasks](#scheduled-tasks)
-7. [Permission Modes](#permission-modes)
-8. [Headless Mode](#headless-mode)
-9. [Session Management](#session-management)
-10. [Interactive Features](#interactive-features)
-11. [Voice Dictation](#voice-dictation)
-12. [Channels](#channels)
-13. [Chrome Integration](#chrome-integration)
-14. [Remote Control](#remote-control)
-15. [Web Sessions](#web-sessions)
-16. [Desktop App](#desktop-app)
-17. [Task List](#task-list)
-18. [Prompt Suggestions](#prompt-suggestions)
-19. [Git Worktrees](#git-worktrees)
-20. [Sandboxing](#sandboxing)
-21. [Managed Settings (Enterprise)](#managed-settings-enterprise)
-22. [Configuration and Settings](#configuration-and-settings)
-23. [Best Practices](#best-practices)
-24. [Related Concepts](#related-concepts)
-
----
-
-## Overview
-
-Advanced features in Claude Code extend the core capabilities with planning, reasoning, automation, and control mechanisms. These features enable sophisticated workflows for complex development tasks, code review, automation, and multi-session management.
-
-**Key advanced features include:**
-- **Planning Mode**: Create detailed implementation plans before coding
-- **Extended Thinking**: Deep reasoning for complex problems
-- **Auto Mode**: Background safety classifier reviews each action before execution (Research Preview)
-- **Background Tasks**: Run long operations without blocking the conversation
-- **Permission Modes**: Control what Claude can do (`default`, `acceptEdits`, `plan`, `auto`, `dontAsk`, `bypassPermissions`)
-- **Print Mode**: Run Claude Code non-interactively for automation and CI/CD (`claude -p`)
-- **Session Management**: Manage multiple work sessions
-- **Interactive Features**: Keyboard shortcuts, multi-line input, and command history
-- **Voice Dictation**: Push-to-talk voice input with 20-language STT support
-- **Channels**: MCP servers push messages into running sessions (Research Preview)
-- **Remote Control**: Control Claude Code from Claude.ai or the Claude app
-- **Web Sessions**: Run Claude Code in the browser at claude.ai/code
-- **Desktop App**: Standalone app for visual diff review and multiple sessions
-- **Task List**: Persistent task tracking across context compactions
-- **Prompt Suggestions**: Smart command suggestions based on context
-- **Git Worktrees**: Isolated worktree branches for parallel work
-- **Sandboxing**: OS-level filesystem and network isolation
-- **Managed Settings**: Enterprise deployment via plist, Registry, or managed files
-- **Configuration**: Customize behavior with JSON configuration files
+1.[Overview](#overview)
+2.[Planning Mode](#planning-mode)
+3.[Extended Thinking](#extended-thinking)
+4.[Auto Mode](#auto-mode)
+5.[Background Tasks](#background-tasks)
+6.[Scheduled Tasks](#scheduled-tasks)
+7.[Permission Modes](#permission-modes)
+8.[Headless Mode](#headless-mode)
+9.[Session Management](#session-management)
+10.[Interactive Features](#interactive-features)
+11.[Voice Dictation](#voice-dictation)
+12.[Channels](#channels)
+13.[Chrome Integration](#chrome-integration)
+14.[Remote Control](#remote-control)
+15.[Web Sessions](#web-sessions)
+16.[Desktop App](#desktop-app)
+17.[Task List](#task-list)
+18.[Prompt Suggestions](#prompt-suggestions)
+19.[Git Worktrees](#git-worktrees)
+20.[Sandboxing](#sandboxing)
+21.[Managed Settings (Enterprise)](#managed-settings-enterprise)
+22.[Configuration and Settings](#configuration-and-settings)
+23.[Best Practices](#best-practices)
+24.[Related Concepts](#related-concepts)
 
 ---
 
-## Planning Mode
+## 概述
 
-Planning mode allows Claude to think through complex tasks before implementing them, creating a detailed plan that you can review and approve.
+Claude Code 中的高级功能通过规划、推理、自动化和控制机制扩展了核心功能。这些功能为复杂的开发任务、代码审查、自动化和多会话管理提供了复杂的工作流程。
 
-### What is Planning Mode?
+**主要高级功能包括：**
+- **规划模式**：在编码之前创建详细的实施计划
+- **扩展思维**：复杂问题的深层推理
+- **自动模式**：后台安全分类器在执行前检查每个操作（研究预览）
+- **后台任务**：运行长时间操作而不阻塞对话
+- **权限模式**：控制claude可以做什么（`default`、`acceptEdits`、`plan`、`auto`、`dontAsk`、`bypassPermissions`）
+- **打印模式**：以非交互方式运行 Claude 代码以实现自动化和 CI/CD (`claude -p`)
+- **会话管理**：管理多个工作会话
+- **交互功能**：键盘快捷键、多行输入和命令历史记录
+- **语音听写**：即按即说语音输入，支持 20 种语言 STT
+- **通道**：MCP 服务器将消息推送到正在运行的会话中（研究预览）
+- **远程控制**：从 Claude.ai 或 Claude 应用程序控制 Claude 代码
+- **网络会话**：在浏览器中运行 Claude Code（位于 claude.ai/code）
+- **桌面应用程序**：用于视觉差异审查和多个会话的独立应用程序
+- **任务列表**：跨上下文压缩的持久任务跟踪
+- **提示建议**：基于上下文的智能命令建议
+- **Git Worktrees**：用于并行工作的独立工作树分支
+- **沙箱**：操作系统级文件系统和网络隔离
 
-Planning mode is a two-phase approach:
-1. **Planning Phase**: Claude analyzes the task and creates a detailed implementation plan
-2. **Implementation Phase**: After approval, Claude executes the plan
+- **托管设置**：通过 plist、注册表或托管文件进行企业部署
+- **配置**：使用 JSON 配置文件自定义行为
 
-### When to Use Planning Mode
+---
 
-✅ Use planning mode for:
-- Complex multi-file refactoring
-- New feature implementations
-- Architectural changes
-- Database migrations
-- Major API redesigns
+## 规划模式
 
-❌ Don't use planning mode for:
-- Simple bug fixes
-- Formatting changes
-- Single-file edits
-- Quick queries
+计划模式允许claude在实施复杂的任务之前仔细考虑它们，创建一个可供您审查和批准的详细计划。
 
-### Activating Planning Mode
+### 什么是计划模式？
 
-**Slash command**:
+规划模式是一个两阶段的方法：
+1. **规划阶段**：claude分析任务并制定详细的实施计划
+2. **实施阶段**：批准后，claude执行计划
+
+### 何时使用计划模式
+
+✅ 使用计划模式：
+- 复杂的多文件重构
+- 新功能的实现
+- 架构变化
+- 数据库迁移
+- 主要 API 重新设计
+
+❌ 不要将计划模式用于：
+- 简单的错误修复
+- 格式更改
+- 单文件编辑
+- 快速查询
+
+### 激活计划模式
+
+**斜线命令**：
 ```bash
 /plan Implement user authentication system
 ```
-
-**CLI flag**:
+**CLI 标志**：
 ```bash
 claude --permission-mode plan
 ```
-
-**Set as default**:
+**设置为默认**：
 ```json
 {
   "permissions": {
@@ -108,20 +107,18 @@ claude --permission-mode plan
   }
 }
 ```
+**键盘快捷键**：
+- `Shift + Tab` - 切换权限模式（包括计划）
+- `Alt + M` - 切换权限模式 (Windows/Linux)
 
-**Keyboard shortcut**:
-- `Shift + Tab` - Toggle permission modes (including plan)
-- `Alt + M` - Toggle permission modes (Windows/Linux)
+### 规划模式的好处
 
-### Benefits of Planning Mode
+- **结构化实施方法**：实施步骤的详细分解
+- **审核批准**：执行前批准或调整计划
+- **风险识别**：在实施前识别潜在问题
+- **明确的阶段**：有组织的实施阶段和里程碑
 
-- **Structured implementation approach**: Detailed breakdown of implementation steps
-- **Review and approval**: Approve or adjust the plan before execution
-- **Risk identification**: Identify potential issues before implementation
-- **Clear phases**: Organized implementation phases and milestones
-
-### Example: Feature Implementation
-
+### 示例：功能实现
 ```
 User: /plan Add a real-time notification system
 
@@ -162,9 +159,7 @@ User: yes
 
 Claude: [Begins implementation following the plan]
 ```
-
-### Plan Modifications
-
+### 计划修改
 ```
 User: Modify the plan - skip the queue for now, we'll add it later
 
@@ -175,11 +170,9 @@ User: Looks good, proceed
 
 Claude: [Implements modified plan]
 ```
+### 规划模式配置
 
-### Planning Mode Configuration
-
-Planning mode is activated via the CLI flag or slash command:
-
+计划模式通过 CLI 标志或斜杠命令激活：
 ```bash
 # Activate plan mode via CLI
 claude --permission-mode plan
@@ -187,75 +180,67 @@ claude --permission-mode plan
 # Or use the /plan slash command inside the REPL
 /plan Implement user authentication system
 ```
-
-**Model alias for planning**: Use `opusplan` as a model alias to use Opus for planning and Sonnet for execution:
-
+**用于规划的模型别名**：使用 `opusplan` 作为模型别名，以使用 Opus 进行规划并使用 Sonnet 进行执行：
 ```bash
 claude --model opusplan "design and implement the new API"
 ```
-
-**Edit plan externally**: Press `Ctrl+G` to open the current plan in your external editor for detailed modifications.
+**外部编辑计划**：按 `Ctrl+G` 在外部编辑器中打开当前计划以进行详细修改。
 
 ---
 
-## Extended Thinking
+## 延伸思考
 
-Extended thinking allows Claude to spend more time reasoning about complex problems before providing a solution.
+扩展思维使claude能够在提供解决方案之前花更多时间推理复杂问题。
 
-### What is Extended Thinking?
+### 什么是扩展思维？
 
-Extended thinking is a deliberate, step-by-step reasoning process where Claude:
-- Breaks down complex problems
-- Considers multiple approaches
-- Evaluates trade-offs
-- Reasons through edge cases
+扩展思维是一个深思熟虑的、逐步的推理过程，claude：
+- 分解复杂的问题
+- 考虑多种方法
+- 评估权衡
+- 通过边缘案例分析原因
 
-### Activating Extended Thinking
+### 激活扩展思维
 
-**Keyboard shortcut**:
-- `Option + T` (macOS) / `Alt + T` (Windows/Linux) - Toggle extended thinking
+**键盘快捷键**：
+- `Option + T` (macOS) / `Alt + T` (Windows/Linux) - 切换扩展思维
 
-**Automatic activation**:
-- Enabled by default for all models (Opus 4.6, Sonnet 4.6, Haiku 4.5)
-- Opus 4.6: Adaptive reasoning with effort levels: `low` (○), `medium` (◐), `high` (●), `max` (Opus 4.6 only)
-- Other models: Fixed budget up to 31,999 tokens
+**自动激活**：
+- 默认情况下对所有型号启用（Opus 4.6、Sonnet 4.6、Haiku 4.5）
+- Opus 4.6：自适应推理与努力水平：`low` (○)、`medium` (◐)、`high` (●)、`max`（仅限 Opus 4.6）
+- 其他型号：固定预算最多 31,999 个tokens
 
-**Configuration methods**:
-- Toggle: `Alt+T` / `Option+T`, or via `/config`
-- View reasoning: `Ctrl+O` (verbose mode)
-- Set effort: `/effort` command or `--effort` flag
+**配置方法**：
+- 切换：`Alt+T` / `Option+T`，或通过 `/config`
+- 查看推理：`Ctrl+O`（详细模式）
+- 设置努力：`/effort` 命令或 `--effort` 标志
 
-**Custom budget**:
+**定制预算**：
 ```bash
 export MAX_THINKING_TOKENS=1024
 ```
-
-**Effort level** (Opus 4.6 only):
+**努力程度**（仅限 Opus 4.6）：
 ```bash
 export CLAUDE_CODE_EFFORT_LEVEL=high   # low (○), medium (◐), high (●), or max (Opus 4.6 only)
 ```
-
-**CLI flag**:
+**CLI 标志**：
 ```bash
 claude --effort high "complex architectural review"
 ```
-
-**Slash command**:
+**斜线命令**：
 ```
 /effort high
 ```
+> **注意：** 提示中的关键字“ultrathink”会激活深度推理模式。努力级别 `low`、`medium`、`high` 和 `max`（仅限 Opus 4.6）控制claude执行推理的程度。
 
-> **Note:** The keyword "ultrathink" in prompts activates deep reasoning mode. Effort levels `low`, `medium`, `high`, and `max` (Opus 4.6 only) control how much reasoning Claude performs.
+### 扩展思维的好处
 
-### Benefits of Extended Thinking
+- **深度推理**：花更多时间思考复杂问题
+- **更好的架构决策**：通过综合评估做出明智的选择
+- **考虑边缘情况**：思考潜在的问题和场景
+- **彻底分析**：解决复杂问题的结构化方法
 
-- **Deep reasoning**: Spend more time thinking about complex problems
-- **Better architectural decisions**: Make informed choices with comprehensive evaluation
-- **Consideration of edge cases**: Think through potential issues and scenarios
-- **Thorough analysis**: Structured approach to complex problem-solving
-
-### Example: Architectural Decision
-
+### 示例：架构决策
 ```
 User: /think Should we use microservices or a monolith for our e-commerce platform?
 
@@ -324,11 +309,9 @@ Migration path: When you reach 50k+ users or specific modules need independent s
 
 This approach balances your current constraints (team size, timeline, DevOps resources) with future scalability needs. You can migrate specific modules to microservices later when there's a clear business need.
 ```
+### 扩展思维配置
 
-### Extended Thinking Configuration
-
-Extended thinking is controlled via environment variables, keyboard shortcuts, and CLI flags:
-
+扩展思维是通过环境变量、键盘快捷键和 CLI 标志来控制的：
 ```bash
 # Set thinking token budget
 export MAX_THINKING_TOKENS=16000
@@ -336,37 +319,32 @@ export MAX_THINKING_TOKENS=16000
 # Set effort level (Opus 4.6 only): low (○), medium (◐), high (●), or max (Opus 4.6 only)
 export CLAUDE_CODE_EFFORT_LEVEL=high
 ```
-
-Toggle during a session with `Alt+T` / `Option+T`, set effort with `/effort`, or configure via `/config`.
+在会话期间使用 `Alt+T` / `Option+T` 进行切换，使用 `/effort` 设置工作量，或通过 `/config` 进行配置。
 
 ---
 
-## Auto Mode
+## 自动模式
 
-Auto Mode is a Research Preview permission mode (March 2026) that uses a background safety classifier to review each action before execution. It allows Claude to work autonomously while blocking dangerous operations.
+自动模式是一种研究预览权限模式（2026 年 3 月），它使用后台安全分类器在执行前审查每个操作。它让claude能够自主工作，同时阻止危险操作。
 
-### Requirements
+### 要求
 
-- **Plan**: Team plan (Enterprise and API rolling out)
-- **Model**: Claude Sonnet 4.6 or Opus 4.6
-- **Classifier**: Runs on Claude Sonnet 4.6 (adds extra token cost)
+- **计划**：团队计划（企业和 API 推出）
+- **型号**：claude Sonnet 4.6 或 Opus 4.6
+- **分类器**：在 Claude Sonnet 4.6 上运行（增加额外的tokens成本）
 
-### Enabling Auto Mode
-
+### 启用自动模式
 ```bash
 # Unlock auto mode with CLI flag
 claude --enable-auto-mode
 
 # Then cycle to it with Shift+Tab in the REPL
 ```
-
-Or set it as the default permission mode:
-
+或者将其设置为默认权限模式：
 ```bash
 claude --permission-mode auto
 ```
-
-Setting via config:
+通过配置设置：
 ```json
 {
   "permissions": {
@@ -374,54 +352,87 @@ Setting via config:
   }
 }
 ```
+### 分类器如何工作
 
-### How the Classifier Works
+背景分类器使用以下决策顺序评估每个动作：
 
-The background classifier evaluates each action using the following decision order:
+1. **允许/拒绝规则** -- 首先检查显式权限规则
+2. **只读/编辑自动批准** -- 文件读取和编辑自动通过
+3. **分类器** -- 后台分类器审查动作
+4. **回退** -- 在连续 3 个或总共 20 个区块后回退到提示
 
-1. **Allow/deny rules** -- Explicit permission rules are checked first
-2. **Read-only/edits auto-approved** -- File reads and edits pass automatically
-3. **Classifier** -- The background classifier reviews the action
-4. **Fallback** -- Falls back to prompting after 3 consecutive or 20 total blocks
+### 默认阻止的操作
 
-### Default Blocked Actions
+自动模式默认阻止以下内容：
 
-Auto mode blocks the following by default:
-
-| Blocked Action | Example |
+|被阻止的行动 |示例|
 |----------------|---------|
-| Pipe-to-shell installs | `curl \| bash` |
-| Sending sensitive data externally | API keys, credentials over network |
-| Production deploys | Deploy commands targeting production |
-| Mass deletion | `rm -rf` on large directories |
-| IAM changes | Permission and role modifications |
-| Force push to main | `git push --force origin main` |
+|管道到外壳安装 | `curl \| bash` |
+|外部发送敏感数据 | API 密钥、网络凭据 |
+|生产部署 |部署针对生产的命令 |
+|批量删除 |大型目录上的 `rm -rf` |
+| IAM 变化 |权限和角色修改 |
+|强制推送到主 | `git push --force origin main` |
 
-### Default Allowed Actions
+### 默认允许的操作
 
-| Allowed Action | Example |
+|允许的操作 |示例|
 |----------------|---------|
-| Local file operations | Read, write, edit project files |
-| Declared dependency installs | `npm install`, `pip install` from manifest |
-| Read-only HTTP | `curl` for fetching documentation |
-| Pushing to current branch | `git push origin feature-branch` |
+|本地文件操作 |读取、写入、编辑项目文件 |
+|声明的依赖项安装 |清单中的 `npm install`、`pip install` |
+|只读 HTTP | `curl` 用于获取文档 |
+|推送到当前分支 | `git push origin feature-branch` |
 
-### Configuring Auto Mode
+### 配置自动模式
 
-**Print default rules as JSON**:
+**将默认规则打印为 JSON**：
 ```bash
 claude auto-mode defaults
 ```
+**通过企业部署的 `autoMode.environment` 托管设置配置可信基础设施**。这允许管理员定义可信的 CI/CD 环境、部署目标和基础设施模式。
 
-**Configure trusted infrastructure** via the `autoMode.environment` managed setting for enterprise deployments. This allows administrators to define trusted CI/CD environments, deployment targets, and infrastructure patterns.
+### 后备行为
 
-### Fallback Behavior
+当分类器不确定时，自动模式会回退到提示用户：
+- **3个连续**分类器块之后
+- 在会话中**20 个**分类器块之后
 
-When the classifier is uncertain, auto mode falls back to prompting the user:
-- After **3 consecutive** classifier blocks
-- After **20 total** classifier blocks in a session
+这可以确保当分类器无法自信地批准某个操作时，用户始终保留控制权。
 
-This ensures the user always retains control when the classifier cannot confidently approve an action.
+### 预置等效于 auto-mode 的权限（无需 Team 计划）
+
+如果你没有 Team 计划，或者想采用一种更简单、无需后台 classifier 的方式，可以使用脚本向 `~/.claude/settings.json` 预置一组保守的安全权限基线。该脚本默认只包含只读和本地检查类规则，然后按需让你选择是否额外启用编辑、测试、本地 git 写操作、包安装以及 GitHub 写操作。
+
+**文件：** `09-advanced-features/setup-auto-mode-permissions.py`
+
+```bash
+# 预览将要添加的规则（不会写入任何变更）
+python3 09-advanced-features/setup-auto-mode-permissions.py --dry-run
+
+# 应用保守基线
+python3 09-advanced-features/setup-auto-mode-permissions.py
+
+# 只在需要时再增加能力
+python3 09-advanced-features/setup-auto-mode-permissions.py --include-edits --include-tests
+python3 09-advanced-features/setup-auto-mode-permissions.py --include-git-write --include-packages
+```
+
+该脚本会按以下类别添加规则：
+
+| 类别 | 示例 |
+|----------|---------|
+| 核心只读工具 | `Read(*)`、`Glob(*)`、`Grep(*)`、`Agent(*)`、`WebSearch(*)`、`WebFetch(*)` |
+| 本地检查 | `Bash(git status:*)`、`Bash(git log:*)`、`Bash(git diff:*)`、`Bash(cat:*)` |
+| 可选编辑 | `Edit(*)`、`Write(*)`、`NotebookEdit(*)` |
+| 可选测试/构建 | `Bash(pytest:*)`、`Bash(python3 -m pytest:*)`、`Bash(cargo test:*)` |
+| 可选 git 写操作 | `Bash(git add:*)`、`Bash(git commit:*)`、`Bash(git stash:*)` |
+| Git（本地写入） | `Bash(git add:*)`、`Bash(git commit:*)`、`Bash(git checkout:*)` |
+| 包管理器 | `Bash(npm install:*)`、`Bash(pip install:*)`、`Bash(cargo build:*)` |
+| 构建与测试 | `Bash(make:*)`、`Bash(pytest:*)`、`Bash(go test:*)` |
+| 常用 shell | `Bash(ls:*)`、`Bash(cat:*)`、`Bash(find:*)`、`Bash(cp:*)`、`Bash(mv:*)` |
+| GitHub CLI | `Bash(gh pr view:*)`、`Bash(gh pr create:*)`、`Bash(gh issue list:*)` |
+
+危险操作（`rm -rf`、`sudo`、强制 push、`DROP TABLE`、`terraform destroy` 等）会被刻意排除。该脚本是幂等的，运行两次也不会重复添加规则。
 
 ### Seeding Auto-Mode-Equivalent Permissions (No Team Plan Required)
 
@@ -460,20 +471,20 @@ Dangerous operations (`rm -rf`, `sudo`, force push, `DROP TABLE`, `terraform des
 
 ---
 
-## Background Tasks
+## 后台任务
 
-Background tasks allow long-running operations to execute without blocking your conversation.
+后台任务允许执行长时间运行的操作，而不会阻塞您的对话。
 
-### What Are Background Tasks?
+### 什么是后台任务？
 
-Background tasks run asynchronously while you continue working:
-- Long test suites
-- Build processes
-- Database migrations
-- Deployment scripts
-- Analysis tools
+当您继续工作时，后台任务会异步运行：
+- 长测试套件
+- 构建流程
+- 数据库迁移
+- 部署脚本
+- 分析工具
 
-**Basic Usage:**
+**基本用法：**
 ```bash
 User: Run tests in background
 
@@ -484,9 +495,7 @@ Claude: Started task bg-1234
 /task show bg-1234   # View output
 /task cancel bg-1234 # Cancel task
 ```
-
-### Starting Background Tasks
-
+### 启动后台任务
 ```
 User: Run the full test suite in the background
 
@@ -506,10 +515,9 @@ Claude: 📢 Background task bg-1234 completed:
 ❌ 3 tests failed
 View results: /task show bg-1234
 ```
+### 管理后台任务
 
-### Managing Background Tasks
-
-**List active tasks**:
+**列出活动任务**：
 ```
 User: /task list
 
@@ -518,8 +526,7 @@ Active background tasks:
 2. [bg-1235] Building Docker image (25% complete, 8min remaining)
 3. [bg-1236] Deploying to staging (90% complete, 30sec remaining)
 ```
-
-**Check task status**:
+**检查任务状态**：
 ```
 User: /task status bg-1234
 
@@ -529,23 +536,19 @@ Progress: 120/245 tests (49%)
 Started: 2025-11-08 10:30:15
 Estimated completion: 2025-11-08 10:34:22
 ```
-
-**View task output**:
+**查看任务输出**：
 ```
 User: /task show bg-1234
 
 [Shows live output from the test run]
 ```
-
-**Cancel task**:
+**取消任务**：
 ```
 User: /task cancel bg-1234
 
 Cancelled background task bg-1234
 ```
-
-### Example: Parallel Development
-
+### 示例：并行开发
 ```
 User: Run the build in the background
 
@@ -568,9 +571,7 @@ User: Show me the linter issues
 
 Claude: [Shows linter output from bg-5002]
 ```
-
-### Configuration
-
+＃＃＃ 配置
 ```json
 {
   "backgroundTasks": {
@@ -582,15 +583,13 @@ Claude: [Shows linter output from bg-5002]
   }
 }
 ```
-
 ---
 
-## Scheduled Tasks
+## 计划任务
 
-Scheduled Tasks let you run prompts automatically on a recurring schedule or as one-time reminders. Tasks are session-scoped — they run while Claude Code is active and are cleared when the session ends. Available since v2.1.72+.
+计划任务可让您按照定期计划自动运行提示或作为一次性提醒。任务是会话范围的——它们在 Claude Code 处于活动状态时运行，并在会话结束时被清除。自 v2.1.72+ 起可用。
 
-### The `/loop` command
-
+### `/loop` 命令
 ```bash
 # Explicit interval
 /loop 5m check if the deployment finished
@@ -598,105 +597,93 @@ Scheduled Tasks let you run prompts automatically on a recurring schedule or as 
 # Natural language
 /loop check build status every 30 minutes
 ```
+还支持标准 5 字段 cron 表达式以进行精确调度。
 
-Standard 5-field cron expressions are also supported for precise scheduling.
+### 一次性提醒
 
-### One-time reminders
-
-Set reminders that fire once at a specific time:
-
+设置在特定时间触发一次的提醒：
 ```
 remind me at 3pm to push the release branch
 in 45 minutes, run the integration tests
 ```
+### 管理计划任务
 
-### Managing scheduled tasks
-
-| Tool | Description |
+|工具|描述 |
 |------|-------------|
-| `CronCreate` | Create a new scheduled task |
-| `CronList` | List all active scheduled tasks |
-| `CronDelete` | Remove a scheduled task |
+| `CronCreate` |创建新的计划任务 |
+| `CronList` |列出所有活动的计划任务 |
+| `CronDelete` |删除计划任务 |
 
-**Limits and behavior**:
-- Up to **50 scheduled tasks** per session
-- Session-scoped — cleared when the session ends
-- Recurring tasks auto-expire after **3 days**
-- Tasks only fire while Claude Code is running — no catch-up for missed fires
+**限制和行为**：
+- 每个会话最多 **50 个计划任务**
+- 会话范围 - 会话结束时清除
+- 重复任务在 **3 天**后自动过期
+- 任务仅在 Claude Code 运行时触发 - 无法追赶错过的触发
 
-### Behavior details
+### 行为细节
 
-| Aspect | Detail |
+|方面|详情 |
 |--------|--------|
-| **Recurring jitter** | Up to 10% of the interval (max 15 minutes) |
-| **One-shot jitter** | Up to 90 seconds on :00/:30 boundaries |
-| **Missed fires** | No catch-up — skipped if Claude Code was not running |
-| **Persistence** | Not persisted across restarts |
+| **反复出现的抖动** |最多 10% 的间隔（最多 15 分钟）|
+| **一次性抖动** |在 :00/:30 边界上最长 90 秒 |
+| **错过火灾** |没有追赶——如果 Claude Code 没有运行则跳过 |
+| **坚持** |重新启动后不保留|
 
-### Cloud Scheduled Tasks
+### 云计划任务
 
-Use `/schedule` to create Cloud scheduled tasks that run on Anthropic infrastructure:
-
+使用 `/schedule` 创建在 Anthropic 基础设施上运行的云计划任务：
 ```
 /schedule daily at 9am run the test suite and report failures
 ```
+云计划任务在重新启动后仍然存在，并且不需要 Claude Code 在本地运行。
 
-Cloud scheduled tasks persist across restarts and do not require Claude Code to be running locally.
-
-### Disabling scheduled tasks
-
+### 禁用计划任务
 ```bash
 export CLAUDE_CODE_DISABLE_CRON=1
 ```
-
-### Example: monitoring a deployment
-
+### 示例：监控部署
 ```
 /loop 5m check the deployment status of the staging environment.
         If the deploy succeeded, notify me and stop looping.
         If it failed, show the error logs.
 ```
-
-> **Tip**: Scheduled tasks are session-scoped. For persistent automation that survives restarts, use CI/CD pipelines, GitHub Actions, or Desktop App scheduled tasks instead.
+> **提示**：计划任务是会话范围的。对于在重新启动后仍然存在的持久自动化，请改用 CI/CD 管道、GitHub Actions 或桌面应用程序计划任务。
 
 ---
 
-## Permission Modes
+## 权限模式
 
-Permission modes control what actions Claude can take without explicit approval.
+权限模式控制claude可以在没有明确批准的情况下执行哪些操作。
 
-### Available Permission Modes
+### 可用的权限模式
 
-| Mode | Behavior |
+|模式|行为 |
 |---|---|
-| `default` | Read files only; prompts for all other actions |
-| `acceptEdits` | Read and edit files; prompts for commands |
-| `plan` | Read files only (research mode, no edits) |
-| `auto` | All actions with background safety classifier checks (Research Preview) |
-| `bypassPermissions` | All actions, no permission checks (dangerous) |
-| `dontAsk` | Only pre-approved tools execute; all others denied |
+| `default` |只读取文件；提示所有其他操作 |
+| `acceptEdits` |读取和编辑文件；命令提示 |
+| `plan` |仅读取文件（研究模式，无编辑）|
+| `auto` |所有操作均带有后台安全分类器检查（研究预览）|
+| `bypassPermissions` |所有操作，无权限检查（危险）|
+| `dontAsk` |仅执行预先批准的工具；所有其他人均否认|
 
-Cycle through modes with `Shift+Tab` in the CLI. Set a default with the `--permission-mode` flag or the `permissions.defaultMode` setting.
+在 CLI 中使用 `Shift+Tab` 循环切换模式。使用 `--permission-mode` 标志或 `permissions.defaultMode` 设置设置默认值。
 
-### Activation Methods
+### 激活方法
 
-**Keyboard shortcut**:
+**键盘快捷键**：
 ```bash
 Shift + Tab  # Cycle through all 6 modes
 ```
-
-**Slash command**:
+**斜线命令**：
 ```bash
 /plan                  # Enter plan mode
 ```
-
-**CLI flag**:
+**CLI 标志**：
 ```bash
 claude --permission-mode plan
 claude --permission-mode auto
 ```
-
-**Setting**:
+**环境**：
 ```json
 {
   "permissions": {
@@ -704,12 +691,10 @@ claude --permission-mode auto
   }
 }
 ```
+### 权限模式示例
 
-### Permission Mode Examples
-
-#### Default Mode
-Claude asks for confirmation on significant actions:
-
+#### 默认模式
+claude要求确认重大行动：
 ```
 User: Fix the bug in auth.ts
 
@@ -718,10 +703,8 @@ The change will update the password validation logic.
 
 Approve this change? (yes/no/show)
 ```
-
-#### Plan Mode
-Review implementation plan before execution:
-
+#### 计划模式
+执行前审查实施计划：
 ```
 User: /plan Implement user authentication system
 
@@ -732,59 +715,52 @@ Claude: I'll create a plan for implementing authentication.
 
 Ready to proceed? (yes/no/modify)
 ```
-
-#### Accept Edits Mode
-Automatically accept file modifications:
-
+#### 接受编辑模式
+自动接受文件修改：
 ```
 User: acceptEdits
 User: Fix the bug in auth.ts
 
 Claude: [Makes changes without asking]
 ```
+### 用例
 
-### Use Cases
-
-**Code Review**:
+**代码审查**：
 ```
 User: claude --permission-mode plan
 User: Review this PR and suggest improvements
 
 Claude: [Reads code, provides feedback, but cannot modify]
 ```
-
-**Pair Programming**:
+**结对编程**：
 ```
 User: claude --permission-mode default
 User: Let's implement the feature together
 
 Claude: [Asks for approval before each change]
 ```
-
-**Automated Tasks**:
+**自动化任务**：
 ```
 User: claude --permission-mode acceptEdits
 User: Fix all linting issues in the codebase
 
 Claude: [Auto-accepts file edits without asking]
 ```
-
 ---
 
-## Headless Mode
+## 无头模式
 
-Print mode (`claude -p`) allows Claude Code to run without interactive input, perfect for automation and CI/CD. This is the non-interactive mode, replacing the older `--headless` flag.
+打印模式 (`claude -p`) 允许 Claude Code 无需交互式输入即可运行，非常适合自动化和 CI/CD。这是非交互模式，取代了旧的 `--headless` 标志。
 
-### What is Print Mode?
+### 什么是打印模式？
 
-Print mode enables:
-- Automated script execution
-- CI/CD integration
-- Batch processing
-- Scheduled tasks
+打印模式可以：
+- 自动执行脚本
+- CI/CD 集成
+- 批量处理
+- 计划任务
 
-### Running in Print Mode (Non-Interactive)
-
+### 在打印模式下运行（非交互式）
 ```bash
 # Run specific task
 claude -p "Run all tests"
@@ -796,9 +772,7 @@ cat error.log | claude -p "Analyze these errors"
 - name: AI Code Review
   run: claude -p "Review PR"
 ```
-
-### Additional Print Mode Usage Examples
-
+### 其他打印模式使用示例
 ```bash
 # Run a specific task with output capture
 claude -p "Run all tests and generate coverage report"
@@ -809,10 +783,9 @@ claude -p --output-format json "Analyze code quality"
 # With input from stdin
 echo "Analyze code quality" | claude -p "explain this"
 ```
+### 示例：CI/CD 集成
 
-### Example: CI/CD Integration
-
-**GitHub Actions**:
+**GitHub 操作**：
 ```yaml
 # .github/workflows/code-review.yml
 name: AI Code Review
@@ -854,11 +827,9 @@ jobs:
               body: JSON.stringify(review, null, 2)
             });
 ```
+### 打印模式配置
 
-### Print Mode Configuration
-
-Print mode (`claude -p`) supports several flags for automation:
-
+打印模式 (`claude -p`) 支持多个自动化标志：
 ```bash
 # Limit autonomous turns
 claude -p --max-turns 5 "refactor this module"
@@ -873,57 +844,49 @@ claude -p --json-schema '{"type":"object","properties":{"issues":{"type":"array"
 # Disable session persistence
 claude -p --no-session-persistence "one-off analysis"
 ```
-
 ---
 
-## Session Management
+## 会话管理
 
-Manage multiple Claude Code sessions effectively.
+有效管理多个claude代码会话。
 
-### Session Management Commands
+### 会话管理命令
 
-| Command | Description |
+|命令 |描述 |
 |---------|-------------|
-| `/resume` | Resume a conversation by ID or name |
-| `/rename` | Name the current session |
-| `/fork` | Fork current session into a new branch |
-| `claude -c` | Continue most recent conversation |
-| `claude -r "session"` | Resume session by name or ID |
+| `/resume` |按 ID 或姓名恢复对话 |
+| `/rename` |命名当前会话 |
+| `/fork` |将当前会话分叉到一个新分支 |
+| `claude -c` |继续最近的对话 |
+| `claude -r "session"` |按名称或 ID 恢复会话 |
 
-### Resuming Sessions
+### 恢复会话
 
-**Continue last conversation**:
+**继续上次谈话**：
 ```bash
 claude -c
 ```
-
-**Resume a named session**:
+**恢复指定会话**：
 ```bash
 claude -r "auth-refactor" "finish this PR"
 ```
-
-**Rename the current session** (inside the REPL):
+**重命名当前会话**（在 REPL 内）：
 ```
 /rename auth-refactor
 ```
+### 分叉会话
 
-### Forking Sessions
-
-Fork a session to try an alternative approach without losing the original:
-
+分叉一个会话来尝试替代方法而不丢失原始方法：
 ```
 /fork
 ```
-
-Or from the CLI:
+或者从 CLI：
 ```bash
 claude --resume auth-refactor --fork-session "try OAuth instead"
 ```
+### 会话持续性
 
-### Session Persistence
-
-Sessions are automatically saved and can be resumed:
-
+会话会自动保存并可以恢复：
 ```bash
 # Continue last conversation
 claude -c
@@ -934,49 +897,47 @@ claude -r "auth-refactor"
 # Resume and fork for experimentation
 claude --resume auth-refactor --fork-session "alternative approach"
 ```
-
 ---
 
-## Interactive Features
+## 互动功能
 
-### Keyboard Shortcuts
+### 键盘快捷键
 
-Claude Code supports keyboard shortcuts for efficiency. Here's the complete reference from official docs:
+Claude Code 支持键盘快捷键以提高效率。这是官方文档的完整参考：
 
-| Shortcut | Description |
+|快捷方式|描述 |
 |----------|-------------|
-| `Ctrl+C` | Cancel current input/generation |
-| `Ctrl+D` | Exit Claude Code |
-| `Ctrl+G` | Edit plan in external editor |
-| `Ctrl+L` | Clear terminal screen |
-| `Ctrl+O` | Toggle verbose output (view reasoning) |
-| `Ctrl+R` | Reverse search history |
-| `Ctrl+T` | Toggle task list view |
-| `Ctrl+B` | Background running tasks |
-| `Esc+Esc` | Rewind code/conversation |
-| `Shift+Tab` / `Alt+M` | Toggle permission modes |
-| `Option+P` / `Alt+P` | Switch model |
-| `Option+T` / `Alt+T` | Toggle extended thinking |
+| `Ctrl+C` |取消当前输入/生成|
+| `Ctrl+D` |退出claude代码 |
+| `Ctrl+G` |在外部编辑器中编辑计划 |
+| `Ctrl+L` |清除终端屏幕|
+| `Ctrl+O` |切换详细输出（查看推理）|
+| `Ctrl+R` |反向搜索历史记录 |
+| `Ctrl+T` |切换任务列表视图 |
+| `Ctrl+B` |后台运行任务|
+| `Esc+Esc` |倒回代码/对话 |
+| `Shift+Tab` / `Alt+M` |切换权限模式 |
+| `Option+P` / `Alt+P` |开关型号|
+| `Option+T` / `Alt+T` |切换扩展思维 |
 
-**Line Editing (standard readline shortcuts):**
+**行编辑（标准阅读行快捷键）：**
 
-| Shortcut | Action |
+|快捷方式|行动|
 |----------|--------|
-| `Ctrl + A` | Move to line start |
-| `Ctrl + E` | Move to line end |
-| `Ctrl + K` | Cut to end of line |
-| `Ctrl + U` | Cut to start of line |
-| `Ctrl + W` | Delete word backward |
-| `Ctrl + Y` | Paste (yank) |
-| `Tab` | Autocomplete |
-| `↑ / ↓` | Command history |
+| `Ctrl + A` |移至行首 |
+| `Ctrl + E` |移至行尾 |
+| `Ctrl + K` |切到行尾 |
+| `Ctrl + U` |切至行首 |
+| `Ctrl + W` |向后删除单词 |
+| `Ctrl + Y` |粘贴（猛拉）|
+| `Tab` |自动完成 |
+| `↑ / ↓` |命令历史 |
 
-### Customizing keybindings
+### 自定义键绑定
 
-Create custom keyboard shortcuts by running `/keybindings`, which opens `~/.claude/keybindings.json` for editing (v2.1.18+).
+通过运行 `/keybindings` 创建自定义键盘快捷键，这将打开 `~/.claude/keybindings.json` 进行编辑 (v2.1.18+)。
 
-**Configuration format**:
-
+**配置格式**：
 ```json
 {
   "$schema": "https://www.schemastore.org/claude-code-keybindings.json",
@@ -998,56 +959,52 @@ Create custom keyboard shortcuts by running `/keybindings`, which opens `~/.clau
   ]
 }
 ```
+将绑定设置为 `null` 以取消绑定默认快捷方式。
 
-Set a binding to `null` to unbind a default shortcut.
+### 可用上下文
 
-### Available contexts
+键绑定的范围仅限于特定的 UI 上下文：
 
-Keybindings are scoped to specific UI contexts:
-
-| Context | Key Actions |
+|背景 |关键行动|
 |---------|-------------|
-| **Chat** | `submit`, `cancel`, `cycleMode`, `modelPicker`, `thinkingToggle`, `undo`, `externalEditor`, `stash`, `imagePaste` |
-| **Confirmation** | `yes`, `no`, `previous`, `next`, `nextField`, `cycleMode`, `toggleExplanation` |
-| **Global** | `interrupt`, `exit`, `toggleTodos`, `toggleTranscript` |
-| **Autocomplete** | `accept`, `dismiss`, `next`, `previous` |
-| **HistorySearch** | `search`, `previous`, `next` |
-| **Settings** | Context-specific settings navigation |
-| **Tabs** | Tab switching and management |
-| **Help** | Help panel navigation |
+| **聊天** | `submit`、`cancel`、`cycleMode`、`modelPicker`、`thinkingToggle`、`undo`、`externalEditor`、`stash`、`imagePaste` |
+| **确认** | `yes`、`no`、`previous`、`next`、`nextField`、`cycleMode`、`toggleExplanation` |
+| **全球** | `interrupt`、`exit`、`toggleTodos`、`toggleTranscript` |
+| **自动完成** | `accept`、`dismiss`、`next`、`previous` |
+| **历史搜索** | `search`、`previous`、`next` |
+| **设置** |特定于上下文的设置导航 |
+| **标签** |选项卡切换与管理 |
+| **帮助** |帮助面板导航 |
 
-There are 18 contexts total including `Transcript`, `Task`, `ThemePicker`, `Attachments`, `Footer`, `MessageSelector`, `DiffDialog`, `ModelPicker`, and `Select`.
+总共有 18 个上下文，包括 `Transcript`、`Task`、`ThemePicker`、`Attachments`、`Footer`、`MessageSelector`、`DiffDialog`、`ModelPicker` 和 `Select`。
 
-### Chord support
+### 和弦支持
 
-Keybindings support chord sequences (multi-key combinations):
-
+键绑定支持和弦序列（多键组合）：
 ```
 "ctrl+k ctrl+s"   → Two-key sequence: press ctrl+k, then ctrl+s
 "ctrl+shift+p"    → Simultaneous modifier keys
 ```
+**击键语法**：
+- **修饰符**：`ctrl`、`alt`（或 `opt`）、`shift`、`meta`（或 `cmd`）
+- **大写意味着 Shift**：`K` 相当于 `shift+k`
+- **特殊键**：`escape`、`enter`、`return`、`tab`、`space`、`backspace`、`delete`、方向键
 
-**Keystroke syntax**:
-- **Modifiers**: `ctrl`, `alt` (or `opt`), `shift`, `meta` (or `cmd`)
-- **Uppercase implies Shift**: `K` is equivalent to `shift+k`
-- **Special keys**: `escape`, `enter`, `return`, `tab`, `space`, `backspace`, `delete`, arrow keys
+### 保留键和冲突键
 
-### Reserved and conflicting keys
+|关键|状态 |笔记|
+|-----|--------|--------|
+| `Ctrl+C` |保留 |不可反弹（中断）|
+| `Ctrl+D` |保留 |无法反弹（退出）|
+| `Ctrl+B` |终端冲突 | tmux 前缀键 |
+| `Ctrl+A` |终端冲突 | GNU Screen 前缀键 |
+| `Ctrl+Z` |终端冲突 |进程挂起 |
 
-| Key | Status | Notes |
-|-----|--------|-------|
-| `Ctrl+C` | Reserved | Cannot be rebound (interrupt) |
-| `Ctrl+D` | Reserved | Cannot be rebound (exit) |
-| `Ctrl+B` | Terminal conflict | tmux prefix key |
-| `Ctrl+A` | Terminal conflict | GNU Screen prefix key |
-| `Ctrl+Z` | Terminal conflict | Process suspend |
+> **提示**：如果快捷方式不起作用，请检查与终端仿真器或多路复用器是否存在冲突。
 
-> **Tip**: If a shortcut does not work, check for conflicts with your terminal emulator or multiplexer.
+### 制表符补全
 
-### Tab Completion
-
-Claude Code provides intelligent tab completion:
-
+Claude Code 提供智能制表符补全：
 ```
 User: /rew<TAB>
 → /rewind
@@ -1060,11 +1017,9 @@ User: /plugin <TAB>
 → /plugin enable
 → /plugin disable
 ```
+### 命令历史
 
-### Command History
-
-Access previous commands:
-
+访问之前的命令：
 ```
 User: <↑>  # Previous command
 User: <↓>  # Next command
@@ -1072,20 +1027,16 @@ User: Ctrl+R  # Search history
 
 (reverse-i-search)`test': run all tests
 ```
+### 多行输入
 
-### Multi-line Input
-
-For complex queries, use multi-line mode:
-
+对于复杂的查询，使用多行模式：
 ```bash
 User: \
 > Long complex prompt
 > spanning multiple lines
 > \end
 ```
-
-**Example:**
-
+**例子：**
 ```
 User: \
 > Implement a user authentication system
@@ -1098,174 +1049,158 @@ User: \
 
 Claude: [Processes the multi-line request]
 ```
+### 内联编辑
 
-### Inline Editing
-
-Edit commands before sending:
-
+发送前编辑命令：
 ```
 User: Deploy to prodcution<Backspace><Backspace>uction
 
 [Edit in-place before sending]
 ```
+### Vim 模式
 
-### Vim Mode
+启用 Vi/Vim 键绑定进行文本编辑：
 
-Enable Vi/Vim keybindings for text editing:
+**激活**：
+- 使用 `/vim` 命令或 `/config` 启用
+- 模式切换为 `Esc` 为 NORMAL，`i/a/o` 为 INSERT
 
-**Activation**:
-- Use `/vim` command or `/config` to enable
-- Mode switching with `Esc` for NORMAL, `i/a/o` for INSERT
+**导航键**：
+- `h` / `l` - 左/右移动
+- `j` / `k` - 向下/向上移动
+- `w` / `b` / `e` - 按字移动
+- `0` / `$` - 移至行开头/结尾
+- `gg` / `G` - 跳转到文本的开头/结尾
 
-**Navigation keys**:
-- `h` / `l` - Move left/right
-- `j` / `k` - Move down/up
-- `w` / `b` / `e` - Move by word
-- `0` / `$` - Move to line start/end
-- `gg` / `G` - Jump to start/end of text
+**文本对象**：
+- `iw` / `aw` - 内部/周围字
+- `i"` / `a"` - 内部/周围带引号的字符串
+- `i(` / `a(` - 内/括号内
 
-**Text objects**:
-- `iw` / `aw` - Inner/around word
-- `i"` / `a"` - Inner/around quoted string
-- `i(` / `a(` - Inner/around parentheses
+### 重击模式
 
-### Bash Mode
-
-Execute shell commands directly with `!` prefix:
-
+直接使用 `!` 前缀执行 shell 命令：
 ```bash
 ! npm test
 ! git status
 ! cat src/index.js
 ```
-
-Use this for quick command execution without switching contexts.
+使用它可以快速执行命令，而无需切换上下文。
 
 ---
 
-## Voice Dictation
+## 语音听写
 
-Voice Dictation provides push-to-talk voice input for Claude Code, allowing you to speak your prompts instead of typing them.
+语音听写为 Claude Code 提供即按即说语音输入，使您可以说出提示而不是键入提示。
 
-### Activating Voice Dictation
-
+### 激活语音听写
 ```
 /voice
 ```
+### 特点
 
-### Features
-
-| Feature | Description |
+|特色|描述 |
 |---------|-------------|
-| **Push-to-talk** | Hold a key to record, release to send |
-| **20 languages** | Speech-to-text supports 20 languages |
-| **Custom keybinding** | Configure the push-to-talk key via `/keybindings` |
-| **Account requirement** | Requires a Claude.ai account for STT processing |
+| **一键通** |按住按键录音，松开发送|
+| **20 种语言** |语音转文本支持 20 种语言 |
+| **自定义按键绑定** |通过 `/keybindings` 配置一键通键 |
+| **帐户要求** |需要 Claude.ai 帐户才能进行 STT 处理 |
 
-### Configuration
+### 配置
 
-Customize the push-to-talk keybinding in your keybindings file (`/keybindings`). Voice dictation uses your Claude.ai account for speech-to-text processing.
+在键绑定文件 (`/keybindings`) 中自定义一键通键绑定。语音听写使用您的 Claude.ai 帐户进行语音到文本的处理。
 
 ---
 
-## Channels
+## 频道
 
-Channels (Research Preview) allow MCP servers to push messages into running Claude Code sessions, enabling real-time integrations with external services.
+通道（研究预览）允许 MCP 服务器将消息推送到正在运行的 Claude Code 会话中，从而实现与外部服务的实时集成。
 
-### Subscribing to Channels
-
+### 订阅频道
 ```bash
 # Subscribe to channel plugins at startup
 claude --channels discord,telegram
 ```
+### 支持的集成
 
-### Supported Integrations
-
-| Integration | Description |
+|整合 |描述 |
 |-------------|-------------|
-| **Discord** | Receive and respond to Discord messages in your session |
-| **Telegram** | Receive and respond to Telegram messages in your session |
+| **不和谐** |在您的会话中接收和回复 Discord 消息 |
+| **电报** |在您的会话中接收并回复 Telegram 消息 |
 
-### Configuration
+### 配置
 
-**Managed setting** for enterprise deployments:
-
+**企业部署的托管设置**：
 ```json
 {
   "allowedChannelPlugins": ["discord", "telegram"]
 }
 ```
+`allowedChannelPlugins` 托管设置控制整个组织允许哪些通道Plugins。
 
-The `allowedChannelPlugins` managed setting controls which channel plugins are permitted across the organization.
+### 它是如何运作的
 
-### How It Works
-
-1. MCP servers act as channel plugins that connect to external services
-2. Incoming messages are pushed into the active Claude Code session
-3. Claude can read and respond to messages within the session context
-4. Channel plugins must be approved via the `allowedChannelPlugins` managed setting
+1. MCP服务器充当连接外部服务的通道Plugins
+2. 传入消息被推送到活动的 Claude Code 会话中
+3. Claude 可以在会话上下文中阅读和回复消息
+4. 频道Plugins必须通过 `allowedChannelPlugins` 托管设置批准
 
 ---
 
-## Chrome Integration
+## Chrome 集成
 
-Chrome Integration connects Claude Code to your Chrome or Microsoft Edge browser for live web automation and debugging. This is a beta feature available since v2.0.73+ (Edge support added in v1.0.36+).
+Chrome 集成将 Claude Code 连接到您的 Chrome 或 Microsoft Edge 浏览器，以实现实时 Web 自动化和调试。这是自 v2.0.73+ 起提供的测试版功能（v1.0.36+ 中添加了 Edge 支持）。
 
-### Enabling Chrome Integration
+### 启用 Chrome 集成
 
-**At startup**:
-
+**启动时**：
 ```bash
 claude --chrome      # Enable Chrome connection
 claude --no-chrome   # Disable Chrome connection
 ```
-
-**Within a session**:
-
+**在一个会话中**：
 ```
 /chrome
 ```
+选择“默认启用”可为所有未来会话激活 Chrome 集成。 Claude Code 共享您浏览器的登录状态，因此它可以与经过身份验证的 Web 应用程序进行交互。
 
-Select "Enabled by default" to activate Chrome Integration for all future sessions. Claude Code shares your browser's login state, so it can interact with authenticated web apps.
+### 能力
 
-### Capabilities
-
-| Capability | Description |
+|能力|描述 |
 |------------|-------------|
-| **Live debugging** | Read console logs, inspect DOM elements, debug JavaScript in real time |
-| **Design verification** | Compare rendered pages against design mockups |
-| **Form validation** | Test form submissions, input validation, and error handling |
-| **Web app testing** | Interact with authenticated apps (Gmail, Google Docs, Notion, etc.) |
-| **Data extraction** | Scrape and process content from web pages |
-| **Session recording** | Record browser interactions as GIF files |
+| **实时调试** |实时读取控制台日志、检查 DOM 元素、调试 JavaScript |
+| **设计验证** |将渲染页面与设计模型进行比较 |
+| **表单验证** |测试表单提交、输入验证和错误处理 |
+| **网络应用程序测试** |与经过身份验证的应用程序交互（Gmail、Google Docs、Notion 等）|
+| **数据提取** |从网页中抓取和处理内容 |
+| **会议录音** |将浏览器交互记录为 GIF 文件 |
 
-### Site-level permissions
+### 站点级权限
 
-The Chrome extension manages per-site access. Grant or revoke access for specific sites at any time through the extension popup. Claude Code only interacts with sites you have explicitly allowed.
+Chrome 扩展程序管理每个站点的访问。通过扩展弹出窗口随时授予或撤销对特定站点的访问权限。claude代码仅与您明确允许的网站进行交互。
 
-### How it works
+### 它是如何工作的
 
-Claude Code controls the browser in a visible window — you can watch actions happen in real time. When the browser encounters a login page or CAPTCHA, Claude pauses and waits for you to handle it manually before continuing.
+Claude Code 在可见窗口中控制浏览器 - 您可以实时观看操作发生。当浏览器遇到登录页面或验证码时，Claude 会暂停并等待您手动处理后再继续。
 
-### Known limitations
+### 已知限制
 
-- **Browser support**: Chrome and Edge only — Brave, Arc, and other Chromium browsers are not supported
-- **WSL**: Not available in Windows Subsystem for Linux
-- **Third-party providers**: Not supported with Bedrock, Vertex, or Foundry API providers
-- **Service worker idle**: The Chrome extension service worker may go idle during extended sessions
+- **浏览器支持**：仅限 Chrome 和 Edge — 不支持 Brave、Arc 和其他 Chromium 浏览器
+- **WSL**：在适用于 Linux 的 Windows 子系统中不可用
+- **第三方提供商**：Bedrock、Vertex 或 Foundry API 提供商不支持
+- **Service Worker 空闲**：Chrome 扩展 Service Worker 可能会在长时间会话期间处于空闲状态
 
-> **Tip**: Chrome Integration is a beta feature. Browser support may expand in future releases.
+> **提示**：Chrome 集成是测试版功能。浏览器支持可能会在未来版本中扩展。
 
 ---
 
-## Remote Control
+## 远程控制
 
-Remote Control lets you continue a locally running Claude Code session from your phone, tablet, or any browser. Your local session keeps running on your machine — nothing moves to the cloud. Available on Pro, Max, Team, and Enterprise plans (v2.1.51+).
+远程控制可让您从手机、平板电脑或任何浏览器继续本地运行的 Claude Code 会话。您的本地会话继续在您的计算机上运行 - 没有任何内容移动到云端。适用于 Pro、Max、Team 和 Enterprise 计划 (v2.1.51+)。
 
-### Starting Remote Control
+### 启动远程控制
 
-**From the CLI**:
-
+**从 CLI**：
 ```bash
 # Start with default session name
 claude remote-control
@@ -1273,130 +1208,119 @@ claude remote-control
 # Start with a custom name
 claude remote-control --name "Auth Refactor"
 ```
-
-**From within a session**:
-
+**在会话中**：
 ```
 /remote-control
 /remote-control "Auth Refactor"
 ```
+**可用标志**：
 
-**Available flags**:
-
-| Flag | Description |
+|旗帜|描述 |
 |------|-------------|
-| `--name "title"` | Custom session title for easy identification |
-| `--verbose` | Show detailed connection logs |
-| `--sandbox` | Enable filesystem and network isolation |
-| `--no-sandbox` | Disable sandboxing (default) |
+| `--name "title"` |自定义会话标题，易于识别 |
+| `--verbose` |显示详细的连接日志 |
+| `--sandbox` |启用文件系统和网络隔离 |
+| `--no-sandbox` |禁用沙箱（默认）|
 
-### Connecting to a session
+### 连接到会话
 
-Three ways to connect from another device:
+从其他设备连接的三种方法：
 
-1. **Session URL** — Printed to the terminal when the session starts; open in any browser
-2. **QR code** — Press `spacebar` after starting to display a scannable QR code
-3. **Find by name** — Browse your sessions at claude.ai/code or in the Claude mobile app (iOS/Android)
+1. **会话 URL** — 会话开始时打印到终端；在任何浏览器中打开
+2. **二维码** — 开始显示可扫描的二维码后按`spacebar`
+3. **按名称查找** — 在 claude.ai/code 或 Claude 移动应用程序 (iOS/Android) 中浏览您的会话
 
-### Security
+### 安全
 
-- **No inbound ports** opened on your machine
-- **Outbound HTTPS only** over TLS
-- **Scoped credentials** — multiple short-lived, narrowly scoped tokens
-- **Session isolation** — each remote session is independent
+- **您的计算机上没有打开入站端口**
+- **仅限出站 HTTPS** 通过 TLS
+- **范围凭证** — 多个短期、范围狭窄的Token
+- **会话隔离** — 每个远程会话都是独立的
 
-### Remote Control vs Claude Code on the web
+### 远程控制与网络上的claude代码
 
-| Aspect | Remote Control | Claude Code on Web |
-|--------|---------------|-------------------|
-| **Execution** | Runs on your machine | Runs on Anthropic cloud |
-| **Local tools** | Full access to local MCP servers, files, and CLI | No local dependencies |
-| **Use case** | Continue local work from another device | Start fresh from any browser |
+|方面|远程控制|网络上的claude·代码 |
+|--------|-------------|--------------------|
+| **执行** |在您的机器上运行 |在 Anthropic 云上运行 |
+| **本地工具** |对本地 MCP 服务器、文件和 CLI 的完全访问权限没有本地依赖|
+| **用例** |从另一台设备继续本地工作 |从任何浏览器开始 |
 
-### Limitations
+### 限制
 
-- One remote session per Claude Code instance
-- Terminal must stay open on the host machine
-- Session times out after ~10 minutes if the network is unreachable
+- 每个 Claude Code 实例一个远程会话
+- 终端必须在主机上保持打开状态
+- 如果网络无法访问，会话将在大约 10 分钟后超时
 
-### Use cases
+### 用例
 
-- Control Claude Code from a mobile device or tablet while away from your desk
-- Use the richer claude.ai UI while maintaining local tool execution
-- Quick code reviews on the go with your full local development environment
+- 离开办公桌时通过移动设备或平板电脑控制 Claude Code
+- 使用更丰富的 claude.ai UI，同时保持本地工具执行
+- 在完整的本地开发环境中进行快速代码审查
 
 ---
 
-## Web Sessions
+## 网络会话
 
-Web Sessions allow you to run Claude Code directly in the browser at claude.ai/code, or create web sessions from the CLI.
+Web 会话允许您直接在浏览器（claude.ai/code）中运行 Claude Code，或从 CLI 创建 Web 会话。
 
-### Creating a Web Session
-
+### 创建网络会话
 ```bash
 # Create a new web session from the CLI
 claude --remote "implement the new API endpoints"
 ```
+这将在 claude.ai 上启动一个 Claude Code 会话，您可以从任何浏览器访问该会话。
 
-This starts a Claude Code session on claude.ai that you can access from any browser.
+### 在本地恢复 Web 会话
 
-### Resuming Web Sessions Locally
-
-If you started a session on the web and want to continue it locally:
-
+如果您在网络上启动了会话并希望在本地继续该会话：
 ```bash
 # Resume a web session in the local terminal
 claude --teleport
 ```
-
-Or from within an interactive REPL:
+或者从交互式 REPL 中：
 ```
 /teleport
 ```
+### 用例
 
-### Use Cases
-
-- Start work on one machine and continue on another
-- Share a session URL with team members
-- Use the web UI for visual diff review, then switch to terminal for execution
+- 在一台机器上开始工作并在另一台机器上继续
+- 与团队成员共享会话 URL
+- 使用Web UI进行视觉差异审查，然后切换到终端执行
 
 ---
 
-## Desktop App
+## 桌面应用程序
 
-The Claude Code Desktop App provides a standalone application with visual diff review, parallel sessions, and integrated connectors. Available for macOS and Windows (Pro, Max, Team, and Enterprise plans).
+Claude Code 桌面应用程序提供了一个独立的应用程序，具有视觉差异审查、并行会话和集成连接器。适用于 macOS 和 Windows（Pro、Max、Team 和 Enterprise 计划）。
 
-### Installation
+### 安装
 
-Download from [claude.ai](https://claude.ai) for your platform:
-- **macOS**: Universal build (Apple Silicon and Intel)
-- **Windows**: x64 and ARM64 installers available
+从 [claude.ai](https://claude.ai) 下载适合您平台的：
+- **macOS**：通用构建（Apple Silicon 和 Intel）
+- **Windows**：提供 x64 和 ARM64 安装程序
 
-See the [Desktop Quickstart](https://code.claude.com/docs/en/desktop-quickstart) for setup instructions.
+请参阅 [Desktop Quickstart](https://code.claude.com/docs/en/desktop-quickstart) 了解设置说明。
 
-### Handing off from CLI
+### 从 CLI 移交
 
-Transfer your current CLI session to the Desktop App:
-
+将当前的 CLI 会话转移到桌面应用程序：
 ```
 /desktop
 ```
+### 核心功能
 
-### Core features
-
-| Feature | Description |
+|特色|描述 |
 |---------|-------------|
-| **Diff view** | File-by-file visual review with inline comments; Claude reads comments and revises |
-| **App preview** | Auto-starts dev servers with an embedded browser for live verification |
-| **PR monitoring** | GitHub CLI integration with auto-fix CI failures and auto-merge when checks pass |
-| **Parallel sessions** | Multiple sessions in the sidebar with automatic Git worktree isolation |
-| **Scheduled tasks** | Recurring tasks (hourly, daily, weekdays, weekly) that run while the app is open |
-| **Rich rendering** | Code, markdown, and diagram rendering with syntax highlighting |
+| **差异视图** |逐个文件的视觉审查以及内嵌注释；claude阅读评论并修改|
+| **应用程序预览** |自动启动带有嵌入式浏览器的开发服务器以进行实时验证 |
+| **公关监控** | GitHub CLI 集成自动修复 CI 故障并在检查通过时自动合并 |
+| **平行会议** |侧边栏中的多个会话具有自动 Git 工作树隔离 |
+| **计划任务** |应用程序打开时运行的重复任务（每小时、每天、工作日、每周）|
+| **丰富的渲染** |带有语法高亮的代码、Markdown 和图表渲染 |
 
-### App preview configuration
+### 应用程序预览配置
 
-Configure dev server behavior in `.claude/launch.json`:
-
+在 `.claude/launch.json` 中配置开发服务器行为：
 ```json
 {
   "command": "npm run dev",
@@ -1405,114 +1329,105 @@ Configure dev server behavior in `.claude/launch.json`:
   "persistCookies": true
 }
 ```
+### 连接器
 
-### Connectors
+连接外部服务以获得更丰富的上下文：
 
-Connect external services for richer context:
+|连接器|能力|
+|------------|------------|
+| **GitHub** | PR 监控、问题跟踪、代码审查 |
+| **Slack** |通知、渠道上下文 |
+| **线性** |问题跟踪、冲刺管理 |
+| **概念** |文档、知识库访问 |
+| **Asana** |任务管理、项目跟踪 |
+| **日历** |日程安排意识、会议背景 |
 
-| Connector | Capability |
-|-----------|------------|
-| **GitHub** | PR monitoring, issue tracking, code review |
-| **Slack** | Notifications, channel context |
-| **Linear** | Issue tracking, sprint management |
-| **Notion** | Documentation, knowledge base access |
-| **Asana** | Task management, project tracking |
-| **Calendar** | Schedule awareness, meeting context |
+> **注意**：连接器不可用于远程（云）会话。
 
-> **Note**: Connectors are not available for remote (cloud) sessions.
+### 远程和 SSH 会话
 
-### Remote and SSH sessions
+- **远程会话**：在 Anthropic 云基础设施上运行；即使应用程序关闭也可以继续。可从 claude.ai/code 或 Claude 移动应用程序访问
+- **SSH 会话**：通过 SSH 连接到远程计算机，并具有对远程文件系统和工具的完全访问权限。claude代码必须安装在远程机器上
 
-- **Remote sessions**: Run on Anthropic cloud infrastructure; continue even when the app is closed. Accessible from claude.ai/code or the Claude mobile app
-- **SSH sessions**: Connect to remote machines over SSH with full access to the remote filesystem and tools. Claude Code must be installed on the remote machine
+### 桌面中的权限模式
 
-### Permission modes in Desktop
+桌面应用程序支持与 CLI 相同的 4 种权限模式：
 
-The Desktop App supports the same 4 permission modes as the CLI:
-
-| Mode | Behavior |
+|模式|行为 |
 |------|----------|
-| **Ask permissions** (default) | Review and approve every edit and command |
-| **Auto accept edits** | File edits auto-approved; commands require manual approval |
-| **Plan mode** | Review approach before any changes are made |
-| **Bypass permissions** | Automatic execution (sandbox-only, admin-controlled) |
+| **请求权限**（默认）|审查并批准每个编辑和命令 |
+| **自动接受编辑** |文件编辑自动批准；命令需要手动批准 |
+| **计划模式** |在进行任何更改之前审查方法 |
+| **绕过权限** |自动执行（仅限沙箱，管理员控制）|
 
-### Enterprise features
+### 企业特色
 
-- **Admin console**: Control Code tab access and permission settings for the organization
-- **MDM deployment**: Deploy via MDM on macOS or MSIX on Windows
-- **SSO integration**: Require single sign-on for organization members
-- **Managed settings**: Centrally manage team configuration and model availability
+- **管理控制台**：组织的控制代码选项卡访问和权限设置
+- **MDM 部署**：通过 macOS 上的 MDM 或 Windows 上的 MSIX 进行部署
+- **SSO 集成**：要求组织成员单点登录
+- **托管设置**：集中管理团队配置和模型可用性
 
 ---
 
-## Task List
+## 任务列表
 
-The Task List feature provides persistent task tracking that survives context compactions (when the conversation history is trimmed to fit the context window).
+任务列表功能提供了持久的任务跟踪，可以在上下文压缩中幸存下来（当对话历史记录被修剪以适合上下文窗口时）。
 
-### Toggling the Task List
+### 切换任务列表
 
-Press `Ctrl+T` to toggle the task list view on or off during a session.
+在会话期间按 `Ctrl+T` 可打开或关闭任务列表视图。
 
-### Persistent Tasks
+### 持久任务
 
-Tasks persist across context compactions, ensuring that long-running work items are not lost when the conversation context is trimmed. This is particularly useful for complex, multi-step implementations.
+任务在上下文压缩中持续存在，确保在修剪对话上下文时不会丢失长时间运行的工作项。这对于复杂的多步骤实施特别有用。
 
-### Named Task Directories
+### 命名任务目录
 
-Use the `CLAUDE_CODE_TASK_LIST_ID` environment variable to create named task directories shared across sessions:
-
+使用 `CLAUDE_CODE_TASK_LIST_ID` 环境变量创建跨会话共享的命名任务目录：
 ```bash
 export CLAUDE_CODE_TASK_LIST_ID=my-project-sprint-3
 ```
-
-This allows multiple sessions to share the same task list, making it useful for team workflows or multi-session projects.
+这允许多个会话共享相同的任务列表，这对于团队工作流程或多会话项目非常有用。
 
 ---
 
-## Prompt Suggestions
+## 提示建议
 
-Prompt Suggestions display grayed-out example commands based on your git history and current conversation context.
+提示建议根据您的 git 历史记录和当前对话上下文显示灰显的示例命令。
 
-### How It Works
+### 它是如何运作的
 
-- Suggestions appear as grayed-out text below your input prompt
-- Press `Tab` to accept the suggestion
-- Press `Enter` to accept and immediately submit
-- Suggestions are context-aware, drawing from git history and conversation state
+- 建议在输入提示下方显示为灰色文本
+- 按 `Tab` 接受建议
+- 按 `Enter` 接受并立即提交
+- 建议是上下文感知的，来自 git 历史记录和对话状态
 
-### Disabling Prompt Suggestions
-
+### 禁用提示建议
 ```bash
 export CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION=false
 ```
-
 ---
 
-## Git Worktrees
+## Git 工作树
 
-Git Worktrees allow you to start Claude Code in an isolated worktree, enabling parallel work on different branches without stashing or switching.
+Git Worktrees 允许您在隔离的工作树中启动 Claude Code，从而可以在不同分支上并行工作，而无需隐藏或切换。
 
-### Starting in a Worktree
-
+### 从工作树开始
 ```bash
 # Start Claude Code in an isolated worktree
 claude --worktree
 # or
 claude -w
 ```
+### 工作树位置
 
-### Worktree Location
-
-Worktrees are created at:
+工作树创建于：
 ```
 <repo>/.claude/worktrees/<name>
 ```
+### Monorepos 的稀疏结账
 
-### Sparse Checkout for Monorepos
-
-Use the `worktree.sparsePaths` setting to perform sparse-checkout in monorepos, reducing disk usage and clone time:
-
+使用 `worktree.sparsePaths` 设置在 monorepos 中执行稀疏签出，减少磁盘使用和克隆时间：
 ```json
 {
   "worktree": {
@@ -1520,58 +1435,54 @@ Use the `worktree.sparsePaths` setting to perform sparse-checkout in monorepos, 
   }
 }
 ```
+### Worktree 工具和hooks
 
-### Worktree Tools and Hooks
-
-| Item | Description |
+|项目 |描述 |
 |------|-------------|
-| `ExitWorktree` | Tool to exit and clean up the current worktree |
-| `WorktreeCreate` | Hook event fired when a worktree is created |
-| `WorktreeRemove` | Hook event fired when a worktree is removed |
+| `ExitWorktree` |退出并清理当前工作树的工具 |
+| `WorktreeCreate` |创建工作树时触发 Hook 事件 |
+| `WorktreeRemove` |删除工作树时触发 Hook 事件 |
 
-### Auto-Cleanup
+### 自动清理
 
-If no changes are made in the worktree, it is automatically cleaned up when the session ends.
+如果工作树中未进行任何更改，则会在会话结束时自动清除。
 
-### Use Cases
+### 用例
 
-- Work on a feature branch while keeping main branch untouched
-- Run tests in isolation without affecting the working directory
-- Try experimental changes in a disposable environment
-- Sparse-checkout specific packages in monorepos for faster startup
+- 在功能分支上工作，同时保持主分支不变
+- 独立运行测试而不影响工作目录
+- 在一次性环境中尝试实验性改变
+- 在 monorepos 中稀疏签出特定包以加快启动速度
 
 ---
 
-## Sandboxing
+## 沙箱
 
-Sandboxing provides OS-level filesystem and network isolation for Bash commands executed by Claude Code. This is complementary to permission rules and provides an additional security layer.
+沙盒为 Claude Code 执行的 Bash 命令提供操作系统级文件系统和网络隔离。这是对权限规则的补充，并提供了额外的安全层。
 
-### Enabling Sandboxing
+### 启用沙箱
 
-**Slash command**:
+**斜线命令**：
 ```
 /sandbox
 ```
-
-**CLI flags**:
+**CLI 标志**：
 ```bash
 claude --sandbox       # Enable sandboxing
 claude --no-sandbox    # Disable sandboxing
 ```
+### 配置设置
 
-### Configuration Settings
-
-| Setting | Description |
+|设置|描述 |
 |---------|-------------|
-| `sandbox.enabled` | Enable or disable sandboxing |
-| `sandbox.failIfUnavailable` | Fail if sandboxing cannot be activated |
-| `sandbox.filesystem.allowWrite` | Paths allowed for write access |
-| `sandbox.filesystem.allowRead` | Paths allowed for read access |
-| `sandbox.filesystem.denyRead` | Paths denied for read access |
-| `sandbox.enableWeakerNetworkIsolation` | Enable weaker network isolation on macOS |
+| `sandbox.enabled` |启用或禁用沙箱 |
+| `sandbox.failIfUnavailable` |如果沙箱无法激活则失败 |
+| `sandbox.filesystem.allowWrite` |允许写访问的路径 |
+| `sandbox.filesystem.allowRead` |允许读取访问的路径 |
+| `sandbox.filesystem.denyRead` |读取访问被拒绝的路径 |
+| `sandbox.enableWeakerNetworkIsolation` |在 macOS 上启用较弱的网络隔离 |
 
-### Example Configuration
-
+### 配置示例
 ```json
 {
   "sandbox": {
@@ -1586,58 +1497,54 @@ claude --no-sandbox    # Disable sandboxing
   }
 }
 ```
+### 它是如何运作的
 
-### How It Works
+- Bash 命令在文件系统访问受限的沙盒环境中运行
+- 可以隔离网络访问以防止意外的外部连接
+- 与深度防御的权限规则一起工作
+- 在 macOS 上，使用 `sandbox.enableWeakerNetworkIsolation` 进行网络限制（macOS 上不提供完整的网络隔离）
 
-- Bash commands run in a sandboxed environment with restricted filesystem access
-- Network access can be isolated to prevent unintended external connections
-- Works alongside permission rules for defense in depth
-- On macOS, use `sandbox.enableWeakerNetworkIsolation` for network restrictions (full network isolation is not available on macOS)
+### 用例
 
-### Use Cases
-
-- Running untrusted or generated code safely
-- Preventing accidental modifications to files outside the project
-- Restricting network access during automated tasks
+- 安全地运行不受信任或生成的代码
+- 防止意外修改项目外的文件
+- 在自动化任务期间限制网络访问
 
 ---
 
-## Managed Settings (Enterprise)
+## 托管设置（企业）
 
-Managed Settings enable enterprise administrators to deploy Claude Code configuration across an organization using platform-native management tools.
+托管设置使企业管理员能够使用平台本机管理工具在整个组织中部署 Claude Code 配置。
 
-### Deployment Methods
+### 部署方法
 
-| Platform | Method | Since |
-|----------|--------|-------|
-| macOS | Managed plist files (MDM) | v2.1.51+ |
-| Windows | Windows Registry | v2.1.51+ |
-| Cross-platform | Managed configuration files | v2.1.51+ |
-| Cross-platform | Managed drop-ins (`managed-settings.d/` directory) | v2.1.83+ |
+|平台|方法|自从 |
+|----------|--------|--------|
+| macOS |托管 plist 文件 (MDM) | v2.1.51+ |
+|窗户| Windows 注册表 | v2.1.51+ |
+|跨平台|托管配置文件| v2.1.51+ |
+|跨平台|托管Plugins（`managed-settings.d/` 目录）| v2.1.83+ |
 
-### Managed Drop-ins
+### 托管Plugins
 
-Since v2.1.83, administrators can deploy multiple managed settings files into a `managed-settings.d/` directory. Files are merged in alphabetical order, allowing modular configuration across teams:
-
+从 v2.1.83 开始，管理员可以将多个托管设置文件部署到 `managed-settings.d/` 目录中。文件按字母顺序合并，允许跨团队进行模块化配置：
 ```
 ~/.claude/managed-settings.d/
   00-org-defaults.json
   10-team-policies.json
   20-project-overrides.json
 ```
+### 可用的托管设置
 
-### Available Managed Settings
-
-| Setting | Description |
+|设置|描述 |
 |---------|-------------|
-| `disableBypassPermissionsMode` | Prevent users from enabling bypass permissions |
-| `availableModels` | Restrict which models users can select |
-| `allowedChannelPlugins` | Control which channel plugins are permitted |
-| `autoMode.environment` | Configure trusted infrastructure for auto mode |
-| Custom policies | Organization-specific permission and tool policies |
+| `disableBypassPermissionsMode` |阻止用户启用绕过权限|
+| `availableModels` |限制用户可以选择哪些机型 |
+| `allowedChannelPlugins` |控制允许使用哪些频道Plugins |
+| `autoMode.environment` |为自动模式配置可信基础设施 |
+|定制政策|组织特定的权限和工具策略 |
 
-### Example: macOS Plist
-
+### 示例：macOS Plist
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
@@ -1654,21 +1561,19 @@ Since v2.1.83, administrators can deploy multiple managed settings files into a 
 </dict>
 </plist>
 ```
-
 ---
 
-## Configuration and Settings
+## 配置和设置
 
-### Configuration File Locations
+### 配置文件位置
 
-1. **Global config**: `~/.claude/config.json`
-2. **Project config**: `./.claude/config.json`
-3. **User config**: `~/.config/claude-code/settings.json`
+1. **全局配置**：`~/.claude/config.json`
+2. **项目配置**：`./.claude/config.json`
+3. **用户配置**：`~/.config/claude-code/settings.json`
 
-### Complete Configuration Example
+### 完整配置示例
 
-**Core advanced features configuration:**
-
+**核心高级功能配置：**
 ```json
 {
   "permissions": {
@@ -1689,9 +1594,7 @@ Since v2.1.83, administrators can deploy multiple managed settings files into a 
   }
 }
 ```
-
-**Extended configuration example:**
-
+**扩展配置示例：**
 ```json
 {
   "permissions": {
@@ -1720,11 +1623,9 @@ Since v2.1.83, administrators can deploy multiple managed settings files into a 
   }
 }
 ```
+### 环境变量
 
-### Environment Variables
-
-Override config with environment variables:
-
+使用环境变量覆盖配置：
 ```bash
 # Model selection
 export ANTHROPIC_MODEL=claude-opus-4-6
@@ -1773,24 +1674,20 @@ export CLAUDE_STREAM_IDLE_TIMEOUT_MS=30000
 export ANTHROPIC_CUSTOM_MODEL_OPTION=my-custom-model
 export SLASH_COMMAND_TOOL_CHAR_BUDGET=50000
 ```
-
-### Configuration Management Commands
-
+### 配置管理命令
 ```
 User: /config
 [Opens interactive configuration menu]
 ```
+`/config` 命令提供了一个交互式菜单来切换设置，例如：
+- 扩展思考开/关
+- 详细输出
+- 权限模式
+- 型号选择
 
-The `/config` command provides an interactive menu to toggle settings such as:
-- Extended thinking on/off
-- Verbose output
-- Permission mode
-- Model selection
+### 每个项目配置
 
-### Per-Project Configuration
-
-Create `.claude/config.json` in your project:
-
+在您的项目中创建 `.claude/config.json`：
 ```json
 {
   "hooks": {
@@ -1811,59 +1708,58 @@ Create `.claude/config.json` in your project:
   }
 }
 ```
+---
+
+## 最佳实践
+
+### 规划模式
+- ✅ 用于复杂的多步骤任务
+- ✅ 在批准之前审查计划
+- ✅ 需要时修改计划
+- ❌ 不要用于简单任务
+
+### 延伸思考
+- ✅ 用于架构决策
+- ✅ 用于解决复杂的问题
+- ✅ 回顾思考过程
+- ❌不要用于简单查询
+
+### 后台任务
+- ✅ 用于长时间运行的操作
+- ✅ 监控任务进度
+- ✅ 优雅地处理任务失败
+- ❌不要启动太多并发任务
+
+### 权限
+- ✅ 使用 `plan` 进行代码审查（只读）
+- ✅ 使用 `default` 进行交互开发
+- ✅ 使用 `acceptEdits` 进行自动化工作流程
+- ✅ 使用 `auto` 进行带有安全护栏的自主工作
+- ❌ 除非绝对必要，否则不要使用 `bypassPermissions`
+
+### 会议
+- ✅ 对不同的任务使用单独的会话
+- ✅ 保存重要的会话状态
+- ✅ 清理旧会话
+- ❌ 不要在一个会话中混合不相关的工作
 
 ---
 
-## Best Practices
+## 其他资源
 
-### Planning Mode
-- ✅ Use for complex multi-step tasks
-- ✅ Review plans before approving
-- ✅ Modify plans when needed
-- ❌ Don't use for simple tasks
-
-### Extended Thinking
-- ✅ Use for architectural decisions
-- ✅ Use for complex problem-solving
-- ✅ Review the thinking process
-- ❌ Don't use for simple queries
-
-### Background Tasks
-- ✅ Use for long-running operations
-- ✅ Monitor task progress
-- ✅ Handle task failures gracefully
-- ❌ Don't start too many concurrent tasks
-
-### Permissions
-- ✅ Use `plan` for code review (read-only)
-- ✅ Use `default` for interactive development
-- ✅ Use `acceptEdits` for automation workflows
-- ✅ Use `auto` for autonomous work with safety guardrails
-- ❌ Don't use `bypassPermissions` unless absolutely necessary
-
-### Sessions
-- ✅ Use separate sessions for different tasks
-- ✅ Save important session states
-- ✅ Clean up old sessions
-- ❌ Don't mix unrelated work in one session
-
----
-
-## Additional Resources
-
-For more information about Claude Code and related features:
+有关claude代码和相关功能的更多信息：
 
 - [Official Interactive Mode Documentation](https://code.claude.com/docs/en/interactive-mode)
 - [Official Headless Mode Documentation](https://code.claude.com/docs/en/headless)
 - [CLI Reference](https://code.claude.com/docs/en/cli-reference)
-- [Checkpoints Guide](../08-checkpoints/) - Session management and rewinding
-- [Slash Commands](../01-slash-commands/) - Command reference
-- [Memory Guide](../02-memory/) - Persistent context
-- [Skills Guide](../03-skills/) - Autonomous capabilities
-- [Subagents Guide](../04-subagents/) - Delegated task execution
-- [MCP Guide](../05-mcp/) - External data access
-- [Hooks Guide](../06-hooks/) - Event-driven automation
-- [Plugins Guide](../07-plugins/) - Bundled extensions
+- [Checkpoints Guide](../08-checkpoints/) - 会话管理和倒带
+- [Slash Commands](../01-slash-commands/) - 命令参考
+- [Memory Guide](../02-memory/) - 持久上下文
+- [Skills Guide](../03-skills/) - 自主能力
+- [Subagents Guide](../04-subagents/) - 委派任务执行
+- [MCP Guide](../05-mcp/) - 外部数据访问
+- [Hooks Guide](../06-hooks/) - 事件驱动的自动化
+- [Plugins Guide](../07-plugins/) - 捆绑扩展
 - [Official Scheduled Tasks Documentation](https://code.claude.com/docs/en/scheduled-tasks)
 - [Official Chrome Integration Documentation](https://code.claude.com/docs/en/chrome)
 - [Official Remote Control Documentation](https://code.claude.com/docs/en/remote-control)

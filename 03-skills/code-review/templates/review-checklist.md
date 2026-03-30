@@ -1,47 +1,47 @@
-# Code Review Checklist
+# 代码审查清单
 
-## Security Checklist
-- [ ] No hardcoded credentials or secrets
-- [ ] Input validation on all user inputs
-- [ ] SQL injection prevention (parameterized queries)
-- [ ] CSRF protection on state-changing operations
-- [ ] XSS prevention with proper escaping
-- [ ] Authentication checks on protected endpoints
-- [ ] Authorization checks on resources
-- [ ] Secure password hashing (bcrypt, argon2)
-- [ ] No sensitive data in logs
-- [ ] HTTPS enforced
+## 安全检查表
+- [ ] 没有硬编码的凭据或秘密
+- [ ] 对所有用户输入进行输入验证
+- [ ] SQL注入预防（参数化查询）
+- [ ] 对状态改变操作的 CSRF 保护
+- [ ] 通过适当的转义预防 XSS
+- [ ] 对受保护端点进行身份验证检查
+- [ ] 资源授权检查
+- [ ] 安全密码哈希（bcrypt、argon2）
+- [ ] 日志中没有敏感数据
+- [ ] 强制执行 HTTPS
 
-## Performance Checklist
-- [ ] No N+1 queries
-- [ ] Appropriate use of indexes
-- [ ] Caching implemented where beneficial
-- [ ] No blocking operations on main thread
-- [ ] Async/await used correctly
-- [ ] Large datasets paginated
-- [ ] Database connections pooled
-- [ ] Regular expressions optimized
-- [ ] No unnecessary object creation
-- [ ] Memory leaks prevented
+## 绩效检查表
+- [ ] 无 N+1 查询
+- [ ] 索引的适当使用
+- [ ] 在有益的地方实施缓存
+- [ ] 主线程上没有阻塞操作
+- [ ] 正确使用异步/等待
+- [ ] 大型数据集分页
+- [ ] 数据库连接池
+- [ ] 正则表达式优化
+- [ ] 不创建不必要的对象
+- [ ] 防止内存泄漏
 
-## Quality Checklist
-- [ ] Functions < 50 lines
-- [ ] Clear variable naming
-- [ ] No duplicate code
-- [ ] Proper error handling
-- [ ] Comments explain WHY, not WHAT
-- [ ] No console.logs in production
-- [ ] Type checking (TypeScript/JSDoc)
-- [ ] SOLID principles followed
-- [ ] Design patterns applied correctly
-- [ ] Self-documenting code
+## 质量检查表
+- [ ] 功能 < 50 lines
+- [ ] 清除变量命名
+- [ ] 没有重复的代码
+- [ ] 正确的错误处理
+- [ ] 评论解释为什么，而不是解释什么
+- [ ] 生产中没有 console.logs
+- [ ] 类型检查 (TypeScript/JSDoc)
+- [ ] 遵循坚实的原则
+- [ ] 正确应用设计模式
+- [ ] 自记录代码
 
-## Testing Checklist
-- [ ] Unit tests written
-- [ ] Edge cases covered
-- [ ] Error scenarios tested
-- [ ] Integration tests present
-- [ ] Coverage > 80%
-- [ ] No flaky tests
-- [ ] Mock external dependencies
-- [ ] Clear test names
+## 测试清单
+- [ ] 编写的单元测试
+- [ ] 覆盖边缘情况
+- [ ] 测试错误场景
+- [ ] 存在集成测试
+- [ ] 覆盖率 > 80%
+- [ ] 没有不稳定的测试
+- [ ] 模拟外部依赖项
+- [ ] 清除测试名称

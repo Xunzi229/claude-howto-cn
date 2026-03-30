@@ -1,22 +1,34 @@
 #!/usr/bin/env python3
+"""
+分析代码指标。
+
+分析代码的常见指标：
+- 函数数量
+- 类数量
+- 平均行长度
+- 复杂度评分（基于条件语句和循环）
+
+用法：
+    python analyze-metrics.py <文件路径>
+"""
 import re
 import sys
 
 
 def analyze_code_metrics(code):
-    """Analyze code for common metrics."""
+    """分析代码的常见指标。"""
 
-    # Count functions
+    # 计算函数数量
     functions = len(re.findall(r"^def\s+\w+", code, re.MULTILINE))
 
-    # Count classes
+    # 计算类数量
     classes = len(re.findall(r"^class\s+\w+", code, re.MULTILINE))
 
-    # Average line length
+    # 平均行长度
     lines = code.split("\n")
     avg_length = sum(len(l) for l in lines) / len(lines) if lines else 0
 
-    # Estimate complexity
+    # 估计复杂度
     complexity = len(re.findall(r"\b(if|elif|else|for|while|and|or)\b", code))
 
     return {

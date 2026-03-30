@@ -1,8 +1,8 @@
 ## v2.2.0 — 2026-03-26
 
-### Bug Fixes
+### 错误修复
 
-- Remove dead marketplace link failing CI link checks (3fdf0d6)
-- Add `sandboxed` and `pycache` to cSpell dictionary (dc64618)
+- 删除未通过 CI 链接检查的死市场链接 (3fdf0d6)
+- 将 `sandboxed` 和 `pycache` 添加到 cSpell 字典 (dc64618)
 
-**Full Changelog**: https://github.com/luongnv89/claude-howto/compare/v2.1.0...v2.1.1
+**完整变更日志**：https://github.com/luongnv89/claude-howto/compare/v2.1.0...v2.1.1

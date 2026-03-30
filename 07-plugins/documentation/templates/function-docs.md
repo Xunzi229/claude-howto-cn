@@ -1,50 +1,47 @@
-# Function: `functionName`
+# 函数：`functionName`
 
-## Description
-Brief description of what the function does.
+## 描述
+简要描述该函数的作用。
 
-## Signature
+＃＃ 签名
 ```typescript
 function functionName(param1: Type1, param2: Type2): ReturnType
 ```
+## 参数
 
-## Parameters
+|参数|类型 |必填|描述 |
+|------------|------|----------|----------|
+|参数1 |类型1 |是的 |参数 1 的描述 |
+|参数2 |类型2 |没有 |参数2的描述 |
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| param1 | Type1 | Yes | Description of param1 |
-| param2 | Type2 | No | Description of param2 |
+## 返回
+**类型**：`ReturnType`
 
-## Returns
-**Type**: `ReturnType`
+返回内容的描述。
 
-Description of what is returned.
+## 投掷
+- `Error`：当提供无效输入时
+- `TypeError`：当传递错误类型时
 
-## Throws
-- `Error`: When invalid input is provided
-- `TypeError`: When wrong type is passed
+## 示例
 
-## Examples
-
-### Basic Usage
+### 基本用法
 ```typescript
 const result = functionName('value1', 'value2');
 console.log(result);
 ```
-
-### Advanced Usage
+### 高级用法
 ```typescript
 const result = functionName(
   complexParam1,
   { option: true }
 );
 ```
+## 注释
+- 附加说明或警告
+- 性能考虑
+- 最佳实践
 
-## Notes
-- Additional notes or warnings
-- Performance considerations
-- Best practices
-
-## See Also
+## 另请参阅
 - [Related Function](#)
 - [API Documentation](#)

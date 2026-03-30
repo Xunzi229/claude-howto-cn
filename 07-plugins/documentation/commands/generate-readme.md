@@ -1,15 +1,15 @@
 ---
-name: Generate README
-description: Create or update project README
+名称：生成自述文件
+描述：创建或更新项目自述文件
 ---
 
-# README Generator
+# 自述文件生成器
 
-Generate comprehensive README:
+生成全面的自述文件：
 
-1. Project overview and description
-2. Installation instructions
-3. Usage examples
-4. API documentation links
-5. Contributing guidelines
-6. License information
+一、项目概况及说明
+2. 安装说明
+3. 使用示例
+4.API文档链接
+5. 贡献指南
+6. 许可信息

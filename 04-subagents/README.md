@@ -3,87 +3,86 @@
   <img alt="Claude How To" src="../resources/logos/claude-howto-logo.svg">
 </picture>
 
-# Subagents - Complete Reference Guide
+# Subagents - 完整参考指南
 
-Subagents are specialized AI assistants that Claude Code can delegate tasks to. Each subagent has a specific purpose, uses its own context window separate from the main conversation, and can be configured with specific tools and a custom system prompt.
+Subagents是专门的 AI 助手，Claude Code 可以将任务委派给它们。每个Subagents都有特定的用途，使用与主对话分开的自己的上下文窗口，并且可以使用特定的工具和自定义系统提示进行配置。
 
-## Table of Contents
+## 目录
 
-1. [Overview](#overview)
-2. [Key Benefits](#key-benefits)
-3. [File Locations](#file-locations)
-4. [Configuration](#configuration)
-5. [Built-in Subagents](#built-in-subagents)
-6. [Managing Subagents](#managing-subagents)
-7. [Using Subagents](#using-subagents)
-8. [Resumable Agents](#resumable-agents)
-9. [Chaining Subagents](#chaining-subagents)
-10. [Persistent Memory for Subagents](#persistent-memory-for-subagents)
-11. [Background Subagents](#background-subagents)
-12. [Worktree Isolation](#worktree-isolation)
-13. [Restrict Spawnable Subagents](#restrict-spawnable-subagents)
-14. [`claude agents` CLI Command](#claude-agents-cli-command)
-15. [Agent Teams (Experimental)](#agent-teams-experimental)
-16. [Plugin Subagent Security](#plugin-subagent-security)
-17. [Architecture](#architecture)
-18. [Context Management](#context-management)
-19. [When to Use Subagents](#when-to-use-subagents)
-20. [Best Practices](#best-practices)
-21. [Example Subagents in This Folder](#example-subagents-in-this-folder)
-22. [Installation Instructions](#installation-instructions)
-23. [Related Concepts](#related-concepts)
-
----
-
-## Overview
-
-Subagents enable delegated task execution in Claude Code by:
-
-- Creating **isolated AI assistants** with separate context windows
-- Providing **customized system prompts** for specialized expertise
-- Enforcing **tool access control** to limit capabilities
-- Preventing **context pollution** from complex tasks
-- Enabling **parallel execution** of multiple specialized tasks
-
-Each subagent operates independently with a clean slate, receiving only the specific context necessary for their task, then returning results to the main agent for synthesis.
-
-**Quick Start**: Use the `/agents` command to create, view, edit, and manage your subagents interactively.
+1.[Overview](#overview)
+2.[Key Benefits](#key-benefits)
+3.[File Locations](#file-locations)
+4.[Configuration](#configuration)
+5.[Built-in Subagents](#built-in-subagents)
+6.[Managing Subagents](#managing-subagents)
+7.[Using Subagents](#using-subagents)
+8.[Resumable Agents](#resumable-agents)
+9.[Chaining Subagents](#chaining-subagents)
+10.[Persistent Memory for Subagents](#persistent-memory-for-subagents)
+11.[Background Subagents](#background-subagents)
+12.[Worktree Isolation](#worktree-isolation)
+13.[Restrict Spawnable Subagents](#restrict-spawnable-subagents)
+14.[`claude agents` CLI Command](#claude-agents-cli-command)
+15.[Agent Teams (Experimental)](#agent-teams-experimental)
+16.[Plugin Subagent Security](#plugin-subagent-security)
+17.[Architecture](#architecture)
+18.[Context Management](#context-management)
+19.[When to Use Subagents](#when-to-use-subagents)
+20.[Best Practices](#best-practices)
+21.[Example Subagents in This Folder](#example-subagents-in-this-folder)
+22.[Installation Instructions](#installation-instructions)
+23.[Related Concepts](#related-concepts)
 
 ---
 
-## Key Benefits
+## 概述
 
-| Benefit | Description |
+Subagents通过以下方式在 Claude Code 中启用委派任务执行：
+
+- 使用单独的上下文窗口创建**隔离的人工智能助手**
+- 为专业知识提供**定制的系统提示**
+- 实施**工具访问控制**以限制功能
+- 防止复杂任务带来的**上下文污染**
+- 启用多个专门任务的**并行执行**
+
+每个Subagents都以干净的状态独立运行，仅接收其任务所需的特定上下文，然后将结果返回给主agents进行合成。
+
+**快速入门**：使用 `/agents` 命令以交互方式创建、查看、编辑和管理您的Subagents。
+
+---
+
+## 主要优点
+
+|效益 |描述 |
 |---------|-------------|
-| **Context preservation** | Operates in separate context, preventing pollution of main conversation |
-| **Specialized expertise** | Fine-tuned for specific domains with higher success rates |
-| **Reusability** | Use across different projects and share with teams |
-| **Flexible permissions** | Different tool access levels for different subagent types |
-| **Scalability** | Multiple agents work on different aspects simultaneously |
+| **上下文保存** |在单独的上下文中运行，防止主要对话的污染 |
+| **专业知识** |针对特定领域进行微调，成功率更高 |
+| **可重复使用性** |跨不同项目使用并与团队共享 |
+| **灵活的权限** |不同Subagents类型的不同工具访问级别 |
+| **可扩展性** |多个agents同时在不同方面工作 |
 
 ---
 
-## File Locations
+## 文件位置
 
-Subagent files can be stored in multiple locations with different scopes:
+Subagents文件可以存储在具有不同范围的多个位置：
 
-| Priority | Type | Location | Scope |
-|----------|------|----------|-------|
-| 1 (highest) | **CLI-defined** | Via `--agents` flag (JSON) | Session only |
-| 2 | **Project subagents** | `.claude/agents/` | Current project |
-| 3 | **User subagents** | `~/.claude/agents/` | All projects |
-| 4 (lowest) | **Plugin agents** | Plugin `agents/` directory | Via plugins |
+|优先|类型 |地点 |范围 |
+|----------|------|----------|--------|
+| 1（最高）| **CLI 定义** |通过 `--agents` 标志 (JSON) |仅限会议 |
+| 2 | **项目分agents** | `.claude/agents/` |当前项目 |
+| 3 | **用户Subagents** | `~/.claude/agents/` |所有项目 |
+| 4（最低）| **Pluginsagents** |Plugins `agents/` 目录 |通过Plugins |
 
-When duplicate names exist, higher-priority sources take precedence.
+当存在重复名称时，优先级较高的源优先。
 
 ---
 
-## Configuration
+## 配置
 
-### File Format
+### 文件格式
 
-Subagents are defined in YAML frontmatter followed by the system prompt in markdown:
-
+Subagents在 YAML frontmatter 中定义，后跟 markdown 中的系统提示符：
 ```yaml
 ---
 name: your-sub-agent-name
@@ -112,38 +111,36 @@ Your subagent's system prompt goes here. This can be multiple paragraphs
 and should clearly define the subagent's role, capabilities, and approach
 to solving problems.
 ```
+### 配置字段
 
-### Configuration Fields
+|领域 |必填|描述 |
+|--------|----------|-------------|
+| `name` |是的 |唯一标识符（小写字母和连字符）|
+| `description` |是的 |目的的自然语言描述。包括“主动使用”以鼓励自动调用 |
+| `tools` |没有 |以逗号分隔的特定工具列表。省略继承所有工具。支持 `Agent(agent_name)` 语法来限制可生成的Subagents |
+| `disallowedTools` |没有 |Subagents不得使用的以逗号分隔的工具列表 |
+| `model` |没有 |要使用的型号：`sonnet`、`opus`、`haiku`、完整型号 ID 或 `inherit`。默认为配置的Subagents模型 |
+| `permissionMode` |没有 | `default`、`acceptEdits`、`dontAsk`、`bypassPermissions`、`plan` |
+| `maxTurns` |没有 |Subagents可以进行的最大agents轮数 |
+| `skills` |没有 |要预加载的以逗号分隔的skills列表。在启动时将完整的skills内容注入到Subagents的上下文中 |
+| `mcpServers` |没有 |可供Subagents使用的 MCP 服务器 |
+| `hooks` |没有 |组件范围的hooks（PreToolUse、PostToolUse、Stop）|
+| `memory` |没有 |持久内存目录范围：`user`、`project` 或 `local` |
+| `background` |没有 |设置为 `true` 以始终将此Subagents作为后台任务运行 |
+| `effort` |没有 |推理努力水平：`low`、`medium`、`high` 或 `max` |
+| `isolation` |没有 |设置为 `worktree` 以为Subagents提供自己的 git 工作树 |
+| `initialPrompt` |没有 |当Subagents作为主agents运行时第一回合自动提交 |
 
-| Field | Required | Description |
-|-------|----------|-------------|
-| `name` | Yes | Unique identifier (lowercase letters and hyphens) |
-| `description` | Yes | Natural language description of purpose. Include "use PROACTIVELY" to encourage automatic invocation |
-| `tools` | No | Comma-separated list of specific tools. Omit to inherit all tools. Supports `Agent(agent_name)` syntax to restrict spawnable subagents |
-| `disallowedTools` | No | Comma-separated list of tools the subagent must not use |
-| `model` | No | Model to use: `sonnet`, `opus`, `haiku`, full model ID, or `inherit`. Defaults to configured subagent model |
-| `permissionMode` | No | `default`, `acceptEdits`, `dontAsk`, `bypassPermissions`, `plan` |
-| `maxTurns` | No | Maximum number of agentic turns the subagent can take |
-| `skills` | No | Comma-separated list of skills to preload. Injects full skill content into the subagent's context at startup |
-| `mcpServers` | No | MCP servers to make available to the subagent |
-| `hooks` | No | Component-scoped hooks (PreToolUse, PostToolUse, Stop) |
-| `memory` | No | Persistent memory directory scope: `user`, `project`, or `local` |
-| `background` | No | Set to `true` to always run this subagent as a background task |
-| `effort` | No | Reasoning effort level: `low`, `medium`, `high`, or `max` |
-| `isolation` | No | Set to `worktree` to give the subagent its own git worktree |
-| `initialPrompt` | No | Auto-submitted first turn when the subagent runs as the main agent |
+### 工具配置选项
 
-### Tool Configuration Options
-
-**Option 1: Inherit All Tools (omit the field)**
+**选项 1：继承所有工具（省略该字段）**
 ```yaml
 ---
 name: full-access-agent
 description: Agent with all available tools
 ---
 ```
-
-**Option 2: Specify Individual Tools**
+**选项 2：指定单独的工具**
 ```yaml
 ---
 name: limited-agent
@@ -151,8 +148,7 @@ description: Agent with specific tools only
 tools: Read, Grep, Glob, Bash
 ---
 ```
-
-**Option 3: Conditional Tool Access**
+**选项 3：条件工具访问**
 ```yaml
 ---
 name: conditional-agent
@@ -160,11 +156,9 @@ description: Agent with filtered tool access
 tools: Read, Bash(npm:*), Bash(test:*)
 ---
 ```
+### 基于 CLI 的配置
 
-### CLI-Based Configuration
-
-Define subagents for a single session using the `--agents` flag with JSON format:
-
+使用 JSON 格式的 `--agents` 标志为单个会话定义Subagents：
 ```bash
 claude --agents '{
   "code-reviewer": {
@@ -175,9 +169,7 @@ claude --agents '{
   }
 }'
 ```
-
-**JSON Format for `--agents` flag:**
-
+**`--agents` 标志的 JSON 格式：**
 ```json
 {
   "agent-name": {
@@ -188,117 +180,113 @@ claude --agents '{
   }
 }
 ```
+**agents定义的优先级：**
 
-**Priority of Agent Definitions:**
+agents定义按照以下优先顺序加载（第一个匹配获胜）：
+1. **CLI 定义** - `--agents` 标志（仅限会话，JSON）
+2. **项目级** - `.claude/agents/`（当前项目）
+3. **用户级别** - `~/.claude/agents/`（所有项目）
+4. **Plugins级** - Plugins`agents/`目录
 
-Agent definitions are loaded with this priority order (first match wins):
-1. **CLI-defined** - `--agents` flag (session only, JSON)
-2. **Project-level** - `.claude/agents/` (current project)
-3. **User-level** - `~/.claude/agents/` (all projects)
-4. **Plugin-level** - Plugin `agents/` directory
-
-This allows CLI definitions to override all other sources for a single session.
-
----
-
-## Built-in Subagents
-
-Claude Code includes several built-in subagents that are always available:
-
-| Agent | Model | Purpose |
-|-------|-------|---------|
-| **general-purpose** | Inherits | Complex, multi-step tasks |
-| **Plan** | Inherits | Research for plan mode |
-| **Explore** | Haiku | Read-only codebase exploration (quick/medium/very thorough) |
-| **Bash** | Inherits | Terminal commands in separate context |
-| **statusline-setup** | Sonnet | Configure status line |
-| **Claude Code Guide** | Haiku | Answer Claude Code feature questions |
-
-### General-Purpose Subagent
-
-| Property | Value |
-|----------|-------|
-| **Model** | Inherits from parent |
-| **Tools** | All tools |
-| **Purpose** | Complex research tasks, multi-step operations, code modifications |
-
-**When used**: Tasks requiring both exploration and modification with complex reasoning.
-
-### Plan Subagent
-
-| Property | Value |
-|----------|-------|
-| **Model** | Inherits from parent |
-| **Tools** | Read, Glob, Grep, Bash |
-| **Purpose** | Used automatically in plan mode to research codebase |
-
-**When used**: When Claude needs to understand the codebase before presenting a plan.
-
-### Explore Subagent
-
-| Property | Value |
-|----------|-------|
-| **Model** | Haiku (fast, low-latency) |
-| **Mode** | Strictly read-only |
-| **Tools** | Glob, Grep, Read, Bash (read-only commands only) |
-| **Purpose** | Fast codebase searching and analysis |
-
-**When used**: When searching/understanding code without making changes.
-
-**Thoroughness Levels** - Specify the depth of exploration:
-- **"quick"** - Fast searches with minimal exploration, good for finding specific patterns
-- **"medium"** - Moderate exploration, balanced speed and thoroughness, default approach
-- **"very thorough"** - Comprehensive analysis across multiple locations and naming conventions, may take longer
-
-### Bash Subagent
-
-| Property | Value |
-|----------|-------|
-| **Model** | Inherits from parent |
-| **Tools** | Bash |
-| **Purpose** | Execute terminal commands in a separate context window |
-
-**When used**: When running shell commands that benefit from isolated context.
-
-### Statusline Setup Subagent
-
-| Property | Value |
-|----------|-------|
-| **Model** | Sonnet |
-| **Tools** | Read, Write, Bash |
-| **Purpose** | Configure the Claude Code status line display |
-
-**When used**: When setting up or customizing the status line.
-
-### Claude Code Guide Subagent
-
-| Property | Value |
-|----------|-------|
-| **Model** | Haiku (fast, low-latency) |
-| **Tools** | Read-only |
-| **Purpose** | Answer questions about Claude Code features and usage |
-
-**When used**: When users ask questions about how Claude Code works or how to use specific features.
+这允许 CLI 定义覆盖单个会话的所有其他源。
 
 ---
 
-## Managing Subagents
+## 内置Subagents
 
-### Using the `/agents` Command (Recommended)
+Claude Code 包含几个始终可用的内置Subagents：
 
+|agents|型号|目的|
+|--------|--------|---------|
+| **通用** |继承|复杂、多步骤的任务 |
+| **计划** |继承|计划模式研究|
+| **探索** | haiku |只读代码库探索（快速/中等/非常彻底）|
+| **Bash** |继承|单独上下文中的终端命令 |
+| **状态线设置** | Sonnet|配置状态行 |
+| **claude代码指南** | haiku |回答claude代码功能问题 |
+
+### 通用Subagents
+
+|物业 |价值|
+|----------|--------|
+| **型号** |继承自父母|
+| **工具** |所有工具|
+| **目的** |复杂的研究任务、多步骤操作、代码修改 |
+
+**使用时**：需要通过复杂推理进行探索和修改的任务。
+
+### 计划Subagents
+
+|物业 |价值|
+|----------|--------|
+| **型号** |继承自父母|
+| **工具** |阅读、Glob、Grep、Bash |
+| **目的** |在计划模式下自动使用来研究代码库 |
+
+**何时使用**：当 Claude 在提出计划之前需要了解代码库时。
+
+### 探索Subagents
+
+|物业 |价值|
+|----------|--------|
+| **型号** | Haiku（快速、低延迟）|
+| **模式** |严格只读 |
+| **工具** | Glob、Grep、Read、Bash（仅限只读命令）|
+| **目的** |快速代码库搜索和分析 |
+
+**使用时**：搜索/理解代码而不进行更改时。
+
+**彻底程度** - 指定探索的深度：
+- **“快速”** - 以最少的探索进行快速搜索，适合查找特定模式
+- **“中”** - 适度探索，平衡速度和彻底性，默认方法
+- **“非常彻底”** - 跨多个位置和命名约定的综合分析，可能需要更长的时间
+
+### Bash Subagents
+
+|物业 |价值|
+|----------|--------|
+| **型号** |继承自父母|
+| **工具** |Bash |
+| **目的** |在单独的上下文窗口中执行终端命令 |
+
+**何时使用**：运行受益于隔离上下文的 shell 命令时。
+
+### Statusline 设置Subagents
+
+|物业 |价值|
+|----------|--------|
+| **型号** | Sonnet|
+| **工具** |读、写、重击 |
+| **目的** |配置Claude Code状态行显示|
+
+**使用时**：设置或自定义状态行时。
+
+### claude代码指南Subagents
+
+|物业 |价值|
+|----------|--------|
+| **型号** | Haiku（快速、低延迟）|
+| **工具** |只读|
+| **目的** |回答有关 Claude Code 功能和用法的问题 |
+
+**使用时**：当用户询问有关 Claude Code 如何工作或如何使用特定功能的问题时。
+
+---
+
+## 管理Subagents
+
+### 使用 `/agents` 命令（推荐）
 ```bash
 /agents
 ```
+这提供了一个交互式菜单：
+- 查看所有可用的Subagents（内置、用户和项目）
+- 通过引导设置创建新的Subagents
+- 编辑现有的自定义Subagents和工具访问
+- 删除自定义Subagents
+- 当存在重复项时查看哪些Subagents处于活动状态
 
-This provides an interactive menu to:
-- View all available subagents (built-in, user, and project)
-- Create new subagents with guided setup
-- Edit existing custom subagents and tool access
-- Delete custom subagents
-- See which subagents are active when duplicates exist
-
-### Direct File Management
-
+### 直接文件管理
 ```bash
 # Create a project subagent
 mkdir -p .claude/agents
@@ -316,49 +304,41 @@ EOF
 # Create a user subagent (available in all projects)
 mkdir -p ~/.claude/agents
 ```
-
 ---
 
-## Using Subagents
+## 使用Subagents
 
-### Automatic Delegation
+### 自动委派
 
-Claude proactively delegates tasks based on:
-- Task description in your request
-- The `description` field in subagent configurations
-- Current context and available tools
+claude根据以下因素主动委派任务：
+- 您的请求中的任务描述
+- Subagents配置中的 `description` 字段
+- 当前环境和可用工具
 
-To encourage proactive use, include "use PROACTIVELY" or "MUST BE USED" in your `description` field:
-
+为了鼓励主动使用，请在 `description` 字段中包含“主动使用”或“必须使用”：
 ```yaml
 ---
 name: code-reviewer
 description: Expert code review specialist. Use PROACTIVELY after writing or modifying code.
 ---
 ```
+### 显式调用
 
-### Explicit Invocation
-
-You can explicitly request a specific subagent:
-
+您可以明确请求特定的Subagents：
 ```
 > Use the test-runner subagent to fix failing tests
 > Have the code-reviewer subagent look at my recent changes
 > Ask the debugger subagent to investigate this error
 ```
+### @-提及调用
 
-### @-Mention Invocation
-
-Use the `@` prefix to guarantee a specific subagent is invoked (bypasses automatic delegation heuristics):
-
+使用 `@` 前缀来保证调用特定的Subagents（绕过自动委托启发式）：
 ```
 > @"code-reviewer (agent)" review the auth module
 ```
+### 会话范围agents
 
-### Session-Wide Agent
-
-Run an entire session using a specific agent as the main agent:
-
+使用特定agents作为主要agents运行整个会话：
 ```bash
 # Via CLI flag
 claude --agent code-reviewer
@@ -368,21 +348,17 @@ claude --agent code-reviewer
   "agent": "code-reviewer"
 }
 ```
+### 列出可用的agents
 
-### Listing Available Agents
-
-Use the `claude agents` command to list all configured agents from all sources:
-
+使用 `claude agents` 命令列出所有来源的所有已配置agents：
 ```bash
 claude agents
 ```
-
 ---
 
-## Resumable Agents
+## 可恢复agents
 
-Subagents can continue previous conversations with full context preserved:
-
+Subagents可以继续之前的对话并保留完整的上下文：
 ```bash
 # Initial invocation
 > Use the code-analyzer agent to start reviewing the authentication module
@@ -391,47 +367,43 @@ Subagents can continue previous conversations with full context preserved:
 # Resume the agent later
 > Resume agent abc123 and now analyze the authorization logic as well
 ```
-
-**Use cases**:
-- Long-running research across multiple sessions
-- Iterative refinement without losing context
-- Multi-step workflows maintaining context
+**用例**：
+- 跨多个会议的长期研究
+- 迭代细化而不丢失上下文
+- 维护上下文的多步骤工作流程
 
 ---
 
-## Chaining Subagents
+## 链接Subagents
 
-Execute multiple subagents in sequence:
-
+按顺序执行多个Subagents：
 ```bash
 > First use the code-analyzer subagent to find performance issues,
   then use the optimizer subagent to fix them
 ```
-
-This enables complex workflows where the output of one subagent feeds into another.
+这使得复杂的工作流程成为可能，其中一个Subagents的输出会输入到另一个Subagents中。
 
 ---
 
-## Persistent Memory for Subagents
+## Subagents的持久内存
 
-The `memory` field gives subagents a persistent directory that survives across conversations. This allows subagents to build up knowledge over time, storing notes, findings, and context that persist between sessions.
+`memory` 字段为Subagents提供了一个在对话中持续存在的持久目录。这使得Subagents能够随着时间的推移积累知识，存储会话之间持续存在的笔记、发现和上下文。
 
-### Memory Scopes
+### 内存范围
 
-| Scope | Directory | Use Case |
-|-------|-----------|----------|
-| `user` | `~/.claude/agent-memory/<name>/` | Personal notes and preferences across all projects |
-| `project` | `.claude/agent-memory/<name>/` | Project-specific knowledge shared with the team |
-| `local` | `.claude/agent-memory-local/<name>/` | Local project knowledge not committed to version control |
+|范围 |目录 |使用案例|
+|--------|------------|----------|
+| `user` | `~/.claude/agent-memory/<name>/` |所有项目的个人笔记和偏好|
+| `project` | `.claude/agent-memory/<name>/` |与团队共享特定于项目的知识 |
+| `local` | `.claude/agent-memory-local/<name>/` |本地项目知识不致力于版本控制|
 
-### How It Works
+### 它是如何运作的
 
-- The first 200 lines of `MEMORY.md` in the memory directory are automatically loaded into the subagent's system prompt
-- The `Read`, `Write`, and `Edit` tools are automatically enabled for the subagent to manage its memory files
-- The subagent can create additional files in its memory directory as needed
+- 内存目录中的前200行`MEMORY.md`会自动加载到Subagents的系统提示符中
+- 自动启用 `Read`、`Write` 和 `Edit` 工具，以便Subagents管理其内存文件
+- Subagents可以根据需要在其内存目录中创建其他文件
 
-### Example Configuration
-
+### 配置示例
 ```yaml
 ---
 name: researcher
@@ -456,17 +428,15 @@ graph LR
     style C fill:#e1f5fe,stroke:#333,color:#333
     style M fill:#f3e5f5,stroke:#333,color:#333
 ```
-
 ---
 
-## Background Subagents
+## 后台Subagents
 
-Subagents can run in the background, freeing up the main conversation for other tasks.
+Subagents可以在后台运行，从而腾出主要对话来执行其他任务。
 
-### Configuration
+### 配置
 
-Set `background: true` in the frontmatter to always run the subagent as a background task:
-
+在 frontmatter 中设置 `background: true` 以始终将Subagents作为后台任务运行：
 ```yaml
 ---
 name: long-runner
@@ -474,30 +444,26 @@ background: true
 description: Performs long-running analysis tasks in the background
 ---
 ```
+### 键盘快捷键
 
-### Keyboard Shortcuts
-
-| Shortcut | Action |
+|快捷方式|行动|
 |----------|--------|
-| `Ctrl+B` | Background a currently running subagent task |
-| `Ctrl+F` | Kill all background agents (press twice to confirm) |
+| `Ctrl+B` |将当前正在运行的Subagents任务置于后台 |
+| `Ctrl+F` |杀死所有后台特工（按两次确认）|
 
-### Disabling Background Tasks
+### 禁用后台任务
 
-Set the environment variable to disable background task support entirely:
-
+设置环境变量以完全禁用后台任务支持：
 ```bash
 export CLAUDE_CODE_DISABLE_BACKGROUND_TASKS=1
 ```
-
 ---
 
-## Worktree Isolation
+## 工作树隔离
 
-The `isolation: worktree` setting gives a subagent its own git worktree, allowing it to make changes independently without affecting the main working tree.
+`isolation: worktree` 设置为Subagents提供了自己的 git 工作树，允许其独立进行更改而不影响主工作树。
 
-### Configuration
-
+＃＃＃ 配置
 ```yaml
 ---
 name: feature-builder
@@ -506,9 +472,7 @@ description: Implements features in an isolated git worktree
 tools: Read, Write, Edit, Bash, Grep, Glob
 ---
 ```
-
-### How It Works
-
+### 它是如何运作的
 ```mermaid
 graph TB
     Main["Main Working Tree"] -->|spawns| Sub["Subagent with<br/>Isolated Worktree"]
@@ -522,21 +486,19 @@ graph TB
     style Clean fill:#fff3e0,stroke:#333,color:#333
     style Return fill:#fff3e0,stroke:#333,color:#333
 ```
-
-- The subagent operates in its own git worktree on a separate branch
-- If the subagent makes no changes, the worktree is automatically cleaned up
-- If changes exist, the worktree path and branch name are returned to the main agent for review or merging
+- Subagents在单独分支上的自己的 git 工作树中运行
+- 如果Subagents没有进行任何更改，工作树将自动清理
+- 如果存在更改，工作树路径和分支名称将返回给主agents进行审查或合并
 
 ---
 
-## Restrict Spawnable Subagents
+## 限制可生成的Subagents
 
-You can control which subagents a given subagent is allowed to spawn by using the `Agent(agent_type)` syntax in the `tools` field. This provides a way to allowlist specific subagents for delegation.
+您可以通过使用 `tools` 字段中的 `Agent(agent_type)` 语法来控制允许给定Subagents生成哪些Subagents。这提供了一种将特定Subagents列入白名单以进行委派的方法。
 
-> **Note**: In v2.1.63, the `Task` tool was renamed to `Agent`. Existing `Task(...)` references still work as aliases.
+> **注意**：在 v2.1.63 中，`Task` 工具已重命名为 `Agent`。现有的 `Task(...)` 引用仍可用作别名。
 
-### Example
-
+＃＃＃ 例子
 ```yaml
 ---
 name: coordinator
@@ -547,53 +509,47 @@ tools: Agent(worker, researcher), Read, Bash
 You are a coordinator agent. You can delegate work to the "worker" and
 "researcher" subagents only. Use Read and Bash for your own exploration.
 ```
-
-In this example, the `coordinator` subagent can only spawn the `worker` and `researcher` subagents. It cannot spawn any other subagents, even if they are defined elsewhere.
+在此示例中，`coordinator` Subagents只能生成 `worker` 和 `researcher` Subagents。它不能生成任何其他Subagents，即使它们是在其他地方定义的。
 
 ---
 
-## `claude agents` CLI Command
+## `claude agents` CLI 命令
 
-The `claude agents` command lists all configured agents grouped by source (built-in, user-level, project-level):
-
+`claude agents` 命令列出按源（内置、用户级、项目级）分组的所有已配置agents：
 ```bash
 claude agents
 ```
-
-This command:
-- Shows all available agents from all sources
-- Groups agents by their source location
-- Indicates **overrides** when an agent at a higher priority level shadows one at a lower level (e.g., a project-level agent with the same name as a user-level agent)
+这个命令：
+- 显示所有来源的所有可用agents
+- 按源位置对agents进行分组
+- 表示当较高优先级的agents隐藏较低优先级的agents时**覆盖**（例如，与用户级agents同名的项目级agents）
 
 ---
 
-## Agent Teams (Experimental)
+## agents团队（实验）
 
-Agent Teams coordinate multiple Claude Code instances working together on complex tasks. Unlike subagents (which are delegated subtasks returning results), teammates work independently with their own context and communicate directly through a shared mailbox system.
+agents团队协调多个 Claude Code 实例一起处理复杂的任务。与Subagents（返回结果的委派子任务）不同，团队成员根据自己的上下文独立工作，并通过共享邮箱系统直接通信。
 
-> **Note**: Agent Teams is experimental and requires Claude Code v2.1.32+. Enable it before use.
+> **注意**：Agent Teams 是实验性的，需要 Claude Code v2.1.32+。使用前启用它。
 
-### Subagents vs Agent Teams
+### Subagents与agents团队
 
-| Aspect | Subagents | Agent Teams |
-|--------|-----------|-------------|
-| **Delegation model** | Parent delegates subtask, waits for result | Team lead assigns work, teammates execute independently |
-| **Context** | Fresh context per subtask, results distilled back | Each teammate maintains its own persistent context |
-| **Coordination** | Sequential or parallel, managed by parent | Shared task list with automatic dependency management |
-| **Communication** | Return values only | Inter-agent messaging via mailbox |
-| **Session resumption** | Supported | Not supported with in-process teammates |
-| **Best for** | Focused, well-defined subtasks | Large multi-file projects requiring parallel work |
+|方面|Subagents |agents团队|
+|--------|------------|-------------|
+| **委托模型** |父级委托子任务，等待结果 |团队领导分配工作，队友独立执行 |
+| **背景** |每个子任务都有新鲜的背景，提炼出的结果 |每个队友都维护自己的持久上下文 |
+| **协调** |顺序或并行，由父级管理 |具有自动依赖性管理的共享任务列表|
+| **通讯** |仅返回值 |通过邮箱进行agents间消息传递 |
+| **会议恢复** |支持 |不支持进程中的队友 |
+| **最适合** |重点突出、定义明确的子任务 |需要并行工作的大型多文件项目|
 
-### Enabling Agent Teams
+### 启用agents团队
 
-Set the environment variable or add it to your `settings.json`:
-
+设置环境变量或将其添加到您的 `settings.json`：
 ```bash
 export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
 ```
-
-Or in `settings.json`:
-
+或者在 `settings.json` 中：
 ```json
 {
   "env": {
@@ -601,52 +557,44 @@ Or in `settings.json`:
   }
 }
 ```
+### 组建团队
 
-### Starting a team
-
-Once enabled, ask Claude to work with teammates in your prompt:
-
+启用后，请claude在提示中与队友合作：
 ```
 User: Build the authentication module. Use a team — one teammate for the API endpoints,
       one for the database schema, and one for the test suite.
 ```
+Claude 将自动创建团队、分配任务并协调工作。
 
-Claude will create the team, assign tasks, and coordinate the work automatically.
+### 显示模式
 
-### Display modes
+控制队友活动的显示方式：
 
-Control how teammate activity is displayed:
-
-| Mode | Flag | Description |
+|模式|旗帜|描述 |
 |------|------|-------------|
-| **Auto** | `--teammate-mode auto` | Automatically chooses the best display mode for your terminal |
-| **In-process** | `--teammate-mode in-process` | Shows teammate output inline in the current terminal (default) |
-| **Split-panes** | `--teammate-mode tmux` | Opens each teammate in a separate tmux or iTerm2 pane |
-
+| **自动** | `--teammate-mode auto` |自动为您的终端选择最佳显示模式 |
+| **进行中** | `--teammate-mode in-process` |在当前终端中内联显示队友输出（默认） |
+| **分割窗格** | `--teammate-mode tmux` |在单独的 tmux 或 iTerm2 窗格中打开每个队友 |
 ```bash
 claude --teammate-mode tmux
 ```
-
-You can also set the display mode in `settings.json`:
-
+您还可以在`settings.json`中设置显示模式：
 ```json
 {
   "teammateMode": "tmux"
 }
 ```
+> **注意**：分割窗格模式需要 tmux 或 iTerm2。它在 VS Code 终端、Windows 终端或 Ghostty 中不可用。
 
-> **Note**: Split-pane mode requires tmux or iTerm2. It is not available in VS Code terminal, Windows Terminal, or Ghostty.
+### 导航
 
-### Navigation
+使用 `Shift+Down` 在分割窗格模式下在队友之间导航。
 
-Use `Shift+Down` to navigate between teammates in split-pane mode.
+### 团队配置
 
-### Team Configuration
+团队配置存储在 `~/.claude/teams/{team-name}/config.json` 中。
 
-Team configurations are stored at `~/.claude/teams/{team-name}/config.json`.
-
-### Architecture
-
+＃＃＃ 建筑学
 ```mermaid
 graph TB
     Lead["Team Lead<br/>(Coordinator)"]
@@ -675,72 +623,70 @@ graph TB
     style T2 fill:#e8f5e9,stroke:#333,color:#333
     style T3 fill:#e8f5e9,stroke:#333,color:#333
 ```
+**关键组件**：
 
-**Key components**:
+- **团队负责人**：主要的claude代码会话，用于创建团队、分配任务和协调
+- **共享任务列表**：具有自动依赖性跟踪的同步任务列表
+- **邮箱**：agents间消息传递系统，供队友交流状态和协调
+- **队友**：独立的 Claude Code 实例，每个实例都有自己的上下文窗口
 
-- **Team Lead**: The main Claude Code session that creates the team, assigns tasks, and coordinates
-- **Shared Task List**: A synchronized list of tasks with automatic dependency tracking
-- **Mailbox**: An inter-agent messaging system for teammates to communicate status and coordinate
-- **Teammates**: Independent Claude Code instances, each with their own context window
+### 任务分配和消息传递
 
-### Task assignment and messaging
+团队领导将工作分解为任务并将其分配给队友。共享任务列表处理：
 
-The team lead breaks work into tasks and assigns them to teammates. The shared task list handles:
+- **自动依赖关系管理** — 任务等待其依赖关系完成
+- **状态跟踪** — 队友在工作时更新任务状态
+- **agents间消息传递** - 队友通过邮箱发送消息进行协调（例如，“数据库架构已准备就绪，您可以开始编写查询”）
 
-- **Automatic dependency management** — tasks wait for their dependencies to complete
-- **Status tracking** — teammates update task status as they work
-- **Inter-agent messaging** — teammates send messages via the mailbox for coordination (e.g., "Database schema is ready, you can start writing queries")
+### 计划审批工作流程
 
-### Plan approval workflow
+对于复杂的任务，团队负责人会在队友开始工作之前创建执行计划。用户审查并批准该计划，确保团队的方法在进行任何代码更改之前符合预期。
 
-For complex tasks, the team lead creates an execution plan before teammates begin work. The user reviews and approves the plan, ensuring the team's approach aligns with expectations before any code changes are made.
+### 团队hooks活动
 
-### Hook events for teams
+特工团队引入了两个额外的 [hook events](../06-hooks/)：
 
-Agent Teams introduce two additional [hook events](../06-hooks/):
+|活动 |何时触发 |使用案例|
+|--------|------------|----------|
+| `TeammateIdle` |队友完成当前任务并且没有待处理的工作 |触发通知，分配后续任务 |
+| `TaskCompleted` |共享任务列表中的任务被标记为完成 |运行验证、更新仪表板、链相关工作 |
 
-| Event | Fires When | Use Case |
-|-------|-----------|----------|
-| `TeammateIdle` | A teammate finishes its current task and has no pending work | Trigger notifications, assign follow-up tasks |
-| `TaskCompleted` | A task in the shared task list is marked complete | Run validation, update dashboards, chain dependent work |
+### 最佳实践
 
-### Best practices
+- **团队规模**：将团队保持在 3-5 名队友，以实现最佳协调
+- **任务大小调整**：将工作分解为每个任务需要 5-15 分钟的任务 — 小到足以并行化，大到足以有意义
+- **避免文件冲突**：将不同的文件或目录分配给不同的队友，以防止合并冲突
+- **从简单开始**：为您的第一个团队使用进程内模式；一旦感觉舒服就切换到分割窗格
+- **清晰的任务描述**：提供具体的、可操作的任务描述，以便团队成员可以独立工作
 
-- **Team size**: Keep teams at 3-5 teammates for optimal coordination
-- **Task sizing**: Break work into tasks that take 5-15 minutes each — small enough to parallelize, large enough to be meaningful
-- **Avoid file conflicts**: Assign different files or directories to different teammates to prevent merge conflicts
-- **Start simple**: Use in-process mode for your first team; switch to split-panes once comfortable
-- **Clear task descriptions**: Provide specific, actionable task descriptions so teammates can work independently
+### 限制
 
-### Limitations
+- **实验性**：功能行为可能会在未来版本中发生变化
+- **无法恢复会话**：会话结束后，进程中的队友无法恢复
+- **每个会话一个团队**：无法在单个会话中创建嵌套团队或多个团队
+- **固定领导**：团队领导角色不能转移给队友
+- **分割窗格限制**：需要 tmux/iTerm2；在 VS Code 终端、Windows 终端或 Ghostty 中不可用
+- **没有跨会话团队**：队友仅存在于当前会话中
 
-- **Experimental**: Feature behavior may change in future releases
-- **No session resumption**: In-process teammates cannot be resumed after a session ends
-- **One team per session**: Cannot create nested teams or multiple teams in a single session
-- **Fixed leadership**: The team lead role cannot be transferred to a teammate
-- **Split-pane restrictions**: tmux/iTerm2 required; not available in VS Code terminal, Windows Terminal, or Ghostty
-- **No cross-session teams**: Teammates exist only within the current session
-
-> **Warning**: Agent Teams is experimental. Test with non-critical work first and monitor teammate coordination for unexpected behavior.
-
----
-
-## Plugin Subagent Security
-
-Plugin-provided subagents have restricted frontmatter capabilities for security. The following fields are **not allowed** in plugin subagent definitions:
-
-- `hooks` - Cannot define lifecycle hooks
-- `mcpServers` - Cannot configure MCP servers
-- `permissionMode` - Cannot override permission settings
-
-This prevents plugins from escalating privileges or executing arbitrary commands through subagent hooks.
+> **警告**：Agent Teams 处于实验阶段。首先测试非关键工作，并监控队友的协调是否出现意外行为。
 
 ---
 
-## Architecture
+## PluginsSubagents安全
 
-### High-Level Architecture
+为了安全起见，Plugins提供的Subagents具有有限的 frontmatter 功能。PluginsSubagents定义中**不允许**以下字段：
 
+- `hooks` - 无法定义生命周期hooks
+- `mcpServers` - 无法配置 MCP 服务器
+- `permissionMode` - 无法覆盖权限设置
+
+这可以防止Plugins升级权限或通过Subagentshooks执行任意命令。
+
+---
+
+## 架构
+
+### 高级架构
 ```mermaid
 graph TB
     User["User"]
@@ -758,9 +704,7 @@ graph TB
     Docs -->|returns result| Main
     Main -->|synthesizes| User
 ```
-
-### Subagent Lifecycle
-
+### Subagents生命周期
 ```mermaid
 sequenceDiagram
     participant User
@@ -778,11 +722,9 @@ sequenceDiagram
     MainAgent->>MainAgent: Incorporate results
     MainAgent-->>User: Provide synthesis
 ```
-
 ---
 
-## Context Management
-
+## 上下文管理
 ```mermaid
 graph TB
     A["Main Agent Context<br/>50,000 tokens"]
@@ -803,232 +745,224 @@ graph TB
     style C fill:#fff9c4
     style D fill:#fff9c4
 ```
+### 要点
 
-### Key Points
+- 每个Subagents都会获得一个**新的上下文窗口**，而没有主要对话历史记录
+- 仅将**相关上下文**传递给Subagents以执行其特定任务
+- 结果被**蒸馏**返回给主要agents
+- 这可以防止长期项目中的**上下文Token耗尽**
 
-- Each subagent gets a **fresh context window** without the main conversation history
-- Only the **relevant context** is passed to the subagent for their specific task
-- Results are **distilled** back to the main agent
-- This prevents **context token exhaustion** on long projects
+### 性能考虑因素
 
-### Performance Considerations
+- **上下文效率** - agents保留主要上下文，从而实现更长的会话
+- **延迟** - Subagents从干净的状态开始，可能会增加收集初始上下文的延迟
 
-- **Context efficiency** - Agents preserve main context, enabling longer sessions
-- **Latency** - Subagents start with clean slate and may add latency gathering initial context
+### 关键行为
 
-### Key Behaviors
-
-- **No nested spawning** - Subagents cannot spawn other subagents
-- **Background permissions** - Background subagents auto-deny any permissions that are not pre-approved
-- **Backgrounding** - Press `Ctrl+B` to background a currently running task
-- **Transcripts** - Subagent transcripts are stored at `~/.claude/projects/{project}/{sessionId}/subagents/agent-{agentId}.jsonl`
-- **Auto-compaction** - Subagent context auto-compacts at ~95% capacity (override with `CLAUDE_AUTOCOMPACT_PCT_OVERRIDE` environment variable)
+- **无嵌套生成** - Subagents无法生成其他Subagents
+- **后台权限** - 后台Subagents自动拒绝任何未经预先批准的权限
+- **后台运行** - 按 `Ctrl+B` 将当前正在运行的任务置于后台运行
+- **成绩单** - Subagents成绩单存储在 `~/.claude/projects/{project}/{sessionId}/subagents/agent-{agentId}.jsonl`
+- **自动压缩** - Subagents上下文以约 95% 的容量自动压缩（使用 `CLAUDE_AUTOCOMPACT_PCT_OVERRIDE` 环境变量覆盖）
 
 ---
 
-## When to Use Subagents
+## 何时使用Subagents
 
-| Scenario | Use Subagent | Why |
+|场景 |使用Subagents |为什么 |
 |----------|--------------|-----|
-| Complex feature with many steps | Yes | Separate concerns, prevent context pollution |
-| Quick code review | No | Unnecessary overhead |
-| Parallel task execution | Yes | Each subagent has own context |
-| Specialized expertise needed | Yes | Custom system prompts |
-| Long-running analysis | Yes | Prevents main context exhaustion |
-| Single task | No | Adds latency unnecessarily |
+|具有多个步骤的复杂功能 |是的 |分离关注点，防止上下文污染 |
+|快速代码审查 |没有 |不必要的开销|
+|并行任务执行|是的 |每个Subagents都有自己的上下文 |
+|需要专业知识 |是的 |自定义系统提示|
+|长期运行分析 |是的 |防止主上下文耗尽 |
+|单任务 |没有 |不必要地增加延迟 |
 
 ---
 
-## Best Practices
+## 最佳实践
 
-### Design Principles
+### 设计原则
 
-**Do:**
-- Start with Claude-generated agents - Generate initial subagent with Claude, then iterate to customize
-- Design focused subagents - Single, clear responsibilities rather than one doing everything
-- Write detailed prompts - Include specific instructions, examples, and constraints
-- Limit tool access - Grant only necessary tools for the subagent's purpose
-- Version control - Check project subagents into version control for team collaboration
+**做：**
+- 从 Claude 生成的agents开始 - 使用 Claude 生成初始Subagents，然后迭代进行自定义
+- 设计重点Subagents - 单一、明确的职责，而不是一个人包揽一切
+- 编写详细的提示 - 包括具体说明、示例和约束
+- 限制工具访问 - 仅授予Subagents所需的必要工具
+- 版本控制 - 将项目Subagents检查到版本控制中以进行团队协作
 
-**Don't:**
-- Create overlapping subagents with same roles
-- Give subagents unnecessary tool access
-- Use subagents for simple, single-step tasks
-- Mix concerns in one subagent's prompt
-- Forget to pass necessary context
+**不要：**
+- 创建具有相同角色的重叠Subagents
+- 授予Subagents不必要的工具访问权限
+- 使用Subagents执行简单的单步任务
+- 在一个Subagents的提示中混合关注点
+- 忘记传递必要的上下文
 
-### System Prompt Best Practices
+### 系统提示最佳实践
 
-1. **Be Specific About Role**
+1. **具体说明角色**
    ```
    You are an expert code reviewer specializing in [specific areas]
    ```
-
-2. **Define Priorities Clearly**
+2. **明确定义优先事项**
    ```
    Review priorities (in order):
    1. Security Issues
    2. Performance Problems
    3. Code Quality
    ```
-
-3. **Specify Output Format**
+3. **指定输出格式**
    ```
    For each issue provide: Severity, Category, Location, Description, Fix, Impact
    ```
-
-4. **Include Action Steps**
+4. **包括行动步骤**
    ```
    When invoked:
    1. Run git diff to see recent changes
    2. Focus on modified files
    3. Begin review immediately
    ```
+### 工具访问策略
 
-### Tool Access Strategy
-
-1. **Start Restrictive**: Begin with only essential tools
-2. **Expand Only When Needed**: Add tools as requirements demand
-3. **Read-Only When Possible**: Use Read/Grep for analysis agents
-4. **Sandboxed Execution**: Limit Bash commands to specific patterns
-
----
-
-## Example Subagents in This Folder
-
-This folder contains ready-to-use example subagents:
-
-### 1. Code Reviewer (`code-reviewer.md`)
-
-**Purpose**: Comprehensive code quality and maintainability analysis
-
-**Tools**: Read, Grep, Glob, Bash
-
-**Specialization**:
-- Security vulnerability detection
-- Performance optimization identification
-- Code maintainability assessment
-- Test coverage analysis
-
-**Use When**: You need automated code reviews with focus on quality and security
+1. **开始限制性**：仅从必要的工具开始
+2. **仅在需要时扩展**：根据需求添加工具
+3. **尽可能只读**：使用 Read/Grep 进行分析agents
+4. **沙盒执行**：将 Bash 命令限制为特定模式
 
 ---
 
-### 2. Test Engineer (`test-engineer.md`)
+## 此文件夹中的Subagents示例
 
-**Purpose**: Test strategy, coverage analysis, and automated testing
+此文件夹包含现成的示例Subagents：
 
-**Tools**: Read, Write, Bash, Grep
+### 1. 代码审查员 (`code-reviewer.md`)
 
-**Specialization**:
-- Unit test creation
-- Integration test design
-- Edge case identification
-- Coverage analysis (>80% target)
+**目的**：全面的代码质量和可维护性分析
 
-**Use When**: You need comprehensive test suite creation or coverage analysis
+**工具**：Read、Grep、Glob、Bash
 
----
+**专业**：
+- 安全漏洞检测
+- 性能优化识别
+- 代码可维护性评估
+- 测试覆盖率分析
 
-### 3. Documentation Writer (`documentation-writer.md`)
-
-**Purpose**: Technical documentation, API docs, and user guides
-
-**Tools**: Read, Write, Grep
-
-**Specialization**:
-- API endpoint documentation
-- User guide creation
-- Architecture documentation
-- Code comment improvement
-
-**Use When**: You need to create or update project documentation
+**使用时间**：您需要自动代码审查，重点关注质量和安全性
 
 ---
 
-### 4. Secure Reviewer (`secure-reviewer.md`)
+### 2. 测试工程师 (`test-engineer.md`)
 
-**Purpose**: Security-focused code review with minimal permissions
+**目的**：测试策略、覆盖率分析和自动化测试
 
-**Tools**: Read, Grep
+**工具**：读、写、Bash、Grep
 
-**Specialization**:
-- Security vulnerability detection
-- Authentication/authorization issues
-- Data exposure risks
-- Injection attack identification
+**专业**：
+- 单元测试创建
+- 集成测试设计
+- 边缘情况识别
+- 覆盖率分析（>80% 目标）
 
-**Use When**: You need security audits without modification capabilities
-
----
-
-### 5. Implementation Agent (`implementation-agent.md`)
-
-**Purpose**: Full implementation capabilities for feature development
-
-**Tools**: Read, Write, Edit, Bash, Grep, Glob
-
-**Specialization**:
-- Feature implementation
-- Code generation
-- Build and test execution
-- Codebase modification
-
-**Use When**: You need a subagent to implement features end-to-end
+**使用时间**：您需要全面的测试套件创建或覆盖率分析
 
 ---
 
-### 6. Debugger (`debugger.md`)
+### 3. 文档编写者 (`documentation-writer.md`)
 
-**Purpose**: Debugging specialist for errors, test failures, and unexpected behavior
+**目的**：技术文档、API 文档和用户指南
 
-**Tools**: Read, Edit, Bash, Grep, Glob
+**工具**：读取、写入、Grep
 
-**Specialization**:
-- Root cause analysis
-- Error investigation
-- Test failure resolution
-- Minimal fix implementation
+**专业**：
+- API端点文档
+- 用户指南创建
+- 架构文档
+- 代码注释改进
 
-**Use When**: You encounter bugs, errors, or unexpected behavior
-
----
-
-### 7. Data Scientist (`data-scientist.md`)
-
-**Purpose**: Data analysis expert for SQL queries and data insights
-
-**Tools**: Bash, Read, Write
-
-**Specialization**:
-- SQL query optimization
-- BigQuery operations
-- Data analysis and visualization
-- Statistical insights
-
-**Use When**: You need data analysis, SQL queries, or BigQuery operations
+**使用时**：您需要创建或更新项目文档
 
 ---
 
-## Installation Instructions
+### 4. 安全审核员 (`secure-reviewer.md`)
 
-### Method 1: Using /agents Command (Recommended)
+**目的**：以最小权限进行以安全为中心的代码审查
 
+**工具**：阅读、Grep
+
+**专业**：
+- 安全漏洞检测
+- 身份验证/授权问题
+- 数据暴露风险
+- 注入攻击识别
+
+**使用时**：您需要安全审核而无需修改功能
+
+---
+
+### 5. 实施agents (`implementation-agent.md`)
+
+**目的**：功能开发的完整实现能力
+
+**工具**：读取、写入、编辑、Bash、Grep、Glob
+
+**专业**：
+- 功能实现
+- 代码生成
+- 构建和测试执行
+- 代码库修改
+
+**使用时间**：您需要一个Subagents来实现端到端的功能
+
+---
+
+### 6. 调试器 (`debugger.md`)
+
+**用途**：错误、测试失败和意外行为的调试专家
+
+**工具**：读取、编辑、Bash、Grep、Glob
+
+**专业**：
+- 根本原因分析
+- 错误调查
+- 测试失败解决方案
+- 最小修复实施
+
+**使用时**：您遇到错误、错误或意外行为
+
+---
+
+### 7. 数据科学家 (`data-scientist.md`)
+
+**目的**：SQL查询和数据洞察的数据分析专家
+
+**工具**：Bash、读取、写入
+
+**专业**：
+- SQL查询优化
+- BigQuery 操作
+- 数据分析和可视化
+- 统计见解
+
+**使用时**：您需要数据分析、SQL 查询或 BigQuery 操作
+
+---
+
+## 安装说明
+
+### 方法1：使用/agents命令（推荐）
 ```bash
 /agents
 ```
+然后：
+1. 选择“创建新agents”
+2. 选择项目级或用户级
+3. 详细描述您的Subagents
+4. 选择授予访问权限的工具（或留空以继承全部）
+5.保存并使用
 
-Then:
-1. Select 'Create New Agent'
-2. Choose project-level or user-level
-3. Describe your subagent in detail
-4. Select tools to grant access (or leave blank to inherit all)
-5. Save and use
+### 方法2：复制到项目
 
-### Method 2: Copy to Project
-
-Copy the agent files to your project's `.claude/agents/` directory:
-
+将agents文件复制到项目的 `.claude/agents/` 目录：
 ```bash
 # Navigate to your project
 cd /path/to/your/project
@@ -1042,11 +976,9 @@ cp /path/to/04-subagents/*.md .claude/agents/
 # Remove the README (not needed in .claude/agents)
 rm .claude/agents/README.md
 ```
+### 方法3：复制到用户目录
 
-### Method 3: Copy to User Directory
-
-For agents available in all your projects:
-
+对于您所有项目中可用的agents：
 ```bash
 # Create user agents directory
 mkdir -p ~/.claude/agents
@@ -1056,21 +988,17 @@ cp /path/to/04-subagents/code-reviewer.md ~/.claude/agents/
 cp /path/to/04-subagents/debugger.md ~/.claude/agents/
 # ... copy others as needed
 ```
+### 验证
 
-### Verification
-
-After installation, verify the agents are recognized:
-
+安装后，验证agents是否被识别：
 ```bash
 /agents
 ```
-
-You should see your installed agents listed alongside the built-in ones.
+您应该会看到已安装的agents与内置agents一起列出。
 
 ---
 
-## File Structure
-
+## 文件结构
 ```
 project/
 ├── .claude/
@@ -1084,32 +1012,30 @@ project/
 │       └── data-scientist.md
 └── ...
 ```
-
 ---
 
-## Related Concepts
+## 相关概念
 
-### Related Features
+### 相关功能
 
-- **[Slash Commands](../01-slash-commands/)** - Quick user-invoked shortcuts
-- **[Memory](../02-memory/)** - Persistent cross-session context
-- **[Skills](../03-skills/)** - Reusable autonomous capabilities
-- **[MCP Protocol](../05-mcp/)** - Real-time external data access
-- **[Hooks](../06-hooks/)** - Event-driven shell command automation
-- **[Plugins](../07-plugins/)** - Bundled extension packages
+- **[Slash Commands](../01-slash-commands/)** - 用户快速调用的快捷方式
+- **[Memory](../02-memory/)** - 持久跨会话上下文
+- **[Skills](../03-skills/)** - 可重复使用的自主功能
+- **[MCP Protocol](../05-mcp/)** - 实时外部数据访问
+- **[Hooks](../06-hooks/)** - 事件驱动的 shell 命令自动化
+- **[Plugins](../07-plugins/)** - 捆绑的扩展包
 
-### Comparison with Other Features
+### 与其他功能的比较
 
-| Feature | User-Invoked | Auto-Invoked | Persistent | External Access | Isolated Context |
-|---------|--------------|--------------|-----------|------------------|------------------|
-| **Slash Commands** | Yes | No | No | No | No |
-| **Subagents** | Yes | Yes | No | No | Yes |
-| **Memory** | Auto | Auto | Yes | No | No |
-| **MCP** | Auto | Yes | No | Yes | No |
-| **Skills** | Yes | Yes | No | No | No |
+|特色|用户调用|自动调用 |坚持不懈|外部访问|孤立的背景|
+|--------|--------------|--------------|------------------------|------------------|--------------------|
+| **斜线命令** |是的 |没有 |没有 |没有 |没有 |
+| **Subagents** |是的 |是的 |没有 |没有 |是的 |
+| **内存** |汽车 |汽车 |是的 |没有 |没有 |
+| **MCP** |汽车 |是的 |没有 |是的 |没有 |
+| **skills** |是的 |是的 |没有 |没有 |没有 |
 
-### Integration Pattern
-
+### 集成模式
 ```mermaid
 graph TD
     User["User Request"] --> Main["Main Agent"]
@@ -1122,20 +1048,19 @@ graph TD
     Subagents -->|Query| MCP
     Subagents -->|Isolated| Context["Clean Context<br/>Window"]
 ```
-
 ---
 
-## Additional Resources
+## 其他资源
 
 - [Official Subagents Documentation](https://code.claude.com/docs/en/sub-agents)
-- [CLI Reference](https://code.claude.com/docs/en/cli-reference) - `--agents` flag and other CLI options
-- [Plugins Guide](../07-plugins/) - For bundling agents with other features
-- [Skills Guide](../03-skills/) - For auto-invoked capabilities
-- [Memory Guide](../02-memory/) - For persistent context
-- [Hooks Guide](../06-hooks/) - For event-driven automation
+- [CLI Reference](https://code.claude.com/docs/en/cli-reference) - `--agents` 标志和其他 CLI 选项
+- [Plugins Guide](../07-plugins/) - 用于具有其他功能的捆绑agents
+- [Skills Guide](../03-skills/) - 用于自动调用的功能
+- [Memory Guide](../02-memory/) - 用于持久上下文
+- [Hooks Guide](../06-hooks/) - 用于事件驱动的自动化
 
 ---
 
-*Last updated: March 2026*
+*最后更新时间：2026 年 3 月*
 
-*This guide covers complete subagent configuration, delegation patterns, and best practices for Claude Code.*
+*本指南涵盖了 Claude Code 的完整Subagents配置、委派模式和最佳实践。*

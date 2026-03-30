@@ -3,70 +3,68 @@
   <img alt="Claude How To" src="resources/logos/claude-howto-logo.svg">
 </picture>
 
-# Contributing to Claude How To
+# 为claude如何做贡献
 
-Thank you for your interest in contributing to this project! This guide will help you understand how to contribute effectively.
+感谢您有兴趣为此项目做出贡献！本指南将帮助您了解如何有效地做出贡献。
 
-## About This Project
+## 关于这个项目
 
-Claude How To is a visual, example-driven guide to Claude Code. We provide:
-- **Mermaid diagrams** explaining how features work
-- **Production-ready templates** you can use immediately
-- **Real-world examples** with context and best practices
-- **Progressive learning paths** from beginner to advanced
+Claude How To 是 Claude Code 的直观、示例驱动指南。我们提供：
+- **Mermaid图**解释功能如何工作
+- **生产就绪模板**您可以立即使用
+- **真实世界的例子**以及背景和最佳实践
+- **渐进式学习路径**从初学者到高级
 
-## Types of Contributions
+## 贡献类型
 
-### 1. New Examples or Templates
-Add examples for existing features (slash commands, skills, hooks, etc.):
-- Copy-paste ready code
-- Clear explanations of how it works
-- Use cases and benefits
-- Troubleshooting tips
+### 1. 新示例或模板
+添加现有功能的示例（斜杠命令、skills、hooks等）：
+- 复制粘贴准备好的代码
+- 清晰解释其工作原理
+- 使用案例和好处
+- 故障排除提示
 
-### 2. Documentation Improvements
-- Clarify confusing sections
-- Fix typos and grammar
-- Add missing information
-- Improve code examples
+### 2. 文档改进
+- 澄清令人困惑的部分
+- 修复拼写错误和语法
+- 添加缺失的信息
+- 改进代码示例
 
-### 3. Feature Guides
-Create guides for new Claude Code features:
-- Step-by-step tutorials
-- Architecture diagrams
-- Common patterns and anti-patterns
-- Real-world workflows
+### 3. 功能指南
+为新的 Claude Code 功能创建指南：
+- 分步教程
+- 架构图
+- 常见模式和反模式
+- 真实的工作流程
 
-### 4. Bug Reports
-Report issues you encounter:
-- Describe what you expected
-- Describe what actually happened
-- Include steps to reproduce
-- Add relevant Claude Code version and OS
+### 4. 错误报告
+报告您遇到的问题：
+- 描述你的期望
+- 描述实际发生的事情
+- 包括重现步骤
+- 添加相关的claude代码版本和操作系统
 
-### 5. Feedback and Suggestions
-Help improve the guide:
-- Suggest better explanations
-- Point out gaps in coverage
-- Recommend new sections or reorganization
+### 5.反馈与建议
+帮助改进指南：
+- 建议更好的解释
+- 指出覆盖范围的差距
+- 推荐新的部分或重组
 
-## Getting Started
+## 开始使用
 
-### 1. Fork and Clone
+### 1. 分叉和克隆
 ```bash
 git clone https://github.com/luongnv89/claude-howto.git
 cd claude-howto
 ```
-
-### 2. Create a Branch
-Use a descriptive branch name:
+### 2. 创建分支
+使用描述性分支名称：
 ```bash
 git checkout -b add/feature-name
 git checkout -b fix/issue-description
 git checkout -b docs/improvement-area
 ```
-
-### 3. Set Up Your Environment
+### 3. 设置您的环境
 ```bash
 # Create virtual environment
 python3 -m venv .venv
@@ -79,9 +77,7 @@ pre-commit install
 # Run pre-commit checks manually
 pre-commit run --all-files
 ```
-
-## Directory Structure
-
+## 目录结构
 ```
 ├── 01-slash-commands/      # User-invoked shortcuts
 ├── 02-memory/              # Persistent context examples
@@ -96,128 +92,125 @@ pre-commit run --all-files
 ├── scripts/                # Build and utility scripts
 └── README.md               # Main guide
 ```
+## 如何贡献示例
 
-## How to Contribute Examples
+### 添加斜线命令
+1、在`01-slash-commands/`中创建一个`.md`文件
+2. 包括：
+   - 清楚地描述它的作用
+   - 使用案例
+   - 安装说明
+   - 使用示例
+   - 定制技巧
+3.更新`01-slash-commands/README.md`
 
-### Adding a Slash Command
-1. Create a `.md` file in `01-slash-commands/`
-2. Include:
-   - Clear description of what it does
-   - Use cases
-   - Installation instructions
-   - Usage examples
-   - Customization tips
-3. Update `01-slash-commands/README.md`
+### 添加skills
+1. 在`03-skills/`中创建目录
+2. 包括：
+   - `SKILL.md` - 主要文档
+   - `scripts/` - 帮助脚本（如果需要）
+   - `templates/` - 提示模板
+   - 自述文件中的示例用法
+3.更新`03-skills/README.md`
 
-### Adding a Skill
-1. Create a directory in `03-skills/`
-2. Include:
-   - `SKILL.md` - Main documentation
-   - `scripts/` - Helper scripts if needed
-   - `templates/` - Prompt templates
-   - Example usage in README
-3. Update `03-skills/README.md`
+### 添加Subagents
+1.在`04-subagents/`中创建一个`.md`文件
+2. 包括：
+   - subagents的目的和能力
+   - 系统提示结构
+   - 示例用例
+   - 集成示例
+3.更新`04-subagents/README.md`
 
-### Adding a Subagent
-1. Create a `.md` file in `04-subagents/`
-2. Include:
-   - Agent purpose and capabilities
-   - System prompt structure
-   - Example use cases
-   - Integration examples
-3. Update `04-subagents/README.md`
+### 添加 MCP 配置
+1.在`05-mcp/`中创建一个`.json`文件
+2. 包括：
+   - 配置说明
+   - 所需的环境变量
+   - 设置说明
+   - 使用示例
+3.更新`05-mcp/README.md`
 
-### Adding MCP Configuration
-1. Create a `.json` file in `05-mcp/`
-2. Include:
-   - Configuration explanation
-   - Required environment variables
-   - Setup instructions
-   - Usage examples
-3. Update `05-mcp/README.md`
+### 添加一个Hook
+1.在`06-hooks/`中创建一个`.sh`文件
+2. 包括：
+   - Shebang 和描述
+   - 清晰的注释解释逻辑
+   - 错误处理
+   - 安全考虑
+3.更新`06-hooks/README.md`
 
-### Adding a Hook
-1. Create a `.sh` file in `06-hooks/`
-2. Include:
-   - Shebang and description
-   - Clear comments explaining logic
-   - Error handling
-   - Security considerations
-3. Update `06-hooks/README.md`
+## 写作指南
 
-## Writing Guidelines
+### Markdown 风格
+- 使用清晰的标题（H2 表示章节，H3 表示小节）
+- 保持段落简短且重点突出
+- 对列表使用项目符号点
+- 包含带有语言规范的代码块
+- 在部分之间添加空行
 
-### Markdown Style
-- Use clear headings (H2 for sections, H3 for subsections)
-- Keep paragraphs short and focused
-- Use bullet points for lists
-- Include code blocks with language specification
-- Add blank lines between sections
+### 代码示例
+- 准备好示例复制粘贴
+- 评论不明显的逻辑
+- 包括简单版和高级版
+- 展示真实世界的用例
+- 突出潜在问题
 
-### Code Examples
-- Make examples copy-paste ready
-- Comment non-obvious logic
-- Include both simple and advanced versions
-- Show real-world use cases
-- Highlight potential issues
-
-### Documentation
-- Explain the "why" not just the "what"
-- Include prerequisites
-- Add troubleshooting sections
-- Link to related topics
-- Keep it beginner-friendly
+### 文档
+- 解释“为什么”而不仅仅是“什么”
+- 包括先决条件
+- 添加故障排除部分
+- 相关主题的链接
+- 保持初学者友好
 
 ### JSON/YAML
-- Use proper indentation (2 or 4 spaces consistently)
-- Add comments explaining configuration
-- Include validation examples
+- 使用适当的缩进（一致的 2 或 4 个空格）
+- 添加解释配置的注释
+- 包括验证示例
 
-### Diagrams
-- Use Mermaid when possible
-- Keep diagrams simple and readable
-- Include descriptions below diagrams
-- Link to relevant sections
+### 图表
+- 尽可能使用Mermaid
+- 保持图表简单易读
+- 包括图表下方的描述
+- 相关部分的链接
 
-## Commit Guidelines
+## 提交指南
 
-Follow conventional commit format:
+遵循常规提交格式：
 ```
 type(scope): description
 
 [optional body]
 ```
+类型：
+- `feat`：新功能或示例
+- `fix`：错误修复或更正
+- `docs`：文档更改
+- `refactor`：代码重组
+- `style`：格式更改
+- `test`：测试添加或更改
+- `chore`：构建、依赖项等。
 
-Types:
-- `feat`: New feature or example
-- `fix`: Bug fix or correction
-- `docs`: Documentation changes
-- `refactor`: Code restructuring
-- `style`: Formatting changes
-- `test`: Test additions or changes
-- `chore`: Build, dependencies, etc.
-
-Examples:
+示例：
 ```
 feat(slash-commands): Add API documentation generator
 docs(memory): Improve personal preferences example
 fix(README): Correct table of contents link
 docs(skills): Add comprehensive code review skill
 ```
+## 提交之前
 
-## Before Submitting
+### 清单
+- [ ] 代码遵循项目风格和约定
+- [ ] 新示例包括清晰的文档
+- [ ] README 文件已更新（本地和根）
+- [ ] 没有敏感信息（API 密钥、凭证）
+- [ ] 示例已测试且有效
+- [ ] 链接已验证且正确
+- [ ] 文件具有适当的权限（脚本可执行）
+- [ ] 提交消息清晰且具有描述性
 
-### Checklist
-- [ ] Code follows project style and conventions
-- [ ] New examples include clear documentation
-- [ ] README files are updated (both local and root)
-- [ ] No sensitive information (API keys, credentials)
-- [ ] Examples are tested and working
-- [ ] Links are verified and correct
-- [ ] Files have proper permissions (scripts are executable)
-- [ ] Commit message is clear and descriptive
-
-### Local Testing
+### 本地测试
 ```bash
 # Check file formatting
 pre-commit run --all-files
@@ -231,128 +224,127 @@ git diff
 # Test the EPUB generation (if docs changed)
 uv run scripts/build_epub.py
 ```
+## 拉取请求流程
 
-## Pull Request Process
+1. **创建具有清晰描述的 PR**：
+   - 这增加/修复了什么？
+   - 为什么需要它？
+   - 相关问题（如果有）
 
-1. **Create PR with clear description**:
-   - What does this add/fix?
-   - Why is it needed?
-   - Related issues (if any)
+2. **包括相关详细信息**：
+   - 新功能？包括用例
+   - 文档？解释改进之处
+   - 例子？显示之前/之后
 
-2. **Include relevant details**:
-   - New feature? Include use cases
-   - Documentation? Explain improvements
-   - Examples? Show before/after
+3. **问题链接**：
+   - 使用`Closes #123`自动关闭相关问题
 
-3. **Link to issues**:
-   - Use `Closes #123` to auto-close related issues
+4. **耐心等待评论**：
+   - 维护者可能会提出改进建议
+   - 根据反馈进行迭代
+   - 最终决定权在于维护者
 
-4. **Be patient with reviews**:
-   - Maintainers may suggest improvements
-   - Iterate based on feedback
-   - Final decision rests with maintainers
+## 代码审查流程
 
-## Code Review Process
+评审员将检查：
+- **准确性**：它是否按描述工作？
+- **质量**：是否可以投入生产？
+- **一致性**：它遵循项目模式吗？
+- **文档**：是否清晰且完整？
+- **安全**：是否存在任何漏洞？
 
-Reviewers will check:
-- **Accuracy**: Does it work as described?
-- **Quality**: Is it production-ready?
-- **Consistency**: Does it follow project patterns?
-- **Documentation**: Is it clear and complete?
-- **Security**: Are there any vulnerabilities?
+## 报告问题
 
-## Reporting Issues
+### 错误报告
+包括：
+- claude代码版本
+- 操作系统
+- 重现步骤
+- 预期行为
+- 实际行为
+- 屏幕截图（如果适用）
 
-### Bug Reports
-Include:
-- Claude Code version
-- Operating system
-- Steps to reproduce
-- Expected behavior
-- Actual behavior
-- Screenshots if applicable
+### 功能请求
+包括：
+- 正在解决的用例或问题
+- 提议的解决方案
+- 您考虑过的替代方案
+- 额外的背景信息
 
-### Feature Requests
-Include:
-- Use case or problem being solved
-- Proposed solution
-- Alternatives you've considered
-- Additional context
+### 文档问题
+包括：
+- 有什么令人困惑或遗漏的地方
+- 改进建议
+- 示例或参考
 
-### Documentation Issues
-Include:
-- What's confusing or missing
-- Suggested improvements
-- Examples or references
+## 项目政策
 
-## Project Policies
+### 敏感信息
+- 切勿提交 API 密钥、Token或凭据
+- 在示例中使用占位符值
+- 配置文件包含 `.env.example`
+- 记录所需的环境变量
 
-### Sensitive Information
-- Never commit API keys, tokens, or credentials
-- Use placeholder values in examples
-- Include `.env.example` for configuration files
-- Document required environment variables
+### 代码质量
+- 保持示例的重点和可读性
+- 避免过度设计解决方案
+- 包括对不明显逻辑的注释
+- 提交前彻底测试
 
-### Code Quality
-- Keep examples focused and readable
-- Avoid over-engineering solutions
-- Include comments for non-obvious logic
-- Test thoroughly before submitting
+### 知识产权
+- 原创内容归作者所有
+- 项目使用教育许可证
+- 尊重现有版权
+- 在需要时提供归属
 
-### Intellectual Property
-- Original content owned by author
-- Project uses educational license
-- Respect existing copyrights
-- Provide attribution where needed
+## 获取帮助
 
-## Getting Help
+- **问题**：在 GitHub 问题中打开讨论
+- **一般帮助**：检查现有文档
+- **开发帮助**：查看类似示例
+- **代码审查**：PR 中的标签维护者
 
-- **Questions**: Open a discussion in GitHub Issues
-- **General Help**: Check existing documentation
-- **Development Help**: Review similar examples
-- **Code Review**: Tag maintainers in PRs
+## 认可
 
-## Recognition
+贡献者在以下领域获得认可：
+- README.md 贡献者部分
+- GitHub 贡献者页面
+- 提交历史记录
 
-Contributors are recognized in:
-- README.md Contributors section
-- GitHub contributors page
-- Commit history
+## 安全
 
-## Security
+贡献示例和文档时，请遵循安全编码实践：
 
-When contributing examples and documentation, please follow secure coding practices:
+- **切勿对机密或 API 密钥进行硬编码** - 使用环境变量
+- **警告安全影响** - 突出显示潜在风险
+- **使用安全默认设置** - 默认启用安全功能
+- **验证输入** - 显示正确的输入验证和清理
+- **包括安全说明** - 记录安全注意事项
 
-- **Never hardcode secrets or API keys** - Use environment variables
-- **Warn about security implications** - Highlight potential risks
-- **Use secure defaults** - Enable security features by default
-- **Validate inputs** - Show proper input validation and sanitization
-- **Include security notes** - Document security considerations
+对于安全问题，请参阅 [SECURITY.md](SECURITY.md) 了解我们的漏洞报告流程。
 
-For security issues, see [SECURITY.md](SECURITY.md) for our vulnerability reporting process.
+＃＃ 行为守则
 
-## Code of Conduct
+我们致力于提供一个热情和包容的社区。请阅读 [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) 了解我们完整的社区标准。
 
-We are committed to providing a welcoming and inclusive community. Please read [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for our full community standards.
+简而言之：
+- 尊重和包容
+- 优雅地欢迎反馈
+- 帮助他人学习和成长
+- 避免骚扰或歧视
+- 向维护人员报告问题
 
-In brief:
-- Be respectful and inclusive
-- Welcome feedback gracefully
-- Help others learn and grow
-- Avoid harassment or discrimination
-- Report issues to maintainers
+所有贡献者都应遵守此准则并以友善和尊重的态度对待彼此。
 
-All contributors are expected to uphold this code and treat each other with kindness and respect.
+## 许可证
 
-## License
+通过为本项目做出贡献，您同意您的贡献将根据 MIT 许可证获得许可。有关详细信息，请参阅 [LICENSE](LICENSE) 文件。
 
-By contributing to this project, you agree that your contributions will be licensed under the MIT License. See [LICENSE](LICENSE) file for details.
+＃＃ 问题？
 
-## Questions?
+- 检查 [README](README.md)
+- 回顾 [LEARNING-ROADMAP.md](LEARNING-ROADMAP.md)
+- 查看现有示例
+- 打开一个问题进行讨论
 
-- Check the [README](README.md)
-- Review [LEARNING-ROADMAP.md](LEARNING-ROADMAP.md)
-- Look at existing examples
-- Open an issue for discussion
-
-Thank you for contributing! 🙏
+感谢您的贡献！ 🙏

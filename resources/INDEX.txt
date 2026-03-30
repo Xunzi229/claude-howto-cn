@@ -1,242 +1,241 @@
-╔═══════════════════════════════════════════════════════════════════════════╗
-║           CLAUDE HOW TO - BRAND ASSETS RESOURCE LIBRARY                   ║
-║                         Complete Asset Package                            ║
-╚═══════════════════════════════════════════════════════════════════════════╝
+╔═════════════════════════════════════ ═══════════════════ ═══════════════════╗
+║ claude如何 - 品牌资产资源库 ║
+║ 完整的资源包 ║
+╚═════════════════════════════════════ ═══════════════════ ═══════════════════╝
 
-📁 DIRECTORY STRUCTURE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📁 目录结构
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-resources/
+资源/
 │
-├── 📄 README.md (Complete Documentation)
-│   └─ Full guide for all assets, usage patterns, HTML integration
+├── 📄 README.md（完整文档）
+│ └─ 所有资源、使用模式、HTML 集成的完整指南
 │
-├── 📄 QUICK-START.md (Copy & Paste Solutions)
-│   └─ Fast setup, recommended sizes, color values
+├── 📄 QUICK-START.md（复制和粘贴解决方案）
+│ └─ 快速设置、推荐尺寸、色值
 │
-├── 📄 DESIGN-SYSTEM.md (Brand Guidelines)
-│   └─ Visual identity, color system, typography, effects
+├── 📄 DESIGN-SYSTEM.md（品牌指南）
+│ └─ 视觉识别、色彩系统、排版、效果
 │
-├── 📁 logos/
-│   └─ 📊 claude-howto-logo.svg (800×200px)
-│       → Main horizontal logo with terminal icon
-│       → Perfect for: Headers, marketing, print
+├── 📁 标志/
+│ └─ 📊 claude-howto-logo.svg (800×200px)
+│ → 带终端图标的主水平标志
+│ → 完美适用于：标题、营销、印刷
 │
-├── 📁 icons/
-│   └─ 🔷 claude-howto-icon.svg (256×256px)
-│       → App icon with ascending hexagons
-│       → Perfect for: Apps, avatars, thumbnails
+├── 📁 图标/
+│ └─ 🔷 claude-howto-icon.svg (256×256px)
+│ → 具有上升六边形的应用程序图标
+│ → 完美适用于：应用程序、头像、缩略图
 │
-└── 📁 favicons/
-    ├─ 🔹 favicon-16.svg   (16×16px)   → Browser tabs
-    ├─ 🔹 favicon-32.svg   (32×32px)   → Standard favicon
-    ├─ 🔹 favicon-64.svg   (64×64px)   → High-DPI
-    ├─ 🔹 favicon-128.svg  (128×128px) → Apple touch icon
-    └─ 🔹 favicon-256.svg  (256×256px) → Modern browsers/PWA
+└── 📁 图标/
+    ├─ 🔹 favicon-16.svg (16×16px) → 浏览器选项卡
+    ├─ 🔹 favicon-32.svg (32×32px) → 标准 favicon
+    ├─ 🔹 favicon-64.svg (64×64px) → 高DPI
+    ├─ 🔹 favicon-128.svg (128×128px) → 苹果触摸图标
+    └─ 🔹 favicon-256.svg (256×256px) → 现代浏览器/PWA
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-📋 QUICK FILE REFERENCE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 快速文件参考
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-FILE                          SIZE        USE CASE
+文件大小用例
 ────────────────────────────────────────────────────────────────────────────
-logos/claude-howto-logo.svg   800×200px   Website headers, marketing
-icons/claude-howto-icon.svg   256×256px   App icons, avatars, social
-favicons/favicon-32.svg       32×32px     Browser favicon (primary)
-favicons/favicon-16.svg       16×16px     Browser tab (old browsers)
-favicons/favicon-64.svg       64×64px     Bookmarks, high-DPI
-favicons/favicon-128.svg      128×128px   Apple touch icon
-favicons/favicon-256.svg      256×256px   Android, PWA, modern
+logos/claude-howto-logo.svg 800×200px 网站标题、营销
+icon/claude-howto-icon.svg 256×256px 应用程序图标、头像、社交
+favicons/favicon-32.svg 32×32px 浏览器图标（主要）
+favicons/favicon-16.svg 16×16px 浏览器选项卡（旧浏览器）
+favicons/favicon-64.svg 64×64px 书签，高 DPI
+favicons/favicon-128.svg 128×128px 苹果触摸图标
+favicons/favicon-256.svg 256×256px Android，PWA，现代
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-🎨 DESIGN CONCEPT
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎨 设计理念
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-The icon uses ASCENDING HEXAGONS to represent learning progression:
+该图标使用上升六边形来表示学习进度：
 
-              🟢 MINT (Top)
-        Advanced Features
-        Levels 7-10
+              🟢 薄荷色（上）
+        高级功能
+        7-10 级
 
-          🟢 EMERALD (Middle)
-    Intermediate Skills
-    Levels 4-6
+          🟢 祖母绿（中）
+    中级skills
+    4-6 级
 
-      🟢 DARK EMERALD (Bottom)
-  Beginner Fundamentals
-  Levels 1-3
+      🟢 深祖母绿（下）
+  初学者基础知识
+  1-3 级
 
-Visual meaning: Upward progression = Learning journey from beginner to mastery
+视觉意义：向上进步=从初学者到精通的学习旅程
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-🎨 COLOR PALETTE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎨 调色板
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-COLOR               HEX         RGB             USAGE
-─────────────────────────────────────────────────────────────────────────────
-Deep Forest         #0d1f0d     13, 31, 13      Backgrounds
-Emerald (Primary)   #10b981     16, 185, 129    Main accents
-Dark Emerald        #059669     5, 150, 105     Secondary accents
-Forest              #047857     4, 120, 87      Tertiary accents
-Mint (Highlight)    #6ee7b7     110, 231, 183   Highlights
-Light Mint          #34d399     52, 211, 153    Secondary highlights
+颜色十六进制 RGB 用法
+──────────────────────────────────────────────────────────────────────────────
+森林深处 #0d1f0d 13, 31, 13 背景
+祖母绿（主要）#10b981 16, 185, 129 主要口音
+深祖母绿 #059669 5, 150, 105 次要口音
+森林 #047857 4, 120, 87 第三重音
+薄荷色（亮点）#6ee7b7 110, 231, 183 亮点
+浅薄荷色 #34d399 52, 211, 153 次要亮点
 
-All colors maintain WCAG AAA contrast on dark backgrounds (8.2:1+)
+所有颜色在深色背景上均保持 WCAG AAA 对比度 (8.2:1+)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-📖 DOCUMENTATION FILES
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📖 文档文件
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-1. README.md
-   Complete guide covering:
-   • Asset descriptions and purposes
-   • HTML integration templates
-   • Favicon setup instructions
-   • Color palette and guidelines
-   • SVG optimization tips
-   • Accessibility considerations
+1.自述文件.md
+   完整指南涵盖：
+   • 资产描述和用途
+   • HTML 集成模板
+   • 网站图标设置说明
+   • 调色板和指南
+   • SVG 优化技巧
+   • 辅助功能注意事项
 
-2. QUICK-START.md
-   Fast reference with:
-   • Copy-paste code
-   • Recommended sizes
-   • Color CSS variables
-   • Icon meaning explanation
-   • Usage by platform
+2. 快速入门.md
+   快速参考：
+   • 复制粘贴代码
+   • 推荐尺寸
+   • 颜色CSS 变量
+   • 图标含义说明
+   • 按平台划分的使用情况
 
-3. DESIGN-SYSTEM.md
-   Brand guidelines including:
-   • Visual identity principles
-   • Color system and contrast
-   • Gradient specifications
-   • Typography standards
-   • Icon geometry details
-   • Sizing recommendations
-   • Effects and filters
-   • Customization guide
+3.设计系统.md
+   品牌指南包括：
+   • 视觉识别原则
+   • 色彩系统和对比度
+   • 梯度规格
+   • 版式标准
+   • 图标几何细节
+   • 尺寸建议
+   • 效果和滤镜
+   • 定制指南
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-🚀 GETTING STARTED
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 开始使用
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-STEP 1: Choose Your Use Case
-   • Website? → Use logos/claude-howto-logo.svg
-   • App/Avatar? → Use icons/claude-howto-icon.svg
-   • Browser? → Use favicons/favicon-32.svg
+第 1 步：选择您的用例
+   • 网站？ → 使用徽标/claude-howto-logo.svg
+   • 应用程序/头像？ → 使用图标/claude-howto-icon.svg
+   • 浏览器？ → 使用 favicons/favicon-32.svg
 
-STEP 2: Read the Right Guide
-   • Quick setup? → Read QUICK-START.md
-   • Full details? → Read README.md
-   • Brand guidelines? → Read DESIGN-SYSTEM.md
+第 2 步：阅读正确的指南
+   • 快速设置？ → 阅读 QUICK-START.md
+   • 详细信息？ → 阅读 README.md
+   • 品牌指南？ → 阅读 DESIGN-SYSTEM.md
 
-STEP 3: Copy & Use
-   • Copy file to your project
-   • Use provided HTML code
-   • Or reference from CDN/web server
+第 3 步：复制和使用
+   • 将文件复制到您的项目
+   • 使用提供的 HTML 代码
+   • 或来自 CDN/Web 服务器的参考
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-✅ FILE CHECKLIST
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ 文件清单
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-Logos:
-  ✓ claude-howto-logo.svg (main logo)
+标志：
+  ✓ claude-howto-logo.svg（主徽标）
 
-Icons:
-  ✓ claude-howto-icon.svg (app icon)
+图标：
+  ✓ claude-howto-icon.svg（应用程序图标）
 
-Favicons (all sizes):
+网站图标（所有尺寸）：
   ✓ favicon-16.svg
   ✓ favicon-32.svg
   ✓ favicon-64.svg
   ✓ favicon-128.svg
   ✓ favicon-256.svg
 
-Documentation:
-  ✓ README.md (complete guide)
-  ✓ QUICK-START.md (fast reference)
-  ✓ DESIGN-SYSTEM.md (brand guidelines)
-  ✓ INDEX.txt (this file)
+文档：
+  ✓ README.md（完整指南）
+  ✓ QUICK-START.md（快速参考）
+  ✓ DESIGN-SYSTEM.md（品牌指南）
+  ✓ INDEX.txt（此文件）
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-📝 FILE FORMATS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📝 文件格式
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-All assets are in SVG format:
-  • Scalable: Works at any size
-  • Lightweight: Smaller than PNG/JPG
-  • Sharp: No pixelation at any zoom
-  • Flexible: Can be styled with CSS/JS
-  • Universal: Works in all modern browsers
+所有资源均为 SVG 格式：
+  • 可扩展：适用于任何尺寸
+  • 轻量级：小于 PNG/JPG
+  • 锐利：任何变焦均无像素化
+  • 灵活：可以使用 CSS/JS 设计样式
+  • 通用：适用于所有现代浏览器
 
-No raster images needed - SVG covers all use cases!
+无需光栅图像 - SVG 涵盖所有用例！
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-🤝 INTEGRATION EXAMPLES
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🤝 集成示例
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-HTML (Web):
+HTML（网页）：
   <img src="resources/icons/claude-howto-icon.svg" alt="Claude How To">
 
-Markdown:
+降价：
   ![Claude How To](resources/icons/claude-howto-icon.svg)
 
-CSS Background:
-  background-image: url('resources/icons/claude-howto-icon.svg');
+CSS 背景：
+  背景图像： url('resources/icons/claude-howto-icon.svg');
 
-React/JSX:
-  import logo from './resources/icons/claude-howto-icon.svg';
+反应/JSX：
+  从 './resources/icons/claude-howto-icon.svg' 导入徽标；
   <img src={logo} alt="Claude How To" />
 
-Next.js/Web Framework:
+Next.js/Web 框架：
   <Image src={logo} alt="Claude How To" />
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-📊 ASSET STATISTICS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 资产统计
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-Total Assets: 7 SVG files
-  • 1 Logo
-  • 1 Icon
-  • 5 Favicon variants
+总资产：7 个 SVG 文件
+  • 1 个标志
+  • 1 个图标
+  • 5 个网站图标变体
 
-Documentation: 4 files
-  • Complete guide (README.md)
-  • Quick reference (QUICK-START.md)
-  • Brand guidelines (DESIGN-SYSTEM.md)
-  • This index (INDEX.txt)
+文档：4 个文件
+  • 完整指南（README.md）
+  • 快速参考（QUICK-START.md）
+  • 品牌指南 (DESIGN-SYSTEM.md)
+  • 该索引(INDEX.txt)
 
-Total Size: ~150 KB (all files)
-  • Individual SVGs: 8-15 KB each
-  • Documentation: 20-50 KB each
+总大小：~150 KB（所有文件）
+  • 单个 SVG：每个 8-15 KB
+  • 文档：每个 20-50 KB
 
-Design System Version: 1.0
-Last Updated: January 2026
+设计系统版本：1.0
+最后更新时间：2026 年 1 月
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-📞 SUPPORT & MORE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📞 支持及更多
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-For detailed information:
-  1. Start with QUICK-START.md for immediate use
-  2. Refer to README.md for complete documentation
-  3. Check DESIGN-SYSTEM.md for brand guidelines
+详细信息：
+  1.启动QUICK-START.md即可立即使用
+  2.完整文档请参考README.md
+  3. 检查 DESIGN-SYSTEM.md 了解品牌指南
 
-Questions or customization needed?
-  • Review DESIGN-SYSTEM.md for customization guide
-  • All files are fully editable SVG
-  • Maintain color palette for brand consistency
+有疑问或需要定制吗？
+  • 查看 DESIGN-SYSTEM.md 以获取定制指南
+  • 所有文件都是完全可编辑的SVG
+  • 维护调色板以保持品牌一致性
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-Happy building! 🚀
-
+快乐建设！ 🚀

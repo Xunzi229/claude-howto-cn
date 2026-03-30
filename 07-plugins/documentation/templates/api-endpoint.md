@@ -1,34 +1,33 @@
-# [METHOD] /api/v1/[endpoint]
+# [方法] /api/v1/[端点]
 
-## Description
-Brief explanation of what this endpoint does.
+## 描述
+简要说明此端点的作用。
 
-## Authentication
-Required authentication method (e.g., Bearer token).
+## 身份验证
+所需的身份验证方法（例如，承载Token）。
 
-## Parameters
+## 参数
 
-### Path Parameters
-| Name | Type | Required | Description |
+### 路径参数
+|名称 |类型 |必填|描述 |
 |------|------|----------|-------------|
-| id | string | Yes | Resource ID |
+|编号 |字符串|是的 |资源 ID |
 
-### Query Parameters
-| Name | Type | Required | Description |
+### 查询参数
+|名称 |类型 |必填|描述 |
 |------|------|----------|-------------|
-| page | integer | No | Page number (default: 1) |
-| limit | integer | No | Items per page (default: 20) |
+|页 |整数 |没有 |页码（默认：1）|
+|限制|整数 |没有 |每页项目数（默认值：20）|
 
-### Request Body
+### 请求正文
 ```json
 {
   "field": "value"
 }
 ```
+## 回应
 
-## Responses
-
-### 200 OK
+### 200 好
 ```json
 {
   "success": true,
@@ -38,8 +37,7 @@ Required authentication method (e.g., Bearer token).
   }
 }
 ```
-
-### 400 Bad Request
+### 400 错误请求
 ```json
 {
   "success": false,
@@ -49,8 +47,7 @@ Required authentication method (e.g., Bearer token).
   }
 }
 ```
-
-### 404 Not Found
+### 404 未找到
 ```json
 {
   "success": false,
@@ -60,16 +57,14 @@ Required authentication method (e.g., Bearer token).
   }
 }
 ```
+## 示例
 
-## Examples
-
-### cURL
+### 卷曲
 ```bash
 curl -X GET "https://api.example.com/api/v1/endpoint" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json"
 ```
-
 ### JavaScript
 ```javascript
 const response = await fetch('/api/v1/endpoint', {
@@ -80,8 +75,7 @@ const response = await fetch('/api/v1/endpoint', {
 });
 const data = await response.json();
 ```
-
-### Python
+＃＃＃ Python
 ```python
 import requests
 
@@ -91,11 +85,10 @@ response = requests.get(
 )
 data = response.json()
 ```
+## 速率限制
+- 经过身份验证的用户每小时 1000 个请求
+- 公共端点每小时 100 个请求
 
-## Rate Limits
-- 1000 requests per hour for authenticated users
-- 100 requests per hour for public endpoints
-
-## Related Endpoints
+## 相关端点
 - [GET /api/v1/related](#)
 - [POST /api/v1/related](#)

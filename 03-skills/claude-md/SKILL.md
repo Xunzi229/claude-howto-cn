@@ -1,79 +1,76 @@
 ---
-name: claude-md
-description: Create or update CLAUDE.md files following best practices for optimal AI agent onboarding
+姓名：claude-MD
+描述：按照最佳 AI agents入门最佳实践创建或更新 CLAUDE.md 文件
 ---
 
-## User Input
-
+## 用户输入
 ```text
 $ARGUMENTS
 ```
+在继续之前，您**必须**考虑用户输入（如果不为空）。用户可以指定：
+- `create` - 从头开始创建新的 CLAUDE.md
+- `update` - 改进现有的 CLAUDE.md
+- `audit` - 分析并报告当前 CLAUDE.md 质量
+- 创建/更新的特定路径（例如，`src/api/CLAUDE.md` 用于特定于目录的指令）
 
-You **MUST** consider the user input before proceeding (if not empty). User may specify:
-- `create` - Create new CLAUDE.md from scratch
-- `update` - Improve existing CLAUDE.md
-- `audit` - Analyze and report on current CLAUDE.md quality
-- A specific path to create/update (e.g., `src/api/CLAUDE.md` for directory-specific instructions)
+## 核心原则
 
-## Core Principles
+**LLM 是无状态的**：CLAUDE.md 是唯一一个自动包含在每个对话中的文件。它是人工智能agents进入代码库的主要入门文档。
 
-**LLMs are stateless**: CLAUDE.md is the only file automatically included in every conversation. It serves as the primary onboarding document for AI agents into your codebase.
+### 黄金法则
 
-### The Golden Rules
+1. **少即是多**：前沿LLM可以遵循约 150-200 条指令。Claude Code's的系统提示符已经使用了~50。让您的 CLAUDE.md 保持重点和简洁。
 
-1. **Less is More**: Frontier LLMs can follow ~150-200 instructions. Claude Code's system prompt already uses ~50. Keep your CLAUDE.md focused and concise.
+2. **普遍适用性**：仅包含与每个会话相关的信息。特定于任务的指令位于单独的文件中。
 
-2. **Universal Applicability**: Only include information relevant to EVERY session. Task-specific instructions belong in separate files.
+3. **不要使用 Claude 作为 Linter**：风格指南会使上下文变得臃肿并降低指令遵循性。请改用确定性工具（prettier、eslint 等）。
 
-3. **Don't Use Claude as a Linter**: Style guidelines bloat context and degrade instruction-following. Use deterministic tools (prettier, eslint, etc.) instead.
+4. **从不自动生成**：CLAUDE.md 是 AI 工具的最高杠杆点。经过仔细考虑后手动制作。
 
-4. **Never Auto-Generate**: CLAUDE.md is the highest leverage point of the AI harness. Craft it manually with careful consideration.
+## 执行流程
 
-## Execution Flow
+### 1. 项目分析
 
-### 1. Project Analysis
+首先分析一下当前项目状态：
 
-First, analyze the current project state:
+1. 检查现有的 CLAUDE.md 文件：
+- 根级别：`./CLAUDE.md` 或 `.claude/CLAUDE.md`
+- 目录特定：`**/CLAUDE.md`
+- 全局用户配置：`~/.claude/CLAUDE.md`
 
-1. Check for existing CLAUDE.md files:
-   - Root level: `./CLAUDE.md` or `.claude/CLAUDE.md`
-   - Directory-specific: `**/CLAUDE.md`
-   - Global user config: `~/.claude/CLAUDE.md`
+2.确定项目结构：
+   - 技术栈（语言、框架）
+   - 项目类型（单一应用程序、单一应用程序、库）
+   - 开发工具（包管理器、构建系统、测试运行器）
 
-2. Identify the project structure:
-   - Technology stack (languages, frameworks)
-   - Project type (monorepo, single app, library)
-   - Development tools (package manager, build system, test runner)
+3.审查现有文档：
+- 自述文件.md
+- 贡献.md
+- package.json、pyproject.toml、Cargo.toml 等
 
-3. Review existing documentation:
-   - README.md
-   - CONTRIBUTING.md
-   - package.json, pyproject.toml, Cargo.toml, etc.
+### 2. 内容策略（什么、为什么、如何）
 
-### 2. Content Strategy (WHAT, WHY, HOW)
+围绕三个维度构建 CLAUDE.md：
 
-Structure CLAUDE.md around three dimensions:
+#### 什么 - 技术与结构
+- 技术栈概述
+- 项目组织（对于 monorepos 尤其重要）
+- 关键目录及其用途
 
-#### WHAT - Technology & Structure
-- Technology stack overview
-- Project organization (especially important for monorepos)
-- Key directories and their purposes
+#### 为什么 - 目的和背景
+- 该项目的作用
+- 为什么做出某些架构决策
+- 每个主要组件负责什么
 
-#### WHY - Purpose & Context
-- What the project does
-- Why certain architectural decisions were made
-- What each major component is responsible for
+#### HOW - 工作流程和约定
+- 开发工作流程（bun vs node、pip vs uv 等）
+- 测试程序和命令
+- 验证和构建方法
+- 关键的“陷阱”或不明显的要求
 
-#### HOW - Workflow & Conventions
-- Development workflow (bun vs node, pip vs uv, etc.)
-- Testing procedures and commands
-- Verification and build methods
-- Critical "gotchas" or non-obvious requirements
+### 3. 渐进式披露策略
 
-### 3. Progressive Disclosure Strategy
-
-For larger projects, recommend creating an `agent_docs/` folder:
-
+对于较大的项目，建议创建一个 `agent_docs/` 文件夹：
 ```
 agent_docs/
   |- building_the_project.md
@@ -81,28 +78,25 @@ agent_docs/
   |- code_conventions.md
   |- architecture_decisions.md
 ```
-
-In CLAUDE.md, reference these files with instructions like:
+在 CLAUDE.md 中，使用如下指令引用这些文件：
 ```markdown
 For detailed build instructions, refer to `agent_docs/building_the_project.md`
 ```
+**重要**：使用 `file:line` 引用而不是代码片段以避免过时的上下文。
 
-**Important**: Use `file:line` references instead of code snippets to avoid outdated context.
+### 4. 质量限制
 
-### 4. Quality Constraints
+创建或更新 CLAUDE.md 时：
 
-When creating or updating CLAUDE.md:
+1. **目标长度**：300 行以下（理想情况下 100 行以下）
+2. **无样式规则**：删除任何 linting/格式化说明
+3. **无特定于任务的说明**：移至单独的文件
+4. **无代码片段**：使用文件引用代替
+5. **无冗余信息**：不要重复 package.json 或 README 中的内容
 
-1. **Target Length**: Under 300 lines (ideally under 100)
-2. **No Style Rules**: Remove any linting/formatting instructions
-3. **No Task-Specific Instructions**: Move to separate files
-4. **No Code Snippets**: Use file references instead
-5. **No Redundant Information**: Don't repeat what's in package.json or README
+### 5. 基本部分
 
-### 5. Essential Sections
-
-A well-structured CLAUDE.md should include:
-
+结构良好的 CLAUDE.md 应包括：
 ```markdown
 # Project Name
 
@@ -133,80 +127,79 @@ Brief one-line description.
 - Issue 1
 - Issue 2
 ```
+### 6. 要避免的反模式
 
-### 6. Anti-Patterns to Avoid
+**不包括：**
+- 代码风格指南（使用 linter）
+- 有关如何使用claude的文档
+- 对明显模式的详细解释
+- 复制粘贴代码示例
+- 通用最佳实践（“编写干净的代码”）
+- 具体任务的说明
+- 自动生成的内容
+- 广泛的待办事项列表
 
-**DO NOT include:**
-- Code style guidelines (use linters)
-- Documentation on how to use Claude
-- Long explanations of obvious patterns
-- Copy-pasted code examples
-- Generic best practices ("write clean code")
-- Instructions for specific tasks
-- Auto-generated content
-- Extensive TODO lists
+### 7. 验证清单
 
-### 7. Validation Checklist
+在最终确定之前，请验证：
 
-Before finalizing, verify:
+- [ ] 300行以下（最好100行以下）
+- [ ] 每行适用于所有会话
+- [ ] 无样式/格式规则
+- [ ] 无代码片段（使用文件引用）
+- [ ] 命令已验证有效
+- [ ] 用于复杂项目的渐进式披露
+- [ ] 记录了关键问题
+- [ ] 与 README.md 没有冗余
 
-- [ ] Under 300 lines (preferably under 100)
-- [ ] Every line applies to ALL sessions
-- [ ] No style/formatting rules
-- [ ] No code snippets (use file references)
-- [ ] Commands are verified to work
-- [ ] Progressive disclosure used for complex projects
-- [ ] Critical gotchas are documented
-- [ ] No redundancy with README.md
+## 输出格式
 
-## Output Format
+### 对于 `create` 或默认值：
 
-### For `create` or default:
+1. 分析项目
+2. 按照上述结构起草一个 CLAUDE.md
+3、送审稿
+4. 批准后写信至适当地点
 
-1. Analyze the project
-2. Draft a CLAUDE.md following the structure above
-3. Present the draft for review
-4. Write to the appropriate location after approval
+### 对于 `update`：
 
-### For `update`:
+1.阅读已有的CLAUDE.md
+2. 根据最佳实践进行审核
+3. 识别：
+   - 要删除的内容（样式规则、代码片段、特定于任务）
+   - 内容要浓缩
+   - 缺少重要信息
+4. 提交变更以供审核
+5. 批准后应用变更
 
-1. Read existing CLAUDE.md
-2. Audit against best practices
-3. Identify:
-   - Content to remove (style rules, code snippets, task-specific)
-   - Content to condense
-   - Missing essential information
-4. Present changes for review
-5. Apply changes after approval
+### 对于 `audit`：
 
-### For `audit`:
+1.阅读已有的CLAUDE.md
+2. 生成报告：
+   - 当前行数与目标行数
+   - 普遍适用内容的百分比
+   - 发现的反模式列表
+   - 改进建议
+3. 不要修改文件，仅报告
 
-1. Read existing CLAUDE.md
-2. Generate a report with:
-   - Current line count vs target
-   - Percentage of universally-applicable content
-   - List of anti-patterns found
-   - Recommendations for improvement
-3. Do NOT modify the file, only report
+## AGENTS.md 处理
 
-## AGENTS.md Handling
+如果用户请求 AGENTS.md 创建/更新：
 
-If the user requests AGENTS.md creation/update:
+AGENTS.md 用于定义专门的agents行为。与 CLAUDE.md（用于项目上下文）不同，AGENTS.md 定义：
+- 自定义agents角色和功能
+- agents特定的指令和限制
+- 多agents场景的工作流程定义
 
-AGENTS.md is used for defining specialized agent behaviors. Unlike CLAUDE.md (which is for project context), AGENTS.md defines:
-- Custom agent roles and capabilities
-- Agent-specific instructions and constraints
-- Workflow definitions for multi-agent scenarios
+应用类似的原则：
+- 保持重点和简洁
+- 使用渐进式披露
+- 参考外部文档而不是嵌入内容
 
-Apply similar principles:
-- Keep focused and concise
-- Use progressive disclosure
-- Reference external docs instead of embedding content
+## 注释
 
-## Notes
-
-- Always verify commands work before including them
-- When in doubt, leave it out - less is more
-- The system reminder tells Claude that CLAUDE.md "may or may not be relevant" - the more noise, the more it gets ignored
-- Monorepos benefit most from clear WHAT/WHY/HOW structure
-- Directory-specific CLAUDE.md files should be even more focused
+- 在包含命令之前始终验证命令是否有效
+- 如有疑问，请忽略 - 少即是多
+- 系统提醒告诉claude，CLAUDE.md“可能相关，也可能不相关”——噪音越多，就越容易被忽略
+- Monorepos 从清晰的“WHAT/WHY/HOW”结构中获益最多
+- 特定于目录的 CLAUDE.md 文件应该更加集中

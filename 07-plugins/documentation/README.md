@@ -3,74 +3,67 @@
   <img alt="Claude How To" src="../../resources/logos/claude-howto-logo.svg">
 </picture>
 
-# Documentation Plugin
+# 文档Plugins
 
-Comprehensive documentation generation and maintenance for your project.
+为您的项目提供全面的文档生成和维护。
 
-## Features
+## 特点
 
-✅ API documentation generation
-✅ README creation and updates
-✅ Documentation synchronization
-✅ Code comment improvements
-✅ Example generation
+✅ API 文档生成
+✅ 自述文件创建和更新
+✅ 文档同步
+✅ 代码注释改进
+✅ 示例生成
 
-## Installation
-
+## 安装
 ```bash
 /plugin install documentation
 ```
+## 包含什么
 
-## What's Included
-
-### Slash Commands
-- `/generate-api-docs` - Generate API documentation
-- `/generate-readme` - Create or update README
-- `/sync-docs` - Sync docs with code changes
-- `/validate-docs` - Validate documentation
+### 斜线命令
+- `/generate-api-docs` - 生成API文档
+- `/generate-readme` - 创建或更新自述文件
+- `/sync-docs` - 将文档与代码更改同步
+- `/validate-docs` - 验证文档
 
 ### Subagents
-- `api-documenter` - API documentation specialist
-- `code-commentator` - Code comment improvements
-- `example-generator` - Code example creation
+- `api-documenter` - API 文档专家
+- `code-commentator` - 代码注释改进
+- `example-generator` - 代码示例创建
 
-### Templates
-- `api-endpoint.md` - API endpoint documentation template
-- `function-docs.md` - Function documentation template
-- `adr-template.md` - Architecture Decision Record template
+### 模板
+- `api-endpoint.md` - API 端点文档模板
+- `function-docs.md` - 功能文档模板
+- `adr-template.md` - 架构决策记录模板
 
-### MCP Servers
-- GitHub integration for documentation syncing
+### MCP 服务器
+- GitHub 集成用于文档同步
 
-## Usage
+## 用法
 
-### Generate API Documentation
+### 生成API文档
 ```
 /generate-api-docs
 ```
-
-### Create README
+### 创建自述文件
 ```
 /generate-readme
 ```
-
-### Sync Documentation
+### 同步文档
 ```
 /sync-docs
 ```
-
-### Validate Documentation
+### 验证文档
 ```
 /validate-docs
 ```
+## 要求
 
-## Requirements
+- claude代码 1.0+
+- GitHub 访问（可选）
 
-- Claude Code 1.0+
-- GitHub access (optional)
-
-## Example Workflow
-
+## 工作流程示例
 ```
 User: /generate-api-docs
 
@@ -91,29 +84,27 @@ Result:
    - docs/api/products.md
 📊 Coverage: 23/23 endpoints documented
 ```
+## 模板使用
 
-## Templates Usage
+### API 端点模板
+用于通过完整示例记录 REST API 端点。
 
-### API Endpoint Template
-Use for documenting REST API endpoints with full examples.
+### 函数文档模板
+用于记录各个函数/方法。
 
-### Function Documentation Template
-Use for documenting individual functions/methods.
+### ADR 模板
+用于记录架构决策。
 
-### ADR Template
-Use for documenting architectural decisions.
+## 配置
 
-## Configuration
-
-Set up GitHub token for documentation syncing:
+设置 GitHub Token以进行文档同步：
 ```bash
 export GITHUB_TOKEN="your_github_token"
 ```
+## 最佳实践
 
-## Best Practices
-
-- Keep documentation close to code
-- Update docs with code changes
-- Include practical examples
-- Validate regularly
-- Use templates for consistency
+- 让文档靠近代码
+- 通过代码更改更新文档
+- 包括实际例子
+- 定期验证
+- 使用模板以保持一致性

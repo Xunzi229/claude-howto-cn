@@ -3,74 +3,67 @@
   <img alt="Claude How To" src="../../resources/logos/claude-howto-logo.svg">
 </picture>
 
-# PR Review Plugin
+# PR 审查Plugins
 
-Complete PR review workflow with security, testing, and documentation checks.
+完整的公关审查工作流程，包括安全、测试和文档检查。
 
-## Features
+## 特点
 
-✅ Security analysis
-✅ Test coverage checking
-✅ Documentation verification
-✅ Code quality assessment
-✅ Performance impact analysis
+✅ 安全分析
+✅ 测试覆盖率检查
+✅ 文件验证
+✅ 代码质量评估
+✅ 绩效影响分析
 
-## Installation
-
+## 安装
 ```bash
 /plugin install pr-review
 ```
+## 包含什么
 
-## What's Included
-
-### Slash Commands
-- `/review-pr` - Comprehensive PR review
-- `/check-security` - Security-focused review
-- `/check-tests` - Test coverage analysis
+### 斜线命令
+- `/review-pr` - 全面公关审查
+- `/check-security` - 以安全为重点的审查
+- `/check-tests` - 测试覆盖率分析
 
 ### Subagents
-- `security-reviewer` - Security vulnerability detection
-- `test-checker` - Test coverage analysis
-- `performance-analyzer` - Performance impact evaluation
+- `security-reviewer` - 安全漏洞检测
+- `test-checker` - 测试覆盖率分析
+- `performance-analyzer` - 绩效影响评估
 
-### MCP Servers
-- GitHub integration for PR data
+### MCP 服务器
+- PR 数据的 GitHub 集成
 
-### Hooks
-- `pre-review.js` - Pre-review validation
+### hooks
+- `pre-review.js` - 预审验证
 
-## Usage
+## 用法
 
-### Basic PR Review
+### 基本公关审查
 ```
 /review-pr
 ```
-
-### Security Check Only
+### 仅安全检查
 ```
 /check-security
 ```
-
-### Test Coverage Check
+### 测试覆盖率检查
 ```
 /check-tests
 ```
+## 要求
 
-## Requirements
+- claude代码 1.0+
+- GitHub 访问
+- Git 存储库
 
-- Claude Code 1.0+
-- GitHub access
-- Git repository
+## 配置
 
-## Configuration
-
-Set up your GitHub token:
+设置您的 GitHub Token：
 ```bash
 export GITHUB_TOKEN="your_github_token"
 ```
-
-## Example Workflow
-
+## 工作流程示例
 ```
 User: /review-pr
 

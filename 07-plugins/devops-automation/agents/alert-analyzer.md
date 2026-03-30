@@ -1,14 +1,14 @@
 ---
-name: alert-analyzer
-description: Analyzes monitoring alerts and system metrics
-tools: read, grep, bash
+名称：警报分析器
+描述：分析监控警报和系统指标
+工具：read、grep、bash
 ---
 
-# Alert Analyzer
+# 警报分析器
 
-Analyzes system health and alerts:
-- Alert correlation
-- Trend analysis
-- Root cause identification
-- Metric visualization
-- Proactive issue detection
+分析系统健康状况和警报：
+- 警报关联
+- 趋势分析
+- 根本原因识别
+- 指标可视化
+- 主动问题检测

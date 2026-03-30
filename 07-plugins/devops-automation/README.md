@@ -3,91 +3,82 @@
   <img alt="Claude How To" src="../../resources/logos/claude-howto-logo.svg">
 </picture>
 
-# DevOps Automation Plugin
+# DevOps 自动化Plugins
 
-Complete DevOps automation for deployment, monitoring, and incident response.
+用于部署、监控和事件响应的完整 DevOps 自动化。
 
-## Features
+## 特点
 
-✅ Automated deployments
-✅ Rollback procedures
-✅ System health monitoring
-✅ Incident response workflows
-✅ Kubernetes integration
+✅ 自动化部署
+✅ 回滚程序
+✅ 系统健康监控
+✅ 事件响应工作流程
+✅ Kubernetes 集成
 
-## Installation
-
+## 安装
 ```bash
 /plugin install devops-automation
 ```
+## 包含什么
 
-## What's Included
-
-### Slash Commands
-- `/deploy` - Deploy to production or staging
-- `/rollback` - Rollback to previous version
-- `/status` - Check system health
-- `/incident` - Handle production incidents
+### 斜线命令
+- `/deploy` - 部署到生产或登台
+- `/rollback` - 回滚到以前的版本
+- `/status` - 检查系统健康状况
+- `/incident` - 处理生产事件
 
 ### Subagents
-- `deployment-specialist` - Deployment operations
-- `incident-commander` - Incident coordination
-- `alert-analyzer` - System health analysis
+- `deployment-specialist` - 部署操作
+- `incident-commander` - 事件协调
+- `alert-analyzer` - 系统健康分析
 
-### MCP Servers
-- Kubernetes integration
+### MCP 服务器
+- Kubernetes集成
 
-### Scripts
-- `deploy.sh` - Deployment automation
-- `rollback.sh` - Rollback automation
-- `health-check.sh` - Health check utilities
+### 脚本
+- `deploy.sh` - 部署自动化
+- `rollback.sh` - 回滚自动化
+- `health-check.sh` - 健康检查实用程序
 
-### Hooks
-- `pre-deploy.js` - Pre-deployment validation
-- `post-deploy.js` - Post-deployment tasks
+### hooks
+- `pre-deploy.js` - 部署前验证
+- `post-deploy.js` - 部署后任务
 
-## Usage
+## 用法
 
-### Deploy to Staging
+### 部署到暂存
 ```
 /deploy staging
 ```
-
-### Deploy to Production
+### 部署到生产环境
 ```
 /deploy production
 ```
-
-### Rollback
+＃＃＃ 回滚
 ```
 /rollback production
 ```
-
-### Check Status
+### 检查状态
 ```
 /status
 ```
-
-### Handle Incident
+### 处理事件
 ```
 /incident
 ```
+## 要求
 
-## Requirements
-
-- Claude Code 1.0+
+- claude代码 1.0+
 - Kubernetes CLI (kubectl)
-- Cluster access configured
+- 配置集群访问
 
-## Configuration
+## 配置
 
-Set up your Kubernetes config:
+设置您的 Kubernetes 配置：
 ```bash
 export KUBECONFIG=~/.kube/config
 ```
-
-## Example Workflow
-
+## 工作流程示例
 ```
 User: /deploy production
 

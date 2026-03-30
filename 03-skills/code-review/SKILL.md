@@ -1,70 +1,70 @@
 ---
-name: code-review-specialist
-description: Comprehensive code review with security, performance, and quality analysis. Use when users ask to review code, analyze code quality, evaluate pull requests, or mention code review, security analysis, or performance optimization.
+名称：代码审查专家
+描述：全面的代码审查，包括安全性、性能和质量分析。当用户要求审查代码、分析代码质量、评估拉取请求或提及代码审查、安全分析或性能优化时使用。
 ---
 
-# Code Review Skill
+# 代码审查技巧
 
-This skill provides comprehensive code review capabilities focusing on:
+该skills提供全面的代码审查能力，重点关注：
 
-1. **Security Analysis**
-   - Authentication/authorization issues
-   - Data exposure risks
-   - Injection vulnerabilities
-   - Cryptographic weaknesses
-   - Sensitive data logging
+1. **安全分析**
+   - 身份验证/授权问题
+   - 数据暴露风险
+   - 注入漏洞
+   - 密码学弱点
+   - 敏感数据记录
 
-2. **Performance Review**
-   - Algorithm efficiency (Big O analysis)
-   - Memory optimization
-   - Database query optimization
-   - Caching opportunities
-   - Concurrency issues
+2. **绩效评估**
+- 算法效率（Big O 分析）
+   - 内存优化
+   - 数据库查询优化
+   - 缓存机会
+   - 并发问题
 
-3. **Code Quality**
-   - SOLID principles
-   - Design patterns
-   - Naming conventions
-   - Documentation
-   - Test coverage
+3. **代码质量**
+   - 坚实的原则
+   - 设计模式
+   - 命名约定
+   - 文档
+   - 测试覆盖率
 
-4. **Maintainability**
-   - Code readability
-   - Function size (should be < 50 lines)
-   - Cyclomatic complexity
-   - Dependency management
-   - Type safety
+4. **可维护性**
+   - 代码可读性
+   - 函数大小（应< 50 行）
+   - 圈复杂度
+   - 依赖管理
+   - 类型安全
 
-## Review Template
+## 审核模板
 
-For each piece of code reviewed, provide:
+对于审查的每段代码，请提供：
 
-### Summary
-- Overall quality assessment (1-5)
-- Key findings count
-- Recommended priority areas
+### 总结
+- 整体质量评估（1-5）
+- 主要发现很重要
+- 推荐的优先领域
 
-### Critical Issues (if any)
-- **Issue**: Clear description
-- **Location**: File and line number
-- **Impact**: Why this matters
-- **Severity**: Critical/High/Medium
-- **Fix**: Code example
+### 关键问题（如果有）
+- **问题**：清晰的描述
+- **位置**：文件和行号
+- **影响**：为什么这很重要
+- **严重性**：严重/高/中
+- **修复**：代码示例
 
-### Findings by Category
+### 按类别划分的调查结果
 
-#### Security (if issues found)
-List security vulnerabilities with examples
+#### 安全（如果发现问题）
+列出安全漏洞并举例
 
-#### Performance (if issues found)
-List performance problems with complexity analysis
+#### 性能（如果发现问题）
+通过复杂性分析列出性能问题
 
-#### Quality (if issues found)
-List code quality issues with refactoring suggestions
+#### 质量（如果发现问题）
+列出代码质量问题以及重构建议
 
-#### Maintainability (if issues found)
-List maintainability problems with improvements
+#### 可维护性（如果发现问题）
+列出可维护性问题并进行改进
 
-## Version History
+## 版本历史
 
-- v1.0.0 (2024-12-10): Initial release with security, performance, quality, and maintainability analysis
+- v1.0.0 (2024-12-10)：初始版本，包含安全性、性能、质量和可维护性分析

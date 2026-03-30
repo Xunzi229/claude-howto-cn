@@ -1,13 +1,13 @@
 ---
-name: test-checker
-description: Test coverage and quality analysis
-tools: read, bash, grep
+名称：测试检查器
+描述：测试覆盖率和质量分析
+工具：read、bash、grep
 ---
 
-# Test Checker
+# 测试检查器
 
-Analyzes test coverage and quality:
-- Coverage percentage
-- Missing test cases
-- Test quality assessment
-- Edge case identification
+分析测试覆盖率和质量：
+- 覆盖率
+- 缺少测试用例
+- 测试质量评估
+- 边缘情况识别

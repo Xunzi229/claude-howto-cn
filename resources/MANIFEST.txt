@@ -1,234 +1,234 @@
-╔════════════════════════════════════════════════════════════════════════════╗
-║                  CLAUDE HOW TO - COMPLETE ASSET MANIFEST                   ║
-║                      All Files Ready for Use                              ║
-╚════════════════════════════════════════════════════════════════════════════╝
+╔══════════════════ ════════════════════ ═══════════════════ ═══════════════════╗
+║ claude如何 - 完成资产清单 ║
+║ 所有文件可供使用 ║
+╚══════════════════ ════════════════════ ═══════════════════ ═══════════════════╝
 
-📦 FULL DIRECTORY MANIFEST
-═════════════════════════════════════════════════════════════════════════════
+📦 完整目录清单
+══════════════════════════════════════ ═══════════════════ ════════════════════
 
-resources/
+资源/
 │
-├─ 📄 README.md                          (6.0K) Complete documentation
-├─ 📄 QUICK-START.md                     (2.5K) Copy & paste setup
-├─ 📄 DESIGN-SYSTEM.md                   (7.7K) Brand guidelines
-├─ 📄 INDEX.txt                          (12K)  Visual reference
-├─ 📄 MANIFEST.txt                       (this) File listing
+├─ 📄 README.md (6.0K) 完整文档
+├─ 📄 QUICK-START.md (2.5K) 复制并粘贴设置
+├─ 📄 DESIGN-SYSTEM.md (7.7K) 品牌指南
+├─ 📄 INDEX.txt (12K) 视觉参考
+├─ 📄 MANIFEST.txt（本）文件列表
 │
-├─ 📁 logos/                             (8.0K total)
-│  └─ 📊 claude-howto-logo.svg          (8.0K) 800×200px main logo
+├─ 📁 徽标/（共 8.0K）
+│ └─ 📊 claude-howto-logo.svg (8.0K) 800×200px 主标志
 │
-├─ 📁 icons/                             (8.0K total)
-│  └─ 🔷 claude-howto-icon.svg          (8.0K) 256×256px app icon
+├─ 📁 图标/（共 8.0K）
+│ └─ 🔷 claude-howto-icon.svg (8.0K) 256×256px 应用程序图标
 │
-└─ 📁 favicons/                          (20K total)
-   ├─ 🔹 favicon-16.svg                 (3.2K) 16×16px browser tab
-   ├─ 🔹 favicon-32.svg                 (3.8K) 32×32px standard
-   ├─ 🔹 favicon-64.svg                 (4.1K) 64×64px high-DPI
-   ├─ 🔹 favicon-128.svg                (4.5K) 128×128px apple touch
-   └─ 🔹 favicon-256.svg                (4.9K) 256×256px modern
+└─ 📁 图标/（总共 20K）
+   ├─ 🔹 favicon-16.svg (3.2K) 16×16px 浏览器选项卡
+   ├─ 🔹 favicon-32.svg (3.8K) 32×32px 标准
+   ├─ 🔹 favicon-64.svg (4.1K) 64×64px 高DPI
+   ├─ 🔹 favicon-128.svg (4.5K) 128×128px 苹果触摸
+   └─ 🔹 favicon-256.svg (4.9K) 256×256px 现代
 
-═════════════════════════════════════════════════════════════════════════════
+══════════════════════════════════════ ═══════════════════ ════════════════════
 
-📊 ASSET SUMMARY
-═════════════════════════════════════════════════════════════════════════════
+📊 资产概要
+══════════════════════════════════════ ═══════════════════ ════════════════════
 
-CATEGORY        COUNT   PURPOSE
+类别 计数 目的
 ────────────────────────────────────────────────────────────────────────────
-Logos           1       Main horizontal logo for headers/marketing
-Icons           1       App icon for avatars/thumbnails
-Favicons        5       Browser tabs, bookmarks, mobile icons
-Documentation   5       Setup guides, design system, reference
+徽标 1 标题/营销的主要水平徽标
+图标 1 个头像/缩略图的应用程序图标
+Favicons 5 浏览器选项卡、书签、移动图标
+文档 5 设置指南、设计系统、参考
 ────────────────────────────────────────────────────────────────────────────
-TOTAL           12      Complete brand asset package
+总计 12 个完整的品牌资产包
 
-═════════════════════════════════════════════════════════════════════════════
+══════════════════════════════════════ ═══════════════════ ════════════════════
 
-📄 DOCUMENTATION FILES - WHAT TO READ
+📄 文档文件 - 阅读内容
 
-1️⃣  START HERE: QUICK-START.md
-    • Copy & paste HTML code
-    • Recommended sizes by use case
-    • CSS color variables
-    • Quick integration examples
-    ⏱️  5 minute read
+1️⃣ 从这里开始：QUICK-START.md
+    • 复制并粘贴 HTML 代码
+    • 按使用案例推荐的尺寸
+    • CSS 颜色变量
+    • 快速集成示例
+    ⏱️阅读5分钟
 
-2️⃣  FULL DETAILS: README.md
-    • Complete asset descriptions
-    • HTML/CSS integration guide
-    • Favicon setup instructions
-    • Accessibility & optimization
-    ⏱️  15 minute read
+2️⃣ 完整详细信息：README.md
+    • 完整的资产描述
+    • HTML/CSS 集成指南
+    • 网站图标设置说明
+    • 辅助功能和优化
+    ⏱️阅读15分钟
 
-3️⃣  BRAND GUIDELINES: DESIGN-SYSTEM.md
-    • Visual identity principles
-    • Complete color system specs
-    • Icon geometry details
-    • Effects and filters
-    • Customization instructions
-    ⏱️  20 minute read
+3️⃣ 品牌指南：DESIGN-SYSTEM.md
+    • 视觉识别原则
+    • 完整的色彩系统规格
+    • 图标几何细节
+    • 效果和滤镜
+    • 定制说明
+    ⏱️阅读20分钟
 
-4️⃣  VISUAL REFERENCE: INDEX.txt
-    • Directory structure diagram
-    • File quick reference table
-    • Design concept visualization
-    • Integration examples
-    ⏱️  10 minute read
+4️⃣ 视觉参考：INDEX.txt
+    • 目录结构图
+    • 文件快速参考表
+    • 设计概念可视化
+    • 集成示例
+    ⏱️阅读10分钟
 
-═════════════════════════════════════════════════════════════════════════════
+══════════════════════════════════════ ═══════════════════ ════════════════════
 
-🎯 QUICK USAGE GUIDE
+🎯 快速使用指南
 
-FOR WEBSITES (HTML):
+对于网站 (HTML)：
   <link rel="icon" type="image/svg+xml" href="/resources/favicons/favicon-32.svg">
   <link rel="apple-touch-icon" href="/resources/favicons/favicon-128.svg">
 
-FOR MARKDOWN:
+对于降价：
   ![Claude How To](resources/icons/claude-howto-icon.svg)
 
-FOR REACT/NEXT.JS:
-  import icon from './resources/icons/claude-howto-icon.svg';
+对于 REACT/NEXT.JS：
+  从 './resources/icons/claude-howto-icon.svg' 导入图标；
 
-FOR CSS BACKGROUND:
-  background-image: url('resources/icons/claude-howto-icon.svg');
+CSS 背景：
+  背景图像： url('resources/icons/claude-howto-icon.svg');
 
-═════════════════════════════════════════════════════════════════════════════
+══════════════════════════════════════ ═══════════════════ ════════════════════
 
-🎨 FILE SELECTION BY USE CASE
+🎨 按用例选择文件
 
-USE CASE                    FILE                        SIZE
-─────────────────────────────────────────────────────────────────────────────
-Website header              logos/claude-howto-logo.svg     800×200px
-Browser tab                 favicons/favicon-32.svg         32×32px
-Mobile home screen          favicons/favicon-128.svg        128×128px
-App icon                    icons/claude-howto-icon.svg     256×256px
-Social media thumbnail      icons/claude-howto-icon.svg     256×256px
-Bookmark/favorite icon      favicons/favicon-64.svg         64×64px
-Apple touch icon            favicons/favicon-128.svg        128×128px
-PWA/Android app             favicons/favicon-256.svg        256×256px
-Old browsers (fallback)     favicons/favicon-16.svg         16×16px
+用例文件大小
+──────────────────────────────────────────────────────────────────────────────
+网站标题标志/claude-howto-logo.svg 800×200px
+浏览器选项卡 favicons/favicon-32.svg 32×32px
+移动主屏幕 favicons/favicon-128.svg 128×128px
+应用程序图标 icon/claude-howto-icon.svg 256×256px
+社交媒体缩略图图标/claude-howto-icon.svg 256×256px
+书签/最喜欢的图标 favicons/favicon-64.svg 64×64px
+苹果触摸图标 favicons/favicon-128.svg 128×128px
+PWA/Android 应用程序图标/favicon-256.svg 256×256px
+旧浏览器（后备）favicons/favicon-16.svg 16×16px
 
-═════════════════════════════════════════════════════════════════════════════
+══════════════════════════════════════ ═══════════════════ ════════════════════
 
-✅ VERIFICATION CHECKLIST
+✅ 验证清单
 
-SVG Assets:
-  ✓ logos/claude-howto-logo.svg       Main logo
-  ✓ icons/claude-howto-icon.svg       App icon
-  ✓ favicons/favicon-16.svg           16px favicon
-  ✓ favicons/favicon-32.svg           32px favicon
-  ✓ favicons/favicon-64.svg           64px favicon
-  ✓ favicons/favicon-128.svg          128px favicon
-  ✓ favicons/favicon-256.svg          256px favicon
+SVG 资产：
+  ✓ logos/claude-howto-logo.svg 主标志
+  ✓ icon/claude-howto-icon.svg 应用程序图标
+  ✓ 图标/favicon-16.svg 16px 图标
+  ✓ favicons/favicon-32.svg 32px favicon
+  ✓ favicons/favicon-64.svg 64px 网站图标
+  ✓ 图标/favicon-128.svg 128px 图标
+  ✓ favicons/favicon-256.svg 256px 网站图标
 
-Documentation:
-  ✓ README.md                         Complete guide
-  ✓ QUICK-START.md                    Setup guide
-  ✓ DESIGN-SYSTEM.md                  Brand guidelines
-  ✓ INDEX.txt                         Visual reference
-  ✓ MANIFEST.txt                      This file
+文档：
+  ✓ README.md 完整指南
+  ✓ QUICK-START.md 设置指南
+  ✓ DESIGN-SYSTEM.md 品牌指南
+  ✓ INDEX.txt 视觉参考
+  ✓ MANIFEST.txt 这个文件
 
-═════════════════════════════════════════════════════════════════════════════
+══════════════════════════════════════ ═══════════════════ ════════════════════
 
-🎨 DESIGN CONCEPT
+🎨 设计理念
 
-The icon represents the Claude How To learning journey with ascending hexagons:
+该图标代表带有上升六边形的 Claude How To 学习之旅：
 
-              🔶 MINT
-        Advanced Features
-        Levels 7-10
+              🔶 薄荷
+        高级功能
+        7-10 级
 
-          🔶 EMERALD
-    Intermediate Skills
-    Levels 4-6
+          🔶 祖母绿
+    中级skills
+    4-6 级
 
-      🔶 DARK EMERALD
-  Beginner Fundamentals
-  Levels 1-3
+      🔶 深祖母绿
+  初学者基础知识
+  1-3 级
 
-COLOR PALETTE:
-  • Deep Forest    #0d1f0d    Background
-  • Emerald        #10b981    Primary accent
-  • Dark Emerald   #059669    Secondary accent
-  • Forest         #047857    Tertiary accent
-  • Mint           #6ee7b7    Highlight
-  • Light Mint     #34d399    Secondary highlight
+调色板：
+  • 森林深处#0d1f0d 背景
+  • 翡翠#10b981 主要口音
+  • 深翡翠#059669 次要口音
+  • Forest #047857 第三重口音
+  • 完好无损 #6ee7b7 亮点
+  • 浅薄荷色 #34d399 次要亮点
 
-All colors: WCAG AAA accessible (8.2:1+ contrast)
+所有颜色：WCAG AAA 可访问（8.2:1+ 对比度）
 
-═════════════════════════════════════════════════════════════════════════════
+══════════════════════════════════════ ═══════════════════ ════════════════════
 
-📥 HOW TO INTEGRATE
+📥 如何整合
 
-STEP 1: Copy files
+第 1 步：复制文件
   cp -r resources/ /path/to/your/project/
 
-STEP 2: Read documentation
-  Start with resources/QUICK-START.md
+第 2 步：阅读文档
+  从资源/QUICK-START.md 开始
 
-STEP 3: Add to HTML
-  Copy provided code snippets (see QUICK-START.md)
+第 3 步：添加到 HTML
+  复制提供的代码片段（请参阅 QUICK-START.md）
 
-STEP 4: Customize (optional)
-  Reference DESIGN-SYSTEM.md for color changes
+第 4 步：自定义（可选）
+  颜色变化参考DESIGN-SYSTEM.md
 
-═════════════════════════════════════════════════════════════════════════════
+══════════════════════════════════════ ═══════════════════ ════════════════════
 
-📋 FILE SPECIFICATIONS
+📋 文件规格
 
-Format:             SVG (Scalable Vector Graphics)
-Scalability:        Any size, no pixelation
-Browser Support:    All modern browsers
-Accessibility:      WCAG AAA compliant
-Color Mode:         RGB/RGBA with gradients
-Effects:            Gradients, shadows, glows
-Customizable:       Yes, see DESIGN-SYSTEM.md
-Animated:           Static (can be animated with CSS/JS)
+格式：SVG（可缩放矢量图形）
+可扩展性：任何尺寸，无像素化
+浏览器支持：所有现代浏览器
+辅助功能：符合 WCAG AAA 标准
+颜色模式：RGB/RGBA 带渐变
+效果：渐变、阴影、发光
+可定制：是的，参见DESIGN-SYSTEM.md
+动画：静态（可以使用 CSS/JS 制作动画）
 
-═════════════════════════════════════════════════════════════════════════════
+══════════════════════════════════════ ═══════════════════ ════════════════════
 
-🚀 NEXT STEPS
+🚀 下一步
 
-IMMEDIATE:
-  1. Read resources/QUICK-START.md
-  2. Copy favicons to your project
-  3. Add favicon link to your HTML
+立即：
+  1.阅读资源/QUICK-START.md
+  2. 将网站图标复制到您的项目中
+  3. 将网站图标链接添加到 HTML
 
-SHORT TERM:
-  1. Integrate logo into website
-  2. Use icon for social media
-  3. Review DESIGN-SYSTEM.md
+短期：
+  1. 将徽标集成到网站中
+  2.使用社交媒体图标
+  3.查看DESIGN-SYSTEM.md
 
-LONG TERM:
-  1. Maintain color palette consistency
-  2. Use brand assets across all materials
-  3. Reference guidelines for any customizations
+长期：
+  1.保持调色板的一致性
+  2. 在所有材料中使用品牌资产
+  3. 任何定制的参考指南
 
-═════════════════════════════════════════════════════════════════════════════
+══════════════════════════════════════ ═══════════════════ ════════════════════
 
-💡 PRO TIPS
+💡 专业提示
 
-• Use favicon-32.svg as primary favicon (works on all modern browsers)
-• Use icons/claude-howto-icon.svg for avatars at 64-256px
-• Use logos/claude-howto-logo.svg for website headers (scale to fit)
-• Keep the ascending hexagon concept for any custom variants
-• Always maintain the established color palette
-• SVG files are editable - see DESIGN-SYSTEM.md for color customization
-• No PNG conversion needed - SVG works everywhere
+• 使用 favicon-32.svg 作为主要 favicon（适用于所有现代浏览器）
+• 使用icons/claude-howto-icon.svg 作为64-256px 的头像
+• 使用 logos/claude-howto-logo.svg 作为网站标题（缩放以适合）
+• 为任何自定义变体保留上升六边形概念
+• 始终保持既定的调色板
+• SVG 文件是可编辑的 - 请参阅 DESIGN-SYSTEM.md 以进行颜色自定义
+• 无需 PNG 转换 - SVG 随处可用
 
-═════════════════════════════════════════════════════════════════════════════
+══════════════════════════════════════ ═══════════════════ ════════════════════
 
-📞 NEED HELP?
+📞 需要帮助吗？
 
-1. Quick setup?          → Read QUICK-START.md
-2. Full reference?       → Read README.md
-3. Brand guidelines?     → Read DESIGN-SYSTEM.md
-4. Visual overview?      → Read INDEX.txt
-5. Find a specific file? → Read this MANIFEST.txt
+1. 快速设置？          → 阅读 QUICK-START.md
+2.完整的参考资料？       → 阅读 README.md
+3. 品牌指南？     → 阅读 DESIGN-SYSTEM.md
+4. 视觉概览？      → 阅读 INDEX.txt
+5. 查找特定文件？ → 阅读此 MANIFEST.txt
 
-═════════════════════════════════════════════════════════════════════════════
+══════════════════════════════════════ ═══════════════════ ════════════════════
 
-Generated: January 2026
-Design System: v1.0
-All files production-ready ✅
+生成时间：2026 年 1 月
+设计系统：v1.0
+所有文件已准备就绪 ✅
 
-═════════════════════════════════════════════════════════════════════════════
+══════════════════════════════════════ ═══════════════════ ════════════════════

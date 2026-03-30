@@ -1,109 +1,109 @@
-# Changelog
+# 变更日志
 
 ## v2.2.0 — 2026-03-26
 
-### Documentation
+### 文档
 
-- Sync all tutorials and references with Claude Code v2.1.84 (f78c094) @luongnv89
-  - Update slash commands to 55+ built-in + 5 bundled skills, mark 3 deprecated
-  - Expand hook events from 18 to 25, add `agent` hook type (now 4 types)
-  - Add Auto Mode, Channels, Voice Dictation to advanced features
-  - Add `effort`, `shell` skill frontmatter fields; `initialPrompt`, `disallowedTools` agent fields
-  - Add WebSocket MCP transport, elicitation, 2KB tool cap
-  - Add plugin LSP support, `userConfig`, `${CLAUDE_PLUGIN_DATA}`
-  - Update all reference docs (CATALOG, QUICK_REFERENCE, LEARNING-ROADMAP, INDEX)
-- Rewrite README as landing-page-structured guide (32a0776) @luongnv89
+- 将所有教程和参考与 Claude Code v2.1.84 (f78c094) @luongnv89 同步
+  - 将斜杠命令更新为 55+ 内置 + 5 项捆绑skills，标记 3 项已弃用
+  - 将Hook事件从18个扩展到25个，添加`agent`Hook类型（现在有4种）
+  - 添加自动模式、频道、语音听写等高级功能
+  - 添加`effort`、`shell`skills前题字段； `initialPrompt`、`disallowedTools` agents字段
+  - 添加 WebSocket MCP 传输、启发、2KB 工具上限
+  - 添加Plugins LSP 支持，`userConfig`，`${CLAUDE_PLUGIN_DATA}`
+  - 更新所有参考文档（CATALOG、QUICK_REFERENCE、LEARNING-ROADMAP、INDEX）
+- 将自述文件重写为登陆页面结构指南 (32a0776) @luongnv89
 
-### Bug Fixes
+### 错误修复
 
-- Add missing cSpell words and README sections for CI compliance (93f9d51) @luongnv89
-- Add `Sandboxing` to cSpell dictionary (b80ce6f) @luongnv89
+- 添加缺失的 cSpell 单词和自述文件部分以实现 CI 合规性 (93f9d51) @luongnv89
+- 将 `Sandboxing` 添加到 cSpell 字典 (b80ce6f) @luongnv89
 
-**Full Changelog**: https://github.com/luongnv89/claude-howto/compare/v2.1.1...v2.2.0
+**完整变更日志**：https://github.com/luongnv89/claude-howto/compare/v2.1.1...v2.2.0
 
 ---
 
 ## v2.1.1 — 2026-03-13
 
-### Bug Fixes
+### 错误修复
 
-- Remove dead marketplace link failing CI link checks (3fdf0d6) @luongnv89
-- Add `sandboxed` and `pycache` to cSpell dictionary (dc64618) @luongnv89
+- 删除未通过 CI 链接检查的无效市场链接 (3fdf0d6) @luongnv89
+- 将 `sandboxed` 和 `pycache` 添加到 cSpell 字典 (dc64618) @luongnv89
 
-**Full Changelog**: https://github.com/luongnv89/claude-howto/compare/v2.1.0...v2.1.1
+**完整变更日志**：https://github.com/luongnv89/claude-howto/compare/v2.1.0...v2.1.1
 
 ---
 
 ## v2.1.0 — 2026-03-13
 
-### Features
+### 特点
 
-- Add adaptive learning path with self-assessment and lesson quiz skills (1ef46cd) @luongnv89
-  - `/self-assessment` — interactive proficiency quiz across 10 feature areas with personalized learning path
-  - `/lesson-quiz [lesson]` — per-lesson knowledge check with 8-10 targeted questions
+- 添加具有自我评估和课程测验skills的自适应学习路径（1ef46cd）@luongnv89
+  - `/self-assessment` — 跨越 10 个功能领域的互动能力测验，提供个性化学习路径
+  - `/lesson-quiz [lesson]` — 每课知识检查，包含 8-10 个有针对性的问题
 
-### Bug Fixes
+### 错误修复
 
-- Update broken URLs, deprecations, and outdated references (8fe4520) @luongnv89
-- Fix broken links in resources and self-assessment skill (7a05863) @luongnv89
-- Use tilde fences for nested code blocks in concepts guide (5f82719) @VikalpP
-- Add missing words to cSpell dictionary (8df7572) @luongnv89
+- 更新损坏的 URL、弃用和过时的引用 (8fe4520) @luongnv89
+- 修复资源和自我评估skills中损坏的链接（7a05863）@luongnv89
+- 在概念指南中使用波浪号栅栏来嵌套代码块（5f82719）@VikalpP
+- 将缺失的单词添加到 cSpell 词典 (8df7572) @luongnv89
 
-### Documentation
+### 文档
 
-- Phase 5 QA — fix consistency, URLs, and terminology across docs (00bbe4c) @luongnv89
-- Complete Phases 3-4 — new feature coverage and reference doc updates (132de29) @luongnv89
-- Add MCPorter runtime to MCP context bloat section (ef52705) @luongnv89
-- Add missing commands, features, and settings across 6 guides (4bc8f15) @luongnv89
-- Add style guide based on existing repo conventions (84141d0) @luongnv89
-- Add self-assessment row to guide comparison table (8fe0c96) @luongnv89
-- Add VikalpP to contributors list for PR #7 (d5b4350) @luongnv89
-- Add self-assessment and lesson-quiz skill references to README and roadmap (d5a6106) @luongnv89
+- 第 5 阶段 QA — 修复文档之间的一致性、URL 和术语 (00bbe4c) @luongnv89
+- 完成第 3-4 阶段 — 新功能覆盖范围和参考文档更新 (132de29) @luongnv89
+- 将 MCPorter 运行时添加到 MCP 上下文膨胀部分 (ef52705) @luongnv89
+- 在 6 个指南中添加缺少的命令、功能和设置 (4bc8f15) @luongnv89
+- 添加基于现有存储库约定的样式指南 (84141d0) @luongnv89
+- 添加自我评估行到指南比较表（8fe0c96）@luongnv89
+- 将 VikalpP 添加到 PR #7 (d5b4350) @luongnv89 的贡献者列表
+- 在自述文件和路线图中添加自我评估和课程测验skills参考（d5a6106）@luongnv89
 
-### New Contributors
+### 新贡献者
 
-- @VikalpP made their first contribution in #7
+- @VikalpP 在#7 中做出了第一个贡献
 
-**Full Changelog**: https://github.com/luongnv89/claude-howto/compare/v2.0.0...v2.1.0
+**完整变更日志**：https://github.com/luongnv89/claude-howto/compare/v2.0.0...v2.1.0
 
 ---
 
 ## v2.0.0 — 2026-02-01
 
-### Features
+### 特点
 
-- Sync all documentation with Claude Code February 2026 features (487c96d)
-  - Update 26 files across all 10 tutorial directories and 7 reference documents
-  - Add documentation for **Auto Memory** — persistent learnings per project
-  - Add documentation for **Remote Control**, **Web Sessions**, and **Desktop App**
-  - Add documentation for **Agent Teams** (experimental multi-agent collaboration)
-  - Add documentation for **MCP OAuth 2.0**, **Tool Search**, and **Claude.ai Connectors**
-  - Add documentation for **Persistent Memory** and **Worktree Isolation** for subagents
-  - Add documentation for **Background Subagents**, **Task List**, **Prompt Suggestions**
-  - Add documentation for **Sandboxing** and **Managed Settings** (Enterprise)
-  - Add documentation for **HTTP Hooks** and 7 new hook events
-  - Add documentation for **Plugin Settings**, **LSP Servers**, and Marketplace updates
-  - Add documentation for **Summarize from Checkpoint** rewind option
-  - Document 17 new slash commands (`/fork`, `/desktop`, `/teleport`, `/tasks`, `/fast`, etc.)
-  - Document new CLI flags (`--worktree`, `--from-pr`, `--remote`, `--teleport`, `--teammate-mode`, etc.)
-  - Document new environment variables for auto memory, effort levels, agent teams, and more
+- 将所有文档与 Claude Code February 2026 功能同步 (487c96d)
+  - 更新了所有 10 个教程目录和 7 个参考文档中的 26 个文件
+  - 添加**自动记忆**文档 - 每个项目的持续学习
+  - 添加**远程控制**、**网络会话**和**桌面应用程序**的文档
+  - 添加 **agents团队** 的文档（实验性多agents协作）
+  - 添加 **MCP OAuth 2.0**、**工具搜索**和 **Claude.ai 连接器**的文档
+  - 为Subagents添加**持久内存**和**工作树隔离**的文档
+  - 添加**后台Subagents**、**任务列表**、**提示建议**的文档
+  - 添加**沙盒**和**托管设置**（企业）的文档
+  - 添加 **HTTP Hooks** 和 7 个新hooks事件的文档
+  - 添加**Plugins设置**、**LSP 服务器**和市场更新的文档
+  - 添加 **从检查点总结** 倒回选项的文档
+  - 记录 17 个新斜杠命令（`/fork`、`/desktop`、`/teleport`、`/tasks`、`/fast` 等）
+  - 记录新的 CLI 标志（`--worktree`、`--from-pr`、`--remote`、`--teleport`、`--teammate-mode` 等）
+  - 记录自动记忆、工作水平、agents团队等的新环境变量
 
-### Design
+### 设计
 
-- Redesign logo to compass-bracket mark with minimal palette (20779db)
+- 使用最小调色板将徽标重新设计为罗盘括号标记（20779db）
 
-### Bug Fixes / Corrections
+### 错误修复/更正
 
-- Update model names: Sonnet 4.5 → **Sonnet 4.6**, Opus 4.5 → **Opus 4.6**
-- Fix permission mode names: replace fictional "Unrestricted/Confirm/Read-only" with actual `default`/`acceptEdits`/`plan`/`dontAsk`/`bypassPermissions`
-- Fix hook events: remove fictional `PreCommit`/`PostCommit`/`PrePush`, add real events (`SubagentStart`, `WorktreeCreate`, `ConfigChange`, etc.)
-- Fix CLI syntax: replace `claude-code --headless` with `claude -p` (print mode)
-- Fix checkpoint commands: replace fictional `/checkpoint save/list/rewind/diff` with actual `Esc+Esc` / `/rewind` interface
-- Fix session management: replace fictional `/session list/new/switch/save` with real `/resume`/`/rename`/`/fork`
-- Fix plugin manifest format: migrate `plugin.yaml` → `.claude-plugin/plugin.json`
-- Fix MCP config paths: `~/.claude/mcp.json` → `.mcp.json` (project) / `~/.claude.json` (user)
-- Fix documentation URLs: `docs.claude.com` → `docs.anthropic.com`; remove fictional `plugins.claude.com`
-- Remove fictional configuration fields across multiple files
-- Update all "Last Updated" dates to February 2026
+- 更新型号名称：Sonnet 4.5 → **Sonnet 4.6**、Opus 4.5 → **Opus 4.6**
+- 修复权限模式名称：将虚构的“无限制/确认/只读”替换为实际的 `default`/`acceptEdits`/`plan`/`dontAsk`/`bypassPermissions`
+- 修复hooks事件：删除虚构的 `PreCommit`/`PostCommit`/`PrePush`，添加真实事件（`SubagentStart`、`WorktreeCreate`、`ConfigChange` 等）
+- 修复 CLI 语法：将 `claude-code --headless` 替换为 `claude -p`（打印模式）
+- 修复检查点命令：用实际的 `Esc+Esc` / `/rewind` 接口替换虚构的 `/checkpoint save/list/rewind/diff`
+- 修复会话管理：用真实的 `/resume`/`/rename`/`/fork` 替换虚构的 `/session list/new/switch/save`
+- 修复Plugins清单格式：迁移 `plugin.yaml` → `.claude-plugin/plugin.json`
+- 修复 MCP 配置路径：`~/.claude/mcp.json` → `.mcp.json`（项目）/`~/.claude.json`（用户）
+- 修复文档 URL：`docs.claude.com` → `docs.anthropic.com`；删除虚构的 `plugins.claude.com`
+- 删除多个文件中的虚构配置字段
+- 将所有“上次更新”日期更新为 2026 年 2 月
 
-**Full Changelog**: https://github.com/luongnv89/claude-howto/compare/20779db...v2.0.0
+**完整变更日志**：https://github.com/luongnv89/claude-howto/compare/20779db...v2.0.0

@@ -1,44 +1,44 @@
 #!/usr/bin/env python3
 """
-Context Usage Tracker - Tracks token consumption per request.
+Context Usage Tracker - 跟踪每个请求的 token 消耗。
 
-Uses UserPromptSubmit as "pre-message" hook and Stop as "post-response" hook
-to calculate the delta in token usage for each request.
+使用 UserPromptSubmit 作为 "pre-message" Hook和 Stop 作为 "post-response" Hook
+计算每个请求的 token 使用增量。
 
-This version uses character-based estimation (no dependencies).
-For better accuracy, see context-tracker-tiktoken.py.
+此版本使用基于字符的估计（无依赖项）。
+为了获得更好的准确性，请参阅 context-tracker-tiktoken.py。
 
-Usage:
-    Configure both hooks to use the same script:
-    - UserPromptSubmit: saves current token count
-    - Stop: calculates delta and reports usage
+用法:
+    配置两个Hook使用相同的脚本:
+    - UserPromptSubmit: 在请求前保存当前 token 计数
+    - Stop: 计算增量并报告使用情况
 """
 import json
 import os
 import sys
 import tempfile
 
-# Configuration
-CONTEXT_LIMIT = 128000  # Claude's context window (adjust for your model)
+# 配置
+CONTEXT_LIMIT = 128000  # Claude 的上下文窗口（根据您的模型调整）
 
 
 def get_state_file(session_id: str) -> str:
-    """Get temp file path for storing pre-message token count, isolated by session."""
+    """获取用于存储 message 前 token 计数的临时文件路径，按会话隔离。"""
     return os.path.join(tempfile.gettempdir(), f"claude-context-{session_id}.json")
 
 
 def count_tokens_estimate(text: str) -> int:
     """
-    Estimate token count using character-based approximation.
+    使用基于字符的近似值估计 token 计数。
 
-    Uses ~4 characters per token ratio, which provides ~80-90% accuracy
-    for English text. Less accurate for code and non-English text.
+    使用约 4 个字符/ token 的比率，对于英文文本提供约 80-90% 的准确性。
+    对于代码和非英文文本的准确性较低。
     """
     return len(text) // 4
 
 
 def read_transcript(transcript_path: str) -> str:
-    """Read and concatenate all content from transcript file."""
+    """读取并连接 transcript 文件的所有内容。"""
     if not transcript_path or not os.path.exists(transcript_path):
         return ""
 
@@ -47,7 +47,7 @@ def read_transcript(transcript_path: str) -> str:
         for line in f:
             try:
                 entry = json.loads(line.strip())
-                # Extract text content from various message formats
+                # 从各种消息格式中提取文本内容
                 if "message" in entry:
                     msg = entry["message"]
                     if isinstance(msg.get("content"), str):
@@ -63,28 +63,28 @@ def read_transcript(transcript_path: str) -> str:
 
 
 def handle_user_prompt_submit(data: dict) -> None:
-    """Pre-message hook: Save current token count before request."""
+    """Message 前Hook: 在请求前保存当前 token 计数。"""
     session_id = data.get("session_id", "unknown")
     transcript_path = data.get("transcript_path", "")
 
     transcript_content = read_transcript(transcript_path)
     current_tokens = count_tokens_estimate(transcript_content)
 
-    # Save to temp file for later comparison
+    # 保存到临时文件以便稍后比较
     state_file = get_state_file(session_id)
     with open(state_file, "w") as f:
         json.dump({"pre_tokens": current_tokens}, f)
 
 
 def handle_stop(data: dict) -> None:
-    """Post-response hook: Calculate and report token delta."""
+    """Response 后Hook: 计算并报告 token 增量。"""
     session_id = data.get("session_id", "unknown")
     transcript_path = data.get("transcript_path", "")
 
     transcript_content = read_transcript(transcript_path)
     current_tokens = count_tokens_estimate(transcript_content)
 
-    # Load pre-message count
+    # 加载 message 前的计数
     state_file = get_state_file(session_id)
     pre_tokens = 0
     if os.path.exists(state_file):
@@ -95,12 +95,12 @@ def handle_stop(data: dict) -> None:
         except (json.JSONDecodeError, IOError):
             pass
 
-    # Calculate delta
+    # 计算增量
     delta_tokens = current_tokens - pre_tokens
     remaining = CONTEXT_LIMIT - current_tokens
     percentage = (current_tokens / CONTEXT_LIMIT) * 100
 
-    # Report usage (stderr so it doesn't interfere with hook output)
+    # 报告使用情况（stderr 以便不干扰Hook输出）
     print(
         f"Context (estimated): ~{current_tokens:,} tokens "
         f"({percentage:.1f}% used, ~{remaining:,} remaining)",

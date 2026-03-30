@@ -1,14 +1,14 @@
 ---
-name: Security Check
-description: Run security-focused code review
+名称： 安全检查
+描述：运行以安全为中心的代码审查
 ---
 
-# Security Check
+# 安全检查
 
-Perform focused security analysis on code changes:
+对代码更改进行重点安全分析：
 
-1. Authentication/authorization checks
-2. Data exposure risks
-3. Injection vulnerabilities
-4. Cryptographic weaknesses
-5. Sensitive data in logs
+1. 身份验证/授权检查
+2、数据暴露风险
+3. 注入漏洞
+4. 密码学的弱点
+5. 日志中的敏感数据

@@ -1,16 +1,15 @@
-# Checkpoint Examples
+# 检查点示例
 
-Real-world examples of using checkpoints effectively in Claude Code.
+在claude代码中有效使用检查点的真实示例。
 
-Note: Checkpoints are created automatically with every user prompt. You do not need to manually save them. To rewind, press `Esc` twice (`Esc+Esc`) or use `/rewind` to open the checkpoint browser.
+注意：检查点是根据每个用户提示自动创建的。您不需要手动保存它们。要快退，请按 `Esc` 两次 (`Esc+Esc`) 或使用 `/rewind` 打开检查点浏览器。
 
-## Example 1: Database Migration
+## 示例1：数据库迁移
 
-### Scenario
-You need to migrate from MySQL to PostgreSQL but want to explore both a direct migration and a gradual dual-write approach.
+### 场景
+您需要从 MySQL 迁移到 PostgreSQL，但想要探索直接迁移和渐进式双写入方法。
 
-### Workflow
-
+### 工作流程
 ```
 User: Let's implement a direct migration from MySQL to PostgreSQL
       [Checkpoint A created automatically]
@@ -39,14 +38,12 @@ Claude: Running tests...
 
 User: The dual-write approach is clearly safer. Let's commit this.
 ```
+## 示例2：性能优化
 
-## Example 2: Performance Optimization
+### 场景
+多种性能优化策略可供尝试。
 
-### Scenario
-Multiple performance optimization strategies to try.
-
-### Workflow
-
+### 工作流程
 ```
 User: Let's optimize the API response time. Current: 450ms
       [Checkpoint "Baseline" created automatically]
@@ -95,14 +92,12 @@ Claude: Results: 95ms average response time (79% improvement) 🎉
 
 User: Perfect! This is the winner. Let's commit this.
 ```
+## 示例 3：UI/UX 迭代
 
-## Example 3: UI/UX Iteration
+### 场景
+尝试不同的仪表板布局。
 
-### Scenario
-Trying different layouts for a dashboard.
-
-### Workflow
-
+### 工作流程
 ```
 User: Let's redesign the dashboard with a sidebar layout
       [Checkpoint "Start" created automatically]
@@ -144,14 +139,12 @@ Claude: [Adds top navigation to card grid]
 
 User: Perfect! This is the final design.
 ```
+## 示例 4：调试会话
 
-## Example 4: Debugging Session
+### 场景
+通过多种假设追捕棘手的错误。
 
-### Scenario
-Hunting down a tricky bug with multiple hypotheses.
-
-### Workflow
-
+### 工作流程
 ```
 User: There's a memory leak in the application
       [Checkpoint "Before debugging" created automatically]
@@ -191,14 +184,12 @@ Claude: ✅ Memory leak fixed! The circular references in the caching layer were
 
 User: Excellent! Let's commit this fix.
 ```
+## 示例 5：API 设计演变
 
-## Example 5: API Design Evolution
+### 场景
+设计具有多次迭代的 REST API。
 
-### Scenario
-Designing a REST API with multiple iterations.
-
-### Workflow
-
+### 工作流程
 ```
 User: Create a REST API for our blog platform
       [Checkpoint "Before API design" created automatically]
@@ -225,14 +216,12 @@ User: I think REST is better for our use case.
 
 User: Let's finalize the REST approach.
 ```
+## 示例 6：配置管理
 
-## Example 6: Configuration Management
+### 场景
+测试不同的配置方法。
 
-### Scenario
-Testing different configuration approaches.
-
-### Workflow
-
+### 工作流程
 ```
 User: Move configuration to environment variables
       [Checkpoint "Original config" created automatically]
@@ -264,14 +253,12 @@ Claude: ✅ All environments working correctly
 
 User: Perfect! This is production-ready.
 ```
+## 示例 7：测试策略
 
-## Example 7: Test Strategy
+### 场景
+实施综合检测。
 
-### Scenario
-Implementing comprehensive testing.
-
-### Workflow
-
+### 工作流程
 ```
 User: Add unit tests for the auth module
       [Checkpoint created automatically]
@@ -308,14 +295,12 @@ Claude: 112 tests passing, 94% coverage, 2 minutes
 
 User: Perfect balance of coverage and speed!
 ```
+## 示例 8：使用来自检查点的 Summarize
 
-## Example 8: Using Summarize from Checkpoint
+### 场景
+经过长时间的调试会话后，您希望在保留上下文的同时压缩对话。
 
-### Scenario
-After a long debugging session, you want to condense the conversation while preserving context.
-
-### Workflow
-
+### 工作流程
 ```
 User: [After 20+ messages of debugging and exploration]
 
@@ -328,12 +313,11 @@ Claude: [Generates a summary of the conversation from that point forward]
 
 User: Now let's continue with the approach that worked.
 ```
+## 要点
 
-## Key Takeaways
-
-1. **Checkpoints are automatic**: Every user prompt creates a checkpoint -- no manual saving needed
-2. **Use Esc+Esc or /rewind**: These are the two ways to access the checkpoint browser
-3. **Choose the right restore option**: Restore code, conversation, both, or summarize depending on your needs
-4. **Don't fear experimentation**: Checkpoints make it safe to try radical changes
-5. **Combine with git**: Use checkpoints for exploration, git for finalized work
-6. **Summarize long sessions**: Use "Summarize from here" to keep conversations manageable
+1. **检查点是自动的**：每个用户提示都会创建一个检查点——无需手动保存
+2. **使用Esc+Esc或/rewind**：这是访问检查点浏览器的两种方式
+3. **选择正确的恢复选项**：根据您的需要恢复代码、对话、两者或总结
+4. **不要害怕实验**：检查点可以安全地尝试彻底的改变
+5. **与git结合**：使用检查点进行探索，使用git完成工作
+6. **总结长会议**：使用“从此处总结”使对话易于管理

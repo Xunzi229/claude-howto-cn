@@ -1,23 +1,22 @@
 ---
-name: api-documentation-generator
-description: Generate comprehensive, accurate API documentation from source code. Use when creating or updating API documentation, generating OpenAPI specs, or when users mention API docs, endpoints, or documentation.
+名称： api 文档生成器
+描述：从源代码生成全面、准确的 API 文档。在创建或更新 API 文档、生成 OpenAPI 规范或用户提及 API 文档、端点或文档时使用。
 ---
 
-# API Documentation Generator Skill
+# API 文档生成skills
 
-## Generates
+## 生成
 
-- OpenAPI/Swagger specifications
-- API endpoint documentation
-- SDK usage examples
-- Integration guides
-- Error code references
-- Authentication guides
+- OpenAPI/Swagger 规范
+- API端点文档
+- SDK使用示例
+- 集成指南
+- 错误代码参考
+- 身份验证指南
 
-## Documentation Structure
+## 文档结构
 
-### For Each Endpoint
-
+### 对于每个端点
 ```markdown
 ## GET /api/v1/users/:id
 
@@ -35,18 +34,18 @@ Brief explanation of what this endpoint does
 **200 Success**
 ```json
 {
-  "id": "usr_123",
-  "name": "John Doe",
-  "email": "john@example.com",
-  "created_at": "2025-01-15T10:30:00Z"
+“id”：“usr_123”
+  “姓名”：“约翰·多伊”，
+“电子邮件”：“john@example.com”，
+“创建时间”：“2025-01-15T10:30:00Z”
 }
 ```
 
 **404 Not Found**
 ```json
 {
-  "error": "USER_NOT_FOUND",
-  "message": "User does not exist"
+“错误”：“USER_NOT_FOUND”，
+"message": "用户不存在"
 }
 ```
 
@@ -54,23 +53,23 @@ Brief explanation of what this endpoint does
 
 **cURL**
 ```bash
-curl -X GET "https://api.example.com/api/v1/users/usr_123" \
-  -H "Authorization: Bearer YOUR_TOKEN"
+卷曲-X GET“https://api.example.com/api/v1/users/usr_123" \
+-H“授权：持有者YOUR_TOKEN”
 ```
 
 **JavaScript**
 ```javascript
-const user = await fetch('/api/v1/users/usr_123', {
-  headers: { 'Authorization': 'Bearer token' }
+const user = 等待 fetch('/api/v1/users/usr_123', {
+headers: { '授权': '不记名Token' }
 }).then(r => r.json());
 ```
 
 **Python**
 ```python
-response = requests.get(
-    'https://api.example.com/api/v1/users/usr_123',
-    headers={'Authorization': 'Bearer token'}
-)
-user = response.json()
+响应 = requests.get(
+'https://api.example.com/api/v1/users/usr_123',
+headers={'授权': '不记名Token'}
+）
+用户=response.json()
 ```
 ```

@@ -1,24 +1,24 @@
 ---
-name: Documentation Refactor
-description: Restructure project documentation for clarity and accessibility
-tags: documentation, refactoring, organization
+名称：文档重构
+描述：重组项目文档以提高清晰度和可访问性
+标签： 文档、 重构、 组织
 ---
 
-# Documentation Refactor
+# 文档重构
 
-Refactor project documentation structure adapted to project type:
+重构适应项目类型的项目文档结构：
 
-1. **Analyze project**: Identify type (library/API/web app/CLI/microservices), architecture, and user personas
-2. **Centralize docs**: Move technical documentation to `docs/` with proper cross-references
-3. **Root README.md**: Streamline as entry point with overview, quickstart, modules/components summary, license, contacts
-4. **Component docs**: Add module/package/service-level README files with setup and testing instructions
-5. **Organize `docs/`** by relevant categories:
-   - Architecture, API Reference, Database, Design, Troubleshooting, Deployment, Contributing (adapt to project needs)
-6. **Create guides** (select applicable):
-   - User Guide: End-user documentation for applications
-   - API Documentation: Endpoints, authentication, examples for APIs
-   - Development Guide: Setup, testing, contribution workflow
-   - Deployment Guide: Production deployment for services/apps
-7. **Use Mermaid** for all diagrams (architecture, flows, schemas)
+1. **分析项目**：识别类型（库/API/Web 应用程序/CLI/微服务）、架构和用户角色
+2. **集中文档**：通过适当的交叉引用将技术文档移至 `docs/`
+3. **Root README.md**：简化为入口点，包括概述、快速入门、模块/组件摘要、许可证、联系人
+4. **组件文档**：添加模块/包/服务级别自述文件以及设置和测试说明
+5. **按相关类别组织 `docs/`**：
+   - 架构、API 参考、数据库、设计、故障排除、部署、贡献（适应项目需求）
+6. **创建指南**（选择适用）：
+   - 用户指南：应用程序的最终用户文档
+   - API 文档：端点、身份验证、API 示例
+   - 开发指南：设置、测试、贡献工作流程
+   - 部署指南：服务/应用程序的生产部署
+7. **对所有图表（架构、流程、模式）使用 Mermaid**
 
-Keep docs concise, scannable, and contextual to project type.
+保持文档简洁、易于浏览且与项目类型相关。
